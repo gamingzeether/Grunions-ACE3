@@ -151,6 +151,7 @@ PREP(progressBar);
 PREP(readSettingFromModule);
 PREP(receiveRequest);
 PREP(registerItemReplacement);
+PREP(registerAmmoFiredEvent);
 PREP(removeCanInteractWithCondition);
 PREP(removeSpecificMagazine);
 PREP(replaceRegisteredItems);
