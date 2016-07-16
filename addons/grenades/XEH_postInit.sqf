@@ -78,7 +78,7 @@ GVAR(flashbangPPEffectCC) ppEffectForceInNVG true;
 
 [QGVAR(flashbangFired), {
     params ["_ammo", "_ammoConfig"];
-    getNumber (_ammoConfig >> QGVAR(flashbang)) == 1)
+    getNumber (_ammoConfig >> QGVAR(flashbang)) == 1
 }, true, true, true, false, false, false] call EFUNC(common,registerAmmoFiredEvent);
 
 
@@ -95,5 +95,5 @@ GVAR(flashbangPPEffectCC) ppEffectForceInNVG true;
 
 [QGVAR(flareFired), {
     params ["_ammo", "_ammoConfig"];
-    getNumber (_ammoConfig >> QGVAR(flare)) == 1)
+    getNumber (_ammoConfig >> QGVAR(flare)) == 1
 }, true, true, true, false, false, false] call EFUNC(common,registerAmmoFiredEvent);
