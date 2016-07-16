@@ -9,3 +9,12 @@ GVAR(ROTATE) = 0;
 GVAR(ELEVAT) = 0.01;
 
 ["ace_huntir", {!GETMVAR(GVAR(stop),true)}] call CBA_fnc_registerFeatureCamera;
+
+// Register fire event handler
+// Don't run for non players, as they are too dumb to launch huntirs anyway
+[QGVAR(huntirFired), DFUNC(handleFired)] call CBA_fnc_addEventHandler;
+
+[QGVAR(huntirFired), {
+    params ["_ammo", "_ammoConfig"];
+    hasInterface && (_ammo == "F_HuntIR")
+}, true, false, false, false, false, false] call EFUNC(common,registerAmmoFiredEvent);
