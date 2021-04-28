@@ -396,6 +396,7 @@ def copy_optionals_for_building(mod,pbos):
 
     try:
         for dir_name in src_directories:
+            if (os.path.isfile(os.path.join(optionals_root,dir_name))): continue # ignore .pbos from hemmit
             mod.append(dir_name)
             #userconfig requires special handling since it is not a PBO source folder.
             #CfgConvert fails to build server.pbo if userconfig is not found in P:\
