@@ -74,6 +74,18 @@ GVAR(vehicleAction) = [
     }
 ] call EFUNC(interact_menu,createAction);
 
+GVAR(unloadAllVehiclesAction) = [
+    QGVAR(unloadAllvehicles), localize "STR_A3_ACTION_UNLOAD_ALL_VEHICLES", "\A3\Ui_f\data\IGUI\Cfg\Actions\unloadAllVehicles_ca.paa",
+    {
+        params ["_target"];
+        [_target] call FUNC(unloadAllVehicles);
+    },
+    {
+        params ["_target", "_player"];
+        [_target, _player] call FUNC(canShowUnloadAllVehicles);
+    }
+] call EFUNC(interact_menu,createAction);
+
 GVAR(objectAction) = [
     QGVAR(load), localize LSTRING(loadObject), "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa",
     {
@@ -96,6 +108,10 @@ GVAR(objectAction) = [
     },
     LINKFUNC(addCargoVehiclesActions)
 ] call EFUNC(interact_menu,createAction);
+
+{
+    [_x, 1, ["ACE_SelfActions"], GVAR(unloadAllVehiclesAction), true] call EFUNC(interact_menu,addActionToClass);
+} forEach ["LandVehicle", "Ship", "Air"];
 
 // find all remaining configured classes and init them, see XEH_preStart.sqf
 private _vehicleClassesAddAction = call (uiNamespace getVariable [QGVAR(initializedVehicleClasses), {[]}]);
