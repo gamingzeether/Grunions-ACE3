@@ -49,6 +49,8 @@ _vehicle setVariable [QGVAR(space), (_space + _itemSize), true];
 
 private _object = _item;
 if (_object isEqualType objNull) then {
+    [objNull, _object] call ace_common_fnc_claim;
+	[_object, 0, ["ACE_MainActions", "unloadVIVItem"]] call EFUNC(interact_menu,removeActionFromObject);
     if (isNull isVehicleCargo _object) then {
         detach _object;
         // hideObjectGlobal must be executed before setPos to ensure light objects are rendered correctly

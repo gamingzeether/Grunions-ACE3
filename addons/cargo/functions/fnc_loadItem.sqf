@@ -22,6 +22,7 @@ params [["_item","",[objNull,""]], ["_vehicle",objNull,[objNull]], ["_ignoreInte
 TRACE_2("params",_item,_vehicle);
 
 if !([_item, _vehicle, _ignoreInteraction] call FUNC(canLoadItemIn)) exitWith {TRACE_2("cannot load",_item,_vehicle); false};
+if (_item in (_vehicle getVariable [QGVAR(loaded), []])) exitWith {TRACE_2("already loaded",_item,_vehicle); false};
 
 private _loaded = _vehicle getVariable [QGVAR(loaded), []];
 _loaded pushBack _item;
@@ -32,6 +33,25 @@ TRACE_1("added to loaded array",_loaded);
 private _space = [_vehicle] call FUNC(getCargoSpaceLeft);
 private _itemSize = [_item] call FUNC(getSizeItem);
 _vehicle setVariable [QGVAR(space), _space - _itemSize, true];
+
+if (_item isEqualType objNull) then {
+    //disable interactions
+    [_vehicle, _item] call ace_common_fnc_claim;
+
+    //add unload action
+    private _action = [
+        "unloadVIVItem", 
+        "Unload Item", 
+        "", {
+            params ["_target"];
+            private _vehicle = isVehicleCargo _target;
+            [_target, _vehicle] call FUNC(unloadItem);
+        }, {
+        true
+    }] call EFUNC(interact_menu,createAction);
+	
+	[_item, 0, ["ACE_MainActions"], _action] call EFUNC(interact_menu,addActionToObject);
+};
 
 if (_item isEqualType objNull) then {
     detach _item;
