@@ -47,7 +47,16 @@ private _p1 = _p0 vectorAdd (_v1 vectorMultiply _range);
 private _pL = lineIntersectsSurfaces [_p0, _p1, _unit, vehicle _unit] select 0 select 0;
 
 // no intersection found, quit
-if (isNil "_pL") exitWith {};
+if (isNil "_pL") exitWith {
+    _p0 = ASLtoAGL _p0;
+    _p1 = ASLtoAGL _p1;
+
+    drawLine3D [
+            _p0,
+            _p1,
+            [[1, 0, 0, 0.6 * _brightness], [0, 1, 0, 0.6 * _brightness]] select _isGreen
+	];
+};
 
 private _distance = _p0 vectorDistance _pL;
 
@@ -59,14 +68,13 @@ _pL = _p0 vectorAdd (_v1 vectorMultiply _distance);
 private _pL2 = _p0 vectorAdd (_v1 vectorMultiply (_distance - 0.5));
 
 _pL = ASLtoAGL _pL;
+_p0 = ASLtoAGL _p0;
 
-/*
 drawLine3D [
     _p0,
     _pL,
-    [[1,0,0,1], [0,1,0,1]] select _isGreen
+    [[1, 0, 0, 0.6 * _brightness], [0, 1, 0, 0.6 * _brightness]] select _isGreen
 ];
-*/
 
 //systemChat str [_target, "FIRE"] intersect [_camPos, _pL];
 

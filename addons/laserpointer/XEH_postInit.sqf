@@ -11,6 +11,7 @@ GVAR(index) = -1;
 GVAR(laserClassesCache) = [] call CBA_fnc_createNamespace;
 GVAR(redLaserUnits) = [];
 GVAR(greenLaserUnits) = [];
+GVAR(irLaserUnits) = [];
 
 ["ace_settingsInitialized", {
     // If not enabled, dont't add draw eventhandler or PFEH (for performance)
@@ -33,6 +34,7 @@ GVAR(greenLaserUnits) = [];
         {
             GVAR(redLaserUnits) deleteAt (GVAR(redLaserUnits) find _x);
             GVAR(greenLaserUnits) deleteAt (GVAR(greenLaserUnits) find _x);
+            GVAR(irLaserUnits) deleteAt (GVAR(irLaserUnits) find _x);
         } forEach (_oldNearUnits - GVAR(nearUnits));
     }, 5, []] call CBA_fnc_addPerFrameHandler;
 
@@ -41,15 +43,17 @@ GVAR(greenLaserUnits) = [];
         params ["_unit"];
 
         private _weapon = currentWeapon _unit;
-        if (!(_unit isFlashlightOn _weapon)) exitWith {
+        if (!(_unit isFlashlightOn _weapon || _unit isIRLaserOn _weapon)) exitWith {
             GVAR(redLaserUnits) deleteAt (GVAR(redLaserUnits) find _unit);
             GVAR(greenLaserUnits) deleteAt (GVAR(greenLaserUnits) find _unit);
+			GVAR(irLaserUnits) deleteAt (GVAR(irLaserUnits) find _unit);
         };
-        
+
         private _laser = [(_unit weaponAccessories _weapon) select 1] param [0, ""];
         if (_laser isEqualTo "") exitWith {
             GVAR(redLaserUnits) deleteAt (GVAR(redLaserUnits) find _unit);
             GVAR(greenLaserUnits) deleteAt (GVAR(greenLaserUnits) find _unit);
+            GVAR(irLaserUnits) deleteAt (GVAR(irLaserUnits) find _unit);
         };
 
         private _laserID = GVAR(laserClassesCache) getVariable _laser;
@@ -59,15 +63,27 @@ GVAR(greenLaserUnits) = [];
             GVAR(laserClassesCache) setVariable [_laser, _laserID];
         };
         TRACE_3("",_weapon,_laser,_laserID);
-
+		
+		//is ir laser
+		//ACE_acc_pointer_green_IR or acc_pointer_IR
+		if (_laser isEqualTo "ACE_acc_pointer_green_IR" || _laser isEqualTo "acc_pointer_IR") exitWith {
+            GVAR(irLaserUnits) pushBackUnique _unit;
+            GVAR(redLaserUnits) deleteAt (GVAR(redLaserUnits) find _unit);
+            GVAR(greenLaserUnits) deleteAt (GVAR(greenLaserUnits) find _unit);
+        };
+		
+		//is visible red laser
         if (_laserID isEqualTo 1) exitWith {
             GVAR(redLaserUnits) pushBackUnique _unit;
             GVAR(greenLaserUnits) deleteAt (GVAR(greenLaserUnits) find _unit);
+            GVAR(irLaserUnits) deleteAt (GVAR(irLaserUnits) find _unit);
         };
 
+		//is visible green laser
         if (_laserID isEqualTo 2) exitWith {
             GVAR(greenLaserUnits) pushBackUnique _unit;
             GVAR(redLaserUnits) deleteAt (GVAR(redLaserUnits) find _unit);
+            GVAR(irLaserUnits) deleteAt (GVAR(irLaserUnits) find _unit);
         };
     };
 
