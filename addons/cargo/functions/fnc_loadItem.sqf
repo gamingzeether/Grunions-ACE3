@@ -21,6 +21,7 @@
 params [["_item", "", [objNull, ""]], ["_vehicle", objNull, [objNull]], ["_ignoreInteraction", false, [false]]];
 TRACE_3("params",_item,_vehicle,_ignoreInteraction);
 
+<<<<<<< HEAD
 // Get config sensitive case name
 if (_item isEqualType "") then {
     _item = _item call EFUNC(common,getConfigName);
@@ -30,6 +31,11 @@ if !([_item, _vehicle, _ignoreInteraction] call FUNC(canLoadItemIn)) exitWith {
     TRACE_3("cannot load",_item,_vehicle,_ignoreInteraction);
 
     false // return
+};
+
+if (_item in (_vehicle getVariable [QGVAR(loaded), []])) exitWith {
+    TRACE_2("already loaded",_item,_vehicle); 
+    false
 };
 
 private _loaded = _vehicle getVariable [QGVAR(loaded), []];
@@ -44,6 +50,25 @@ private _itemSize = (_item call FUNC(getSizeItem)) max 0; // don't let negative 
 _vehicle setVariable [QGVAR(space), _cargoSpace - _itemSize, true];
 
 // Attach object 100m below vehicle
+if (_item isEqualType objNull) then {
+    //disable interactions
+    [_vehicle, _item] call ace_common_fnc_claim;
+
+    //add unload action
+    private _action = [
+        "unloadVIVItem", 
+        "Unload Item", 
+        "", {
+            params ["_target"];
+            private _vehicle = isVehicleCargo _target;
+            [_target, _vehicle] call FUNC(unloadItem);
+        }, {
+        true
+    }] call EFUNC(interact_menu,createAction);
+	
+	[_item, 0, ["ACE_MainActions"], _action] call EFUNC(interact_menu,addActionToObject);
+};
+
 if (_item isEqualType objNull) then {
     detach _item;
 
