@@ -45,12 +45,32 @@ if (_item isEqualType objNull) then {
         "", {
             params ["_target"];
             private _vehicle = isVehicleCargo _target;
-            [_target, _vehicle] call FUNC(unloadItem);
+            if ([_target, _vehicle, ACE_player] call FUNC(canUnloadItem)) then {
+            
+                private _size = [_target] call FUNC(getSizeItem);
+
+                [
+                    GVAR(loadTimeCoefficient) * _size,
+                    [_target, _vehicle, ACE_player],
+                    {TRACE_1("unload finish",_this); ["ace_unloadCargo", _this select 0] call CBA_fnc_localEvent},
+                    {TRACE_1("unload fail",_this);},
+                    localize LSTRING(UnloadingItem),
+                    {
+                        (_this select 0) params ["_item", "_target", "_player"];
+                        
+                        (alive _target)
+                        && {locked _target < 2}
+                        && {([_player, _target] call EFUNC(interaction,getInteractionDistance)) < MAX_LOAD_DISTANCE}
+                        && {_item in (_target getVariable [QGVAR(loaded), []])}
+                    },
+                    ["isNotSwimming"]
+                ] call EFUNC(common,progressBar);
+            }
         }, {
         true
     }] call EFUNC(interact_menu,createAction);
 	
-	[_item, 0, ["ACE_MainActions"], _action] call EFUNC(interact_menu,addActionToObject);
+    [_item, 0, ["ACE_MainActions"], _action] call EFUNC(interact_menu,addActionToObject);
 };
 
 if (_item isEqualType objNull) then {
