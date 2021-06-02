@@ -815,4 +815,12 @@ class CfgVehicles {
         GVAR(size) = 7;
         GVAR(canLoad) = 1;
     };
+    
+    class StaticWeapon {
+        class VehicleTransport {
+            class Cargo {
+                canBeTransported = 1;
+            };
+        };
+    };
 };
