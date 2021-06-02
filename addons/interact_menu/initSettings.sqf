@@ -39,7 +39,7 @@
     "CHECKBOX",
     LSTRING(UseListMenu),
     [format ["ACE %1", LLSTRING(Category_InteractionMenu)], LLSTRING(Category_InteractionMenu)],
-    true,
+    false,
     false
 ] call CBA_fnc_addSetting;
 
