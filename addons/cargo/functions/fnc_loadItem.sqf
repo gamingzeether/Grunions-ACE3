@@ -36,10 +36,10 @@ _vehicle setVariable [QGVAR(space), _space - _itemSize, true];
 
 if (_item isEqualType objNull) then {
     //disable interactions
-    [_vehicle, _item] call ace_common_fnc_claim;
+    [_vehicle, _item] call EFUNC(common,claim);
 
     //add unload action
-    private _action = [
+    private _unloadAction = [
         "unloadVIVItem", 
         "Unload Item", 
         "", {
@@ -69,11 +69,9 @@ if (_item isEqualType objNull) then {
         }, {
         true
     }] call EFUNC(interact_menu,createAction);
-	
-    [_item, 0, ["ACE_MainActions"], _action] call EFUNC(interact_menu,addActionToObject);
-};
+    
+    [_item, 0, ["ACE_MainActions"], _unloadAction] call EFUNC(interact_menu,addActionToObject);
 
-if (_item isEqualType objNull) then {
     detach _item;
     if !(_vehicle setVehicleCargo _item) then {
         private _itemsCargo = _loaded arrayIntersect getVehicleCargo _vehicle;
