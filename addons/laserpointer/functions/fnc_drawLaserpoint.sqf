@@ -54,7 +54,7 @@ if (isNil "_pL") exitWith {
     drawLine3D [
             _p0,
             _p1,
-            [[1, 0, 0, 0.6 * _brightness], [0, 1, 0, 0.6 * _brightness]] select _isGreen
+            [[1, 0, 0, 0.6], [0, 1, 0, 0.6]] select _isGreen
 	];
 };
 
@@ -73,7 +73,7 @@ _p0 = ASLtoAGL _p0;
 drawLine3D [
     _p0,
     _pL,
-    [[1, 0, 0, 0.6 * _brightness], [0, 1, 0, 0.6 * _brightness]] select _isGreen
+    [[1, 0, 0, 0.6], [0, 1, 0, 0.6]] select _isGreen
 ];
 
 //systemChat str [_target, "FIRE"] intersect [_camPos, _pL];
