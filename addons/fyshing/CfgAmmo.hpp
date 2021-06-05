@@ -7,5 +7,6 @@ class CfgAmmo {
         timeToLive = 43200;
         model = "\A3\animals_f\Fishes\tuna_F";
         effectsSmoke = "";
+        EGVAR(advanced_throwing,torqueMagnitude) = 2;
     };
 };
