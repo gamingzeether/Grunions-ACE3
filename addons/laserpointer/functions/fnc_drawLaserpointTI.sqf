@@ -19,6 +19,9 @@
 
 params ["_target", "_range", "_brightness"];
 
+private _thermalColor = GVAR(TIColor) select [0, 3];
+_thermalColor append [0.5 * _brightness];
+
 private _unit = ACE_player;
 
 private _p0 = AGLToASL (_target modelToWorldVisual (_target selectionPosition "righthand"));
@@ -86,7 +89,7 @@ private _size = 2 * sqrt (1 / _distance) * (call EFUNC(common,getZoom));
 
 drawIcon3D [
     "\A3\ui_f\data\IGUI\RscCustomInfo\Sensors\Targets\UnknownMan_ca.paa",
-    [1,1,1,0.5*_brightness],
+    _thermalColor,
     _pL,
     _size,
     _size,
