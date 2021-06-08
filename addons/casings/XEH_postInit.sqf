@@ -40,11 +40,6 @@
             false
         };
 
-        private _casing = "ACE_casings_" + _cartridge;
-        if !(isClass (configFile >> "CfgVehicles" >> _casing)) exitWith {
-            false
-        };
-
         private _casingModel = getText (configFile >> "CfgVehicles" >> cartridge >> "model");
         if (toLower _casingModel in ["\a3\weapons_f\empty", ""]) exitWith {
             false

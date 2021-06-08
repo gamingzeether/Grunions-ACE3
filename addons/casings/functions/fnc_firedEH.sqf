@@ -22,7 +22,6 @@ private _unitPosATL = getposATL _unit;
 if ((positionCameraToWorld [0,0,0]) vectorDistance _unitPosATL > 100 && {random 1 < 0.9}) exitWith {};
 
 private _cartridge = getText (configFile >> "CfgAmmo" >> _ammo >> "cartridge");
-private _casingType = "ACE_casings_" + _cartridge;
 
 private _weapDir = _unit weaponDirection currentWeapon _unit;
 private _ejectDir = _weapDir vectorCrossProduct [0, 0, 1];
@@ -35,11 +34,11 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
 [{
     BEGIN_COUNTER(fnc_fireEH_create);
 
-    params ["_casingType", "_posATL"];
+    params ["_cartridge", "_posATL"];
 
     // Check if we can reuse the existing casing
     private _casing = GVAR(casings) select GVAR(currentIndex);
-    if (typeOf _casing != _casingType) then {
+    if (typeOf _casing != _cartridge) then {
         // Delete former casing (nothing happens if it's an objNull)
         deleteVehicle _casing;
         // Create a new casing of the correct type
@@ -48,7 +47,7 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
         // engine doesn't create the object exactly where it is told to, but
         // instead looks for a suitable position. Creating at origin prevents
         // that from happening.
-        _casing = _casingType createVehicleLocal [0,0,0];
+        _casing = createSimpleObject [_cartridge, [0,0,0]];
     };
 
     _casing setposATL _posATL;
@@ -62,6 +61,6 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
     TRACE_3("", _casing, _posATL, GVAR(currentIndex));
 
     END_COUNTER(fnc_fireEH_create);
-}, [_casingType, _posATL], 0.4] call CBA_fnc_waitAndExecute;
+}, [_cartridge, _posATL], 0.4] call CBA_fnc_waitAndExecute;
 
 END_COUNTER(fnc_fireEH);
