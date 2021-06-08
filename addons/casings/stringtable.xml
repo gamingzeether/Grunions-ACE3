@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Casings">
+        <Key ID="STR_ACE_Casings_Category">
+            <English>ACE Casings</English>
+        </Key>
         <Key ID="STR_ACE_Casings_enabled_displayName">
             <English>Casings Enabled</English>
         </Key>
