@@ -16,25 +16,28 @@
 
 BEGIN_COUNTER(fnc_fireEH);
 
-private _unitPosATL = getposATL _unit;
+private _unitPosASL = AGLToASL (_unit modelToWorldVisual (_unit selectionPosition "righthand"));
 
 // Make far away units 10 times less likely to create casings
-if ((positionCameraToWorld [0,0,0]) vectorDistance _unitPosATL > 100 && {random 1 < 0.9}) exitWith {};
+if ((positionCameraToWorld [0,0,0]) vectorDistance (ASLtoATL _unitPosASL) > 100 && {random 1 < 0.9}) exitWith {};
 
 private _cartridge = getText (configFile >> "CfgAmmo" >> _ammo >> "cartridge");
 
 private _weapDir = _unit weaponDirection currentWeapon _unit;
 private _ejectDir = _weapDir vectorCrossProduct [0, 0, 1];
-private _posATL = _unitPosATL vectorAdd
+private _posASL = _unitPosASL vectorAdd
                   (_weapDir vectorMultiply (-0.5 + random 1.0 + random 1.0)) vectorAdd
                   (_ejectDir vectorMultiply (0.2 + random 1.0 + random 1.0));
 
-_posATL set [2, (_unitPosATL select 2) + 0.01];
+private _toPt = + _posASL;
+_toPt set [2, (_posASL select 2) - 100];
+
+private _intersectInfo = lineIntersectsSurfaces [_posASL, _toPt, _unit, vehicle _unit];
 
 [{
     BEGIN_COUNTER(fnc_fireEH_create);
 
-    params ["_cartridge", "_posATL"];
+    params ["_cartridge", "_posASL", "_intersectInfo"];
 
     // Check if we can reuse the existing casing
     private _casing = GVAR(casings) select GVAR(currentIndex);
@@ -42,7 +45,7 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
         // Delete former casing (nothing happens if it's an objNull)
         deleteVehicle _casing;
         // Create a new casing of the correct type
-        // By creating it at [0,0,0] instead of _posATL the time is reduced
+        // By creating it at [0,0,0] instead of _posASL the time is reduced
         // from around 1.08 ms to 0.08 ms. This is most likely because the
         // engine doesn't create the object exactly where it is told to, but
         // instead looks for a suitable position. Creating at origin prevents
@@ -50,7 +53,15 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
         _casing = createSimpleObject [_cartridge, [0,0,0]];
     };
 
-    _casing setposATL _posATL;
+    if (count _intersectInfo != 0) then {
+        _posASL = _intersectInfo select 0 select 0;
+        _casing setVectorUp (_intersectInfo select 1);
+    } else {
+        _posASL set [2, (_posASL select 2) + 0.01];
+    };
+    _posASL set [2, (_posASL select 2) + 0.01];
+    
+    _casing setposASL _posASL;
     _casing setdir (random 360);
 
     // Store newly created casing
@@ -58,9 +69,9 @@ _posATL set [2, (_unitPosATL select 2) + 0.01];
     // Update storage index
     GVAR(currentIndex) = (GVAR(currentIndex) + 1) % GVAR(maxCasings);
 
-    TRACE_3("", _casing, _posATL, GVAR(currentIndex));
+    TRACE_3("", _casing, _posASL, GVAR(currentIndex));
 
     END_COUNTER(fnc_fireEH_create);
-}, [_cartridge, _posATL], 0.4] call CBA_fnc_waitAndExecute;
+}, [_cartridge, _posASL, _intersectInfo], 0.4] call CBA_fnc_waitAndExecute;
 
 END_COUNTER(fnc_fireEH);
