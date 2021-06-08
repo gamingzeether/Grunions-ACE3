@@ -50,7 +50,7 @@ private _intersectInfo = lineIntersectsSurfaces [_posASL, _toPt, _unit, vehicle 
         // engine doesn't create the object exactly where it is told to, but
         // instead looks for a suitable position. Creating at origin prevents
         // that from happening.
-        _casing = createSimpleObject [_cartridge, [0,0,0]];
+        _casing = createSimpleObject [_cartridge, [0,0,0], true];
     };
 
     if (count _intersectInfo != 0) then {
