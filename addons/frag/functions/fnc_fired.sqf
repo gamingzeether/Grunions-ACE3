@@ -1,8 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: nou, jaynus, PabstMirror
- * Called from the unified fired EH for all.
- * If spall is not enabled (default), then cache and only track those that will actually trigger fragmentation.
+ * Called from the ammo fired EH for all round that trigger frag or spall.
  *
  * Arguments:
  * None. Parameters inherited from EFUNC(common,firedEH)
@@ -56,3 +55,5 @@ if (_shouldAdd) then {
 
     [_unit, _ammo, _projectile] call FUNC(addPfhRound);
 };
+TRACE_3("Running Frag Tracking",_unit,_ammo,_projectile);
+[_unit, _ammo, _projectile] call FUNC(addPfhRound);
