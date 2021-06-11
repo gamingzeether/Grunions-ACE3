@@ -32,7 +32,7 @@ private _posASL = _unitPosASL vectorAdd
 private _toPt = + _posASL;
 _toPt set [2, (_posASL select 2) - 100];
 
-private _intersectInfo = lineIntersectsSurfaces [_posASL, _toPt, _unit, vehicle _unit];
+private _intersectInfo = (lineIntersectsSurfaces [_posASL, _toPt, _unit, vehicle _unit]) select 0;
 
 [{
     BEGIN_COUNTER(fnc_fireEH_create);
@@ -52,17 +52,16 @@ private _intersectInfo = lineIntersectsSurfaces [_posASL, _toPt, _unit, vehicle 
         // that from happening.
         _casing = createSimpleObject [_cartridge, [0,0,0], true];
     };
+    
+    _casing setdir (random 360);
 
     if (count _intersectInfo != 0) then {
-        _posASL = _intersectInfo select 0 select 0;
+        _posASL = _intersectInfo select 0;
         _casing setVectorUp (_intersectInfo select 1);
-    } else {
-        _posASL set [2, (_posASL select 2) + 0.01];
     };
     _posASL set [2, (_posASL select 2) + 0.01];
     
     _casing setposASL _posASL;
-    _casing setdir (random 360);
 
     // Store newly created casing
     GVAR(casings) set [GVAR(currentIndex), _casing];
