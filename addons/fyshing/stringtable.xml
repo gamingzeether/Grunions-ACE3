@@ -4,11 +4,11 @@
         <Key ID="STR_ACE_Fyshing_Fysh_DisplayName">
             <English>Fysh</English>
         </Key>
-        <Key ID="STR_ACE_Fyshing_Fysh_DisplayNameShort">
-            <English>Fysh</English>
-        </Key>
         <Key ID="STR_ACE_Fyshing_Fysh_DescriptionShort">
             <English>A throwable fysh</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_FyshExplosive_DisplayName">
+            <English>Fysh (Explosive)</English>
         </Key>
     </Package>
 </Project>
