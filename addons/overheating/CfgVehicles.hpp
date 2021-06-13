@@ -6,7 +6,7 @@ class CfgVehicles {
             class ACE_Equipment {
                 class GVAR(UnJam) {
                     displayName = CSTRING(UnjamWeapon);
-                    condition = QUOTE( GVAR(enabled) && {[_player] call FUNC(canUnjam)} );
+                    condition = QUOTE( GVAR(enabled) && GVAR(showUnjam) && {[_player] call FUNC(canUnjam)} );
                     exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
                     statement = QUOTE( [ARR_2(_player, currentMuzzle _player)] call FUNC(clearJam); );
                     showDisabled = 0;
