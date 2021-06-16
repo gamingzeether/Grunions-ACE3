@@ -24,10 +24,21 @@ if ((positionCameraToWorld [0,0,0]) vectorDistance (ASLtoATL _unitPosASL) > 100 
 private _cartridge = getText (configFile >> "CfgAmmo" >> _ammo >> "cartridge");
 
 private _weapDir = _unit weaponDirection currentWeapon _unit;
+
+if (_unit getVariable [QGVAR(prevWeapon), ""] != _weapon) then {
+    _unit setVariable [QGVAR(prevWeapon), _weapon];
+    
+    private _dir = [_weapon] call FUNC(getCasingEjectDirection);
+    _unit setVariable [QGVAR(ejectDirection), _dir];
+};
+
 private _ejectDir = _weapDir vectorCrossProduct [0, 0, 1];
-private _posASL = _unitPosASL vectorAdd
-                  (_weapDir vectorMultiply (-0.5 + random 1.0 + random 1.0)) vectorAdd
-                  (_ejectDir vectorMultiply (0.2 + random 1.0 + random 1.0));
+_ejectDir = _ejectDir vectorMultiply (_unit getVariable QGVAR(ejectDirection));
+
+private _posASL = _unitPosASL vectorAdd _ejectDir;
+
+private _rndAngle = random 360;
+_posASL = _posASL vectorAdd ([sin _rndAngle, cos _rndAngle, 0] vectorMultiply (0.7 * sqrt (random 1)));
 
 private _toPt = + _posASL;
 _toPt set [2, (_posASL select 2) - 100];
