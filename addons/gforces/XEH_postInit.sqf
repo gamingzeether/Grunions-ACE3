@@ -4,6 +4,7 @@ if (!hasInterface) exitWith {};
 
 GVAR(pfID) = -1;
 GVAR(playerIsVirtual) = false;
+GVAR(prevState) = false;
 
 ["ace_settingsInitialized", {
     TRACE_1("SettingsInitialized eh",GVAR(enabledFor));
