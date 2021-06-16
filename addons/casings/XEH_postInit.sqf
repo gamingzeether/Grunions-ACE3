@@ -3,6 +3,7 @@
 ["ace_settingsInitialized", {
     //If not enabled, exit
     if (!GVAR(enabled)) exitWith {};
+    if (!hasInterface) exitWith {};
 
     GVAR(casings) = [];
     for "_i" from 0 to GVAR(maxCasings) - 1 do {
