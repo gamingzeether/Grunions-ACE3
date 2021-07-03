@@ -29,8 +29,8 @@ if (count GVAR(redLaserUnits) + count GVAR(greenLaserUnits) + count GVAR(irLaser
             // green laser
             [_x, _range, _brightness] call FUNC(drawLaserpointTI);
         } count GVAR(greenLaserUnits);
-		
-	{
+
+        {
             // ir laser
             [_x, _range, _brightness] call FUNC(drawLaserpointTI);
         } count GVAR(irLaserUnits);

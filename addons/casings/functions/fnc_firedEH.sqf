@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Rocko and esteldunedain
  * Create empty casing on weapon fired. Called from an ammo fired EH.
@@ -10,7 +11,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 //IGNORE_PRIVATE_WARNING ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle", "_gunner", "_turret"];
 
