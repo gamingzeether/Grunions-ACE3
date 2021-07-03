@@ -55,7 +55,7 @@ if (isNil "_pL") exitWith {
             _p0,
             _p1,
             [[1, 0, 0, 0.6], [0, 1, 0, 0.6]] select _isGreen
-	];
+    ];
 };
 
 private _distance = _p0 vectorDistance _pL;
