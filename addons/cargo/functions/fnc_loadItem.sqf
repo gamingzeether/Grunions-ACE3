@@ -38,11 +38,12 @@ if (_item isEqualType objNull) then {
     //disable interactions
     [_vehicle, _item] call EFUNC(common,claim);
 
-    //add unload action
+    //add unload action to loaded object
     private _unloadAction = [
         "unloadVIVItem", 
         "Unload Item", 
-        "", {
+        "", 
+        {
             params ["_target"];
             private _vehicle = isVehicleCargo _target;
             if ([_target, _vehicle, ACE_player] call FUNC(canUnloadItem)) then {
@@ -66,9 +67,9 @@ if (_item isEqualType objNull) then {
                     ["isNotSwimming"]
                 ] call EFUNC(common,progressBar);
             }
-        }, {
-        true
-    }] call EFUNC(interact_menu,createAction);
+        }, 
+        {true}
+    ] call EFUNC(interact_menu,createAction);
     
     [_item, 0, ["ACE_MainActions"], _unloadAction] call EFUNC(interact_menu,addActionToObject);
 
