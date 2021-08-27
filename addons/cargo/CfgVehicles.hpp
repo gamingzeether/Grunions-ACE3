@@ -329,6 +329,11 @@ class CfgVehicles {
     class StaticWeapon: LandVehicle {
         GVAR(size) = 2; // 1 = small, 2 = large
         GVAR(canLoad) = 1;
+        class VehicleTransport {
+            class Cargo {
+                canBeTransported = 1;
+            };
+        };
     };
 
     // Invisible Target Soldier
@@ -851,13 +856,5 @@ class CfgVehicles {
     class Land_WaterBottle_01_stack_F: Items_base_F {
         GVAR(size) = 7;
         GVAR(canLoad) = 1;
-    };
-    
-    class StaticWeapon {
-        class VehicleTransport {
-            class Cargo {
-                canBeTransported = 1;
-            };
-        };
     };
 };
