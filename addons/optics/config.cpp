@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -35,3 +36,4 @@ class CfgPatches {
 #include "CfgJointRails.hpp"
 
 #include "CfgPreloadTextures.hpp"
+*/
