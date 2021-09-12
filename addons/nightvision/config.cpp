@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -11,7 +12,7 @@ class CfgPatches {
             "ACE_NVG_Gen2_Black",
             "ACE_NVG_Gen2_Brown",
             "ACE_NVG_Gen2",
-            /*"ACE_NVG_Gen3",*/
+            *//*"ACE_NVG_Gen3",*//*
             "ACE_NVG_Gen4_Black",
             "ACE_NVG_Gen4",
             "ACE_NVG_Gen4_Green",
@@ -34,3 +35,4 @@ class CfgPatches {
 #include "CfgWeapons.hpp"
 #include "ACE_Settings.hpp"
 #include "RscTitles.hpp"
+*/
