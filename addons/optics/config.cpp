@@ -9,7 +9,6 @@
 ACE_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
 #else
 
-
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
