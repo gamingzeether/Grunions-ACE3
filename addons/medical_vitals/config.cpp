@@ -1,4 +1,3 @@
-/*
 #include "script_component.hpp"
 
 #if __has_include("\z\ace\addons\nomedical\script_component.hpp")
@@ -25,4 +24,3 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 #endif
-*/

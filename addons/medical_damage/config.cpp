@@ -1,4 +1,3 @@
-/*
 #include "script_component.hpp"
 
 #if __has_include("\z\ace\addons\nomedical\script_component.hpp")
@@ -28,13 +27,12 @@ class CfgPatches {
 #include "CfgAmmo.hpp"
 #include "CfgEden.hpp"
 
-*//*
+/*
 class ACE_Extensions {
     class ace_medical {
         // Not yet used
     };
 };
-*//*
+*/
 
 #endif
-*/

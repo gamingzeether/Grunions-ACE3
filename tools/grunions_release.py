@@ -39,6 +39,7 @@ def main():
     projectpath = os.path.dirname(os.path.dirname(scriptpath))
     os.chdir(projectpath)
     
+    """
     releasespath = os.path.join(projectpath, "releases")
     for root, _dirs, files in os.walk(releasespath, False):
         for file in files:
@@ -47,6 +48,7 @@ def main():
         for dir in _dirs:
             dirpath = os.path.join(root, dir)
             os.rmdir(dirpath);
+    """
     
     # build variants
     build_variant("No Medical", "master", "NoMed")
