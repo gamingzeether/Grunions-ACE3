@@ -48,12 +48,6 @@
             <Chinesesimp>当武器卡弹时显示提示讯息</Chinesesimp>
             <Chinese>當武器卡彈時顯示提示訊息</Chinese>
         </Key>
-        <Key ID="STR_ACE_Overheating_showUnjam_displayName">
-            <English>Show unjam action</English>
-        </Key>
-        <Key ID="STR_ACE_Overheating_showUnjam_description">
-            <English>Show the unjam action when the weapon is jammed.</English>
-        </Key>
         <Key ID="STR_ACE_Overheating_showParticleEffects_displayName">
             <English>Overheating Particle Effects</English>
             <German>Partikeleffekt bei Überhitzung</German>

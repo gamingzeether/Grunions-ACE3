@@ -6,13 +6,6 @@ class ACE_Settings {
         displayName = CSTRING(enabled_displayName);
         description = CSTRING(enabled_description);
     };
-    class GVAR(showUnjam) {
-        category = CSTRING(DisplayName);
-        typeName = "BOOL";
-        value = 0;
-        displayName = CSTRING(showUnjam_displayName);
-        description = CSTRING(showUnjam_description);
-    };
     class GVAR(showParticleEffects) {
         category = CSTRING(DisplayName);
         typeName = "BOOL";
