@@ -67,6 +67,7 @@ class CfgVehicles {
                 };
             };
         };
+        MACRO_ATTACHTOVEHICLE
     };
 
     class All;
