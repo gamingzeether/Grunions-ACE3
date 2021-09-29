@@ -115,4 +115,17 @@ class ACE_Tags {
     TAG(square_filled,white);
     TAG(triangle,white);
     TAG(triangle_inverted,white);
+    
+    class ACE_Gay {
+        displayName = "Gay";
+        requiredItem = "ACE_SpraypaintRed";
+        textures[] = {QPATHTOF(UI\grunions_tags\gay.paa)};
+        icon = QPATHTOF(UI\icons\iconTaggingRed.paa);
+    };
+    class ACE_Fysh {
+        displayName = "Fysh";
+        requiredItem = "ACE_SpraypaintBlack";
+        textures[] = {QPATHTOF(UI\grunions_tags\fysh.paa)};
+        icon = QPATHTOF(UI\icons\iconTaggingBlack.paa);
+    };
 };
