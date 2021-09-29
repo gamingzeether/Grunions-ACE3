@@ -753,34 +753,19 @@
         </Key>
         <Key ID="STR_ACE_Overheating_showParticleEffects_displayName">
             <English>Overheating Particle Effects</English>
-            <Czech>Částicové efekty přehřívání</Czech>
-            <French>Effets de particules</French>
-            <Spanish>Efectos de partículas</Spanish>
-            <Italian>Effetti Particelle Surriscaldamento</Italian>
+            <German>Partikeleffekt bei Überhitzung</German>
             <Polish>Efekty cząsteczkowe przegrzania</Polish>
+            <Italian>Effetti Particelle Surriscaldamento</Italian>
+            <Spanish>Efectos de partículas</Spanish>
+            <French>Effets de particules </French>
+            <Czech>Částicové efekty přehřívání</Czech>
             <Portuguese>Efeito de partícula de superaquecimento</Portuguese>
             <Russian>Эффект частиц при перегреве</Russian>
-            <German>Partikeleffekt bei Überhitzung</German>
-            <Korean>과열 입자 효과</Korean>
             <Japanese>過熱の視覚効果</Japanese>
-            <Chinese>槍管過熱特效</Chinese>
+            <Korean>과열 입자 효과</Korean>
             <Chinesesimp>枪管过热特效</Chinesesimp>
+            <Chinese>槍管過熱特效</Chinese>
             <Hungarian>Részecskék túlmelegedése</Hungarian>
-        </Key>
-            <English>Display a notification whenever your weapon gets jammed</English>
-            <German>Zeige einen Hinweis, wenn die Waffe eine Ladehemmung hat.</German>
-            <Spanish>Mostrar notificación cada vez que el arma se encasquille</Spanish>
-            <Russian>Показывать уведомление каждый раз, когда клинит Ваше оружие.</Russian>
-            <Czech>Zobrazí upozornění při zaseknutí zbraně</Czech>
-            <Polish>Wyświetl powiadomienie za każdym razem, kiedy Twoja broń ulegnie zacięciu</Polish>
-            <French>Affiche une notification lorsque votre arme est enrayée.</French>
-            <Hungarian>Egy szöveges értesítés jelenik meg, amikor a fegyver megakad</Hungarian>
-            <Portuguese>Mostra uma notificação quando sua arma sofre um travamento.</Portuguese>
-            <Italian>Visualizza una notifica in caso la tua arma si inceppasse</Italian>
-            <Japanese>持っている武器が弾詰りをすると、通知を表示します</Japanese>
-            <Korean>총알이 무기에 걸릴 경우 화면에 알림을 띄웁니다</Korean>
-            <Chinesesimp>当武器卡弹时显示提示信息</Chinesesimp>
-            <Chinese>當武器卡彈時顯示提示訊息</Chinese>
         </Key>
         <Key ID="STR_ACE_Overheating_showUnjam_displayName">
             <English>Show unjam action</English>

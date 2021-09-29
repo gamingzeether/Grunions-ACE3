@@ -5,13 +5,6 @@ class ACE_Settings {
     class GVAR(heatCoef) {
         movedToSQF = 1;
     };
-    class GVAR(showUnjam) {
-        category = CSTRING(DisplayName);
-        typeName = "BOOL";
-        value = 0;
-        displayName = CSTRING(showUnjam_displayName);
-        description = CSTRING(showUnjam_description);
-    };
     class GVAR(showParticleEffects) {
         movedToSQF = 1;
     };
