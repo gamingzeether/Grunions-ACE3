@@ -21,7 +21,7 @@ params ["_attachToVehicle","_player","_args"];
 _args params [["_itemClassname","", [""]]];
 TRACE_3("params",_attachToVehicle,_player,_itemClassname);
 
-private _attachLimit = [6, 1] select (_player == _attachToVehicle);
+private _attachLimit = [6, 1] select (_attachToVehicle isKindOf "Man");
 private _attachedObjects = _attachToVehicle getVariable [QGVAR(attached), []];
 
 ((_player == _attachToVehicle) || {canStand _player}) &&
