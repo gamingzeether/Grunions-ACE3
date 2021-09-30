@@ -1,6 +1,6 @@
 class GVAR(AttackProfiles) {
     class LIN {
-        name = "";
+        name = "LIN";
         visualName = "";
         description = "";
 
