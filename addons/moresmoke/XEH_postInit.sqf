@@ -4,7 +4,7 @@
 if (!hasInterface) exitWith {};
 
 ACE_player addEventHandler ["GetInMan", {
-	params ["_unit", "_role", "_vehicle", "_turret"];
+    params ["_unit", "_role", "_vehicle", "_turret"];
     
     if (_role == "driver") then {
         _turret = [-1];
@@ -15,7 +15,7 @@ ACE_player addEventHandler ["GetInMan", {
 }];
 
 ACE_player addEventHandler ["SeatSwitchedMan", {
-	params ["_unit1", "_unit2", "_vehicle"];
+    params ["_unit1", "_unit2", "_vehicle"];
     private _turret = [];
     
     private _role = assignedVehicleRole _unit1;
