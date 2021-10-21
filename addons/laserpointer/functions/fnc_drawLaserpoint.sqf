@@ -1,71 +1,80 @@
 #include "script_component.hpp"
 /*
- * Author: commy2 and esteldunedain
- * Draw a Laser Point
+ * Author: commy2, esteldunedain, and GamingZeether
+ * Draw a laser beam and laser point
  *
  * Arguments:
  * 0: Target unit <OBJECT>
  * 1: Range <NUMBER>
- * 2: is Green <BOOL>
- * 3: Brightness <NUMBER>
+ * 2: Laser type <NUMBER>
+ * 3: Draw thermals dot (Default: false) <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [player, 10, false, 2] call ace_laserpointer_fnc_drawLaserpoint
+ * [player, 10, 0] call ace_laserpointer_fnc_drawLaserpoint
  *
  * Public: No
  */
 
-params ["_target", "_range", "_isGreen", "_brightness"];
+params ["_target", "_range", "_laserType", ["_isTI", false]];
 
 private _unit = ACE_player;
+private _weapon = currentWeapon _target;
+private _lasers = (_target weaponAccessories _weapon) arrayIntersect getArray (configfile >> "PointerSlot" >> "compatibleItems");
 
-private _p0 = AGLToASL (_target modelToWorldVisual (_target selectionPosition "righthand"));
+private _weaponProxyName = switch (_weapon) do {
+    case (primaryWeapon _target): {"proxy:\a3\characters_f\proxies\weapon.001"};
+    case (handgunWeapon _target): {"proxy:\a3\characters_f\proxies\pistol.001"};
+    case (secondaryWeapon _target): {"proxy:\a3\characters_f\proxies\launcher.001"};
+    default {""};
+};
 
-// Find a system of orthogonal reference vectors
-// _v1 points in the direction of the weapon
-// _v2 points to the right of the weapon
-// _v3 points to the top side of the weapon
-private _v1 = _target weaponDirection currentWeapon _target;
-private _v2 = vectorNormalized (_v1 vectorCrossProduct [0,0,1]);
-private _v3 = _v2 vectorCrossProduct _v1;
+private _p0 = AGLToASL (_target modelToWorldVisual (_target selectionPosition _weaponProxyName));
 
-// Offset over the 3 reference axis
-// This offset could eventually be configured by weapon in the config
-#define OFFV1 0.31
-#define OFFV2 0
-#define OFFV3 0.08
+private _weaponDirAndUp = _target selectionVectorDirAndUp [_weaponProxyName, 1];
+//vector forward is the right side of the weapon?
+//same with laser pointer accessory
+private _v2 = _target vectorModelToWorld (_weaponDirAndUp select 0); //right
+private _v3 = _target vectorModelToWorld (_weaponDirAndUp select 1); //top
+private _v1 = _v3 vectorCrossProduct _v2;                            //forward
 
-// Offset _p0, the start of the laser
-_p0 = _p0 vectorAdd (_v1 vectorMultiply OFFV1) vectorAdd (_v3 vectorMultiply OFFV3) vectorAdd (_v2 vectorMultiply OFFV2);
+//get laser offset from weapon proxy
+//pointer is part of key because model may change
+private _laserOffset = if ([_weapon, _lasers] in GVAR(laserPosHashmap)) then {
+    GVAR(laserPosHashmap) get [_weapon, _lasers]
+} else {
+    [_target] call FUNC(getLaserOffset)
+};
+_laserOffset params ["_o1", "_o2", "_o3"];
 
-// Calculate _p1, the potential end of the laser
+_p0 = _p0 vectorAdd (_v1 vectorMultiply -_o1) vectorAdd (_v2 vectorMultiply _o2) vectorAdd (_v3 vectorMultiply _o3);
+
+private _laserColor = if (_isTI) then {
+    ([ACE_player] call FUNC(getThermalsColor)) select [0,2]
+} else {
+    [[1000, 0, 0, 0.5], [0, 1000, 0, 0.5], [0, 1000, 0, 0.5]] select _laserType
+};
+
+//drawLaser [_p0, _v1, _laserColor, [], 0.05, [2, 0] select _isTI, (_laserType == 2)];
+
+//use drawLine3D until 2.08
 private _p1 = _p0 vectorAdd (_v1 vectorMultiply _range);
-
 private _pL = lineIntersectsSurfaces [_p0, _p1, _unit, vehicle _unit] select 0 select 0;
-
-// no intersection found, quit
 if (isNil "_pL") exitWith {
     _p0 = ASLtoAGL _p0;
     _p1 = ASLtoAGL _p1;
 
     drawLine3D [
-            _p0,
-            _p1,
-            [[1, 0, 0, 0.6], [0, 1, 0, 0.6]] select _isGreen
+        _p0,
+        _p1,
+        _laserColor
     ];
 };
 
 private _distance = _p0 vectorDistance _pL;
-
-//systemChat str _distance;
 if (_distance < 0.5) exitWith {};
-
-_pL = _p0 vectorAdd (_v1 vectorMultiply _distance);
-
-private _pL2 = _p0 vectorAdd (_v1 vectorMultiply (_distance - 0.5));
 
 _pL = ASLtoAGL _pL;
 _p0 = ASLtoAGL _p0;
@@ -73,19 +82,12 @@ _p0 = ASLtoAGL _p0;
 drawLine3D [
     _p0,
     _pL,
-    [[1, 0, 0, 0.6], [0, 1, 0, 0.6]] select _isGreen
+    _laserColor
 ];
-
-//systemChat str [_target, "FIRE"] intersect [_camPos, _pL];
 
 private _camPos = positionCameraToWorld [0,0,0.2];
 
-if (count ([_target, "FIRE"] intersect [_camPos, _pL]) > 0) exitWith {};
-if (count ([_unit, "FIRE"] intersect [_camPos, _pL]) > 0) exitWith {};
-
-// Convert _camPos to ASL
-_camPos = AGLToASL _camPos;
-
+private _pL2 = _p0 vectorAdd (_v1 vectorMultiply (_distance - 0.5));
 if (terrainIntersectASL [_camPos, _pL2]) exitWith {};
 if (lineIntersects [_camPos, _pL2]) exitWith {};
 
@@ -93,8 +95,8 @@ private _distanceFromViewer = _camPos vectorDistance _pL;
 private _size = 2 * call EFUNC(common,getZoom) / sqrt (_distanceFromViewer);
 
 drawIcon3D [
-    format ["\a3\weapons_f\acc\data\collimdot_%1_ca.paa", ["red", "green"] select _isGreen],
-    [[1,0.25,0.25,0.6*_brightness], [0.25,1,0.25,0.5*_brightness]] select _isGreen,
+    "\A3\ui_f\data\IGUI\RscCustomInfo\Sensors\Targets\UnknownMan_ca.paa",
+    _laserColor,
     _pL,
     _size,
     _size,

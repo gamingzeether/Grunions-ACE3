@@ -6,6 +6,8 @@
 
 if (!hasInterface) exitWith {};
 
+GVAR(laserPosHashmap) = createHashmap;
+
 GVAR(nearUnits) = [];
 GVAR(index) = -1;
 GVAR(laserClassesCache) = [] call CBA_fnc_createNamespace;

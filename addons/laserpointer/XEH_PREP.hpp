@@ -1,6 +1,5 @@
 PREP(drawLaserpoint);
-PREP(drawLaserPointTI);
+PREP(getLaserOffset);
 PREP(getNearUnits);
 PREP(getThermalsColor);
 PREP(onDraw);
-PREP(visionModeToColor);
