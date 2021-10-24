@@ -15,7 +15,7 @@ GVAR(redLaserUnits) = [];
 GVAR(greenLaserUnits) = [];
 GVAR(irLaserUnits) = [];
 
-["ace_settingsInitialized", {
+["CBA_settingsInitialized", {
     // If not enabled, dont't add draw eventhandler or PFEH (for performance)
     if (!GVAR(enabled)) exitWith {
         ["CBA_attachmentSwitched", {

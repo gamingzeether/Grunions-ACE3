@@ -1,16 +1,15 @@
 [
-    QGVAR(laserPointerRange),
-    "SLIDER",
+    QGVAR(laserPointerRange), "SLIDER",
     ["Laser Pointer Range", "Max range of laser pointer"],
-    "ACE Laser Pointer",
+    localize ELSTRING(common,ACEKeybindCategoryWeapons),
     [50, 5000, 100, 0],
     0
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(enabled),
-    "CHECKBOX",
+    QGVAR(enabled), "CHECKBOX",
     LSTRING(DisplayName),
-    "ACE Laser Pointer",
-    true
+    localize ELSTRING(common,ACEKeybindCategoryWeapons),
+    true,
+    1
 ] call CBA_fnc_addSetting;

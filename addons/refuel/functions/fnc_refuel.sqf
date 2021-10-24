@@ -83,6 +83,12 @@ if (isNumber _cfgFlowRate) then {
         } else {
             (_nozzle getVariable QGVAR(tempFuel)) + _addedFuel;
         };
+        if (_fuelInSource <= 0 && {_fuelInSource != REFUEL_INFINITE_FUEL}) then {
+            _fuelInSource = 0;
+            [_source, _fuelInSource] call FUNC(setFuel);
+            _finished = true;
+            [LSTRING(Hint_SourceEmpty), 2, _unit] call EFUNC(common,displayTextStructured);
+        };
 
         private _maxFuel = _nozzle getVariable QGVAR(maxFuel);
         if (_maxFuel - _fuelInSink <= 0) then {

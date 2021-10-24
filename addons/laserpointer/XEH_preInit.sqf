@@ -17,4 +17,6 @@ PREP_RECOMPILE_END;
     GVAR(TIColor) = [_unit] call FUNC(getThermalsColor);
 }] call CBA_fnc_addPlayerEventHandler;
 
+#include "initSettings.sqf"
+
 ADDON = true;

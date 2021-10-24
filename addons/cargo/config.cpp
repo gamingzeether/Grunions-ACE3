@@ -20,3 +20,4 @@ class CfgPatches {
 #include "CfgVehicles.hpp"
 #include "menu.hpp"
 #include "CfgActions.hpp"
+#include "renameMenu.hpp"
