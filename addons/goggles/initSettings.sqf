@@ -2,7 +2,7 @@
     QGVAR(effects), "LIST",
     LSTRING(effects_displayName),
     localize LSTRING(SettingsName),
-    [[0, 1, 2, 3], [ELSTRING(common,Disabled), LSTRING(effects_tintOnly), LSTRING(enabled_tintAndEffects), LSTRING(effects_effectsOnly)], 2],
+    [[0, 1, 2, 3], [ELSTRING(common,Disabled), LSTRING(effects_tintOnly), LSTRING(enabled_tintAndEffects), LSTRING(effects_effectsOnly)], 3],
     0
 ] call CBA_fnc_addSetting;
 

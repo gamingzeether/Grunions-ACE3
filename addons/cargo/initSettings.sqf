@@ -34,6 +34,7 @@
     {[QGVAR(cargoNetType), _this, true] call EFUNC(common,cbaSettings_settingChanged)}
 ] call CBA_fnc_addSetting;
 
+[
     QGVAR(openAfterUnload), "LIST",
     [LSTRING(openAfterUnload), LSTRING(openAfterUnload_description)],
     [LELSTRING(OptionsMenu,CategoryLogistics), LLSTRING(openMenu)],
