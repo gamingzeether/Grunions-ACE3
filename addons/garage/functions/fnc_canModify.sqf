@@ -11,7 +11,7 @@
  * Can modify vehicle <BOOL>
  *
  * Example:
- * [typeOf cursorObject] call ace_garage_fnc_canModify
+ * [cursorObject, player] call ace_garage_fnc_canModify
  *
  * Public: No
  */
