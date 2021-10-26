@@ -13,7 +13,7 @@
  * call ACE_laserpointer_fnc_onDraw
  *
  * Public: No
-*/
+ */
 
 if (count GVAR(redLaserUnits) + count GVAR(greenLaserUnits) + count GVAR(irLaserUnits) > 0 && {!GVAR(isIR)}) then {
     private _range = GVAR(laserPointerRange);
@@ -26,8 +26,10 @@ if (count GVAR(redLaserUnits) + count GVAR(greenLaserUnits) + count GVAR(irLaser
         //green laser
         [_x, _range, 1, GVAR(isTI)] call FUNC(drawLaserpoint);
     } count GVAR(greenLaserUnits);
-    {
-        //ir laser
-        [_x, _range, 2, GVAR(isTI)] call FUNC(drawLaserpoint);
-    } count GVAR(irLaserUnits);
+    if (GVAR(isTI)) then {
+        {
+            //ir laser
+            [_x, _range, 2, true] call FUNC(drawLaserpoint);
+        } count GVAR(irLaserUnits);
+    };
 };
