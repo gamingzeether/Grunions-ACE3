@@ -67,7 +67,11 @@ private _injuryCount = 0;
                 private _currentUnitDamage = _casualty getHitpointDamage _injuredBodyPart;
                 private _damageAmount = (_currentUnitDamage + random 1.8) max (_currentUnitDamage + 0.1);
 
-                [_casualty, _damageAmount, _injuredBodyPart, "shell", _source] call EFUNC(medical,addDamageToUnit);
+                if (["ace_medical"] call EFUNC(common,isModLoaded)) then {
+                    [_casualty, _damageAmount, _injuredBodyPart, "shell", _source] call EFUNC(medical,addDamageToUnit);
+                } else {
+                    _casualty setDamage (damage _casualty + _damageAmount);
+                };
             };
         };
     };
