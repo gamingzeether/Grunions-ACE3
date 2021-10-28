@@ -52,42 +52,54 @@ _laserOffset params ["_o1", "_o2", "_o3"];
 _p0 = _p0 vectorAdd (_v1 vectorMultiply -_o1) vectorAdd (_v2 vectorMultiply _o2) vectorAdd (_v3 vectorMultiply _o3);
 
 private _laserColor = if (_isTI) then {
-    ([ACE_player] call FUNC(getThermalsColor)) select [0,2]
+    ([ACE_player] call FUNC(getThermalsColor)) select [0,3]
 } else {
-    [[1000, 0, 0, 0.5], [0, 1000, 0, 0.5], [0, 1000, 0, 0.5]] select _laserType
+    [[1, 0, 0], [0, 1, 0], [0, 1, 0]] select _laserType
 };
+_laserColor = _laserColor vectorMultiply 1000;
+_laserColor pushBack 0.5;
 
 //drawLaser [_p0, _v1, _laserColor, [], 0.05, [2, 0] select _isTI, (_laserType == 2)];
 
 //use drawLine3D until 2.08
 private _p1 = _p0 vectorAdd (_v1 vectorMultiply _range);
 private _pL = lineIntersectsSurfaces [_p0, _p1, _unit, vehicle _unit] select 0 select 0;
+
+private _distance = _p0 vectorDistance _pL;
+if (_distance < 0.5) exitWith {};
+private _pL2 = _p0 vectorAdd (_v1 vectorMultiply (_distance - 0.5));
+
 if (isNil "_pL") exitWith {
     _p0 = ASLtoAGL _p0;
     _p1 = ASLtoAGL _p1;
 
-    drawLine3D [
-        _p0,
-        _p1,
-        _laserColor
-    ];
+    if (!_isTI) then {
+        drawLine3D [
+            _p0,
+            _p1,
+            _laserColor
+        ];
+    };
 };
-
-private _distance = _p0 vectorDistance _pL;
-if (_distance < 0.5) exitWith {};
 
 _pL = ASLtoAGL _pL;
 _p0 = ASLtoAGL _p0;
 
-drawLine3D [
-    _p0,
-    _pL,
-    _laserColor
-];
+if (!_isTI) then {
+    drawLine3D [
+        _p0,
+        _pL,
+        _laserColor
+    ];
+};
 
 private _camPos = positionCameraToWorld [0,0,0.2];
 
-private _pL2 = _p0 vectorAdd (_v1 vectorMultiply (_distance - 0.5));
+if (count ([_target, "FIRE"] intersect [_camPos, _pL]) > 0) exitWith {};
+if (count ([_unit, "FIRE"] intersect [_camPos, _pL]) > 0) exitWith {};
+
+_camPos = AGLToASL _camPos;
+
 if (terrainIntersectASL [_camPos, _pL2]) exitWith {};
 if (lineIntersects [_camPos, _pL2]) exitWith {};
 
