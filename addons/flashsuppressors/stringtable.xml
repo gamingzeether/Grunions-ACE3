@@ -137,5 +137,22 @@
             <Chinese>消光器 (5.8 毫米)</Chinese>
             <Turkish>Flash Suppressor (5.8 mm)</Turkish>
         </Key>
+        <Key ID="STR_ACE_FlashSuppressors_muzzle_mzls_57">
+            <English>Flash Suppressor (5.7 mm)</English>
+            <Hungarian>Lángrejtő (5,7 mm)</Hungarian>
+            <German>Mündungsfeuerdämpfer (5,7 mm)</German>
+            <Italian>Soppressore di fiamma (5.7mm)</Italian>
+            <Portuguese>Supressor de Clarão (5,7mm)</Portuguese>
+            <Polish>Tłumik płomienia (5,7 mm)</Polish>
+            <Czech>Tlumič plamene (5,7 mm)</Czech>
+            <French>Cache-flamme (5,7 mm)</French>
+            <Russian>Пламегаситель (5,7 мм)</Russian>
+            <Spanish>Bocacha (5,7 mm)</Spanish>
+            <Japanese>消炎器 (5.7 mm)</Japanese>
+            <Korean>소염기 (5.7 mm)</Korean>
+            <Chinesesimp>消光器 (5.7 mm)</Chinesesimp>
+            <Chinese>消光器 (5.7 毫米)</Chinese>
+            <Turkish>Flash Suppressor (5.7 mm)</Turkish>
+        </Key>
     </Package>
 </Project>
