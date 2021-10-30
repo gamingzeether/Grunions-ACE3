@@ -73,6 +73,11 @@ class MuzzleSlot_762: MuzzleSlot {
         ACE_muzzle_mzls_B = 1;
     };
 };
+class MuzzleSlot_57: MuzzleSlot {
+    class compatibleItems {
+        ACE_muzzle_mzls_57 = 1;
+    };
+};
 
 class CfgWeapons {
     /* Flashsuppressors */
@@ -420,6 +425,59 @@ class CfgWeapons {
         tBody = 100;
         scope = 2;
         displayName = CSTRING(muzzle_mzls_58);
+        picture = "\A3\weapons_F\Data\UI\gear_acca_mzls_h_ca.paa";
+        model = "\A3\weapons_f\acc\acca_mzls_H_F";
+
+        class ItemInfo: InventoryMuzzleItem_Base_F {
+            mass = 8;
+            soundTypeIndex = 0;
+            muzzleEnd = "zaslehPoint";
+            alternativeFire = "Zasleh2";
+
+            class MagazineCoef {
+                initSpeed = 1.0;
+            };
+
+            class AmmoCoef {
+                hit = 1.0;
+                visibleFire = 0.5;
+                audibleFire = 1.0;
+                visibleFireTime = 0.5;
+                audibleFireTime = 1.0;
+                cost = 1.0;
+                typicalSpeed = 1.0;
+                airFriction = 1.0;
+            };
+
+            class MuzzleCoef {
+                dispersionCoef = "0.9f";
+                artilleryDispersionCoef = "1.0f";
+                fireLightCoef = "0.5f";
+                recoilCoef = "1.0f";
+                recoilProneCoef = "1.0f";
+                minRangeCoef = "1.0f";
+                minRangeProbabCoef = "1.0f";
+                midRangeCoef = "1.0f";
+                midRangeProbabCoef = "1.0f";
+                maxRangeCoef = "1.0f";
+                maxRangeProbabCoef = "1.0f";
+            };
+        };
+
+        inertia = 0.2;
+    };
+    
+    class ACE_muzzle_mzls_57: ACE_muzzle_mzls_H {
+        author = ECSTRING(common,ACETeam);
+        _generalMacro = "ACE_muzzle_mzls_57";
+        htMin = 1;
+        htMax = 600;
+        afMax = 0;
+        mfMax = 0;
+        mFact = 1;
+        tBody = 100;
+        scope = 2;
+        displayName = CSTRING(muzzle_mzls_57);
         picture = "\A3\weapons_F\Data\UI\gear_acca_mzls_h_ca.paa";
         model = "\A3\weapons_f\acc\acca_mzls_H_F";
 
