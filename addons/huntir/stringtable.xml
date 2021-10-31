@@ -273,5 +273,32 @@
             <Chinese>Esc - 離開幫助</Chinese>
             <Turkish>Esc- Çıkış Yardım</Turkish>
         </Key>
+        <Key ID="STR_ACE_HuntIR_displayName">
+            <English>HuntIR</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_invertX_displayName">
+            <English>Invert X Axis</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_invertX_description">
+            <English>Inverts horizontal axis when panning with mouse.</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_sensitivityX_displayName">
+            <English>X Axis Sensitivity</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_sensitivityX_description">
+            <English>Sensitivity of horizontal axis when panning with mouse.</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_invertY_displayName">
+            <English>Invert Y Axis</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_invertY_description">
+            <English>Inverts vertical axis when panning with mouse.</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_sensitivityY_displayName">
+            <English>Y Axis Sensitivity</English>
+        </Key>
+        <Key ID="STR_ACE_HuntIR_sensitivityY_description">
+            <English>Sensitivity of vertical axis when panning with mouse.</English>
+        </Key>
     </Package>
 </Project>
