@@ -82,8 +82,18 @@ if (hasInterface) then {
         }] call CBA_fnc_addClassEventHandler;
     };
 
+    // Reset all weapon heat to ambient on death to prevent cookoffs when a unit respawns.
+    ["CAManBase", "Killed", {
+        params ["_unit"];
+        {
+            _unit setVariable [_x, ambientTemperature select 0];
+        } forEach (_unit getVariable [QGVAR(trackedWeapons), []]);
+        _unit setVariable [QGVAR(trackedWeapons), []];
+    }] call CBA_fnc_addClassEventHandler;
+
     // Install event handler to display temp when a barrel was swapped
     [QGVAR(showWeaponTemperature), DFUNC(displayTemperature)] call CBA_fnc_addEventHandler;
+
     // Install event handler to initiate an assisted barrel swap
     [QGVAR(initiateSwapBarrelAssisted), DFUNC(swapBarrel)] call CBA_fnc_addEventHandler;
 
@@ -113,5 +123,4 @@ if (hasInterface) then {
             []
         ] call CBA_fnc_waitUntilAndExecute;
     };
-
 }] call CBA_fnc_addEventHandler;

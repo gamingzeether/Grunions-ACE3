@@ -15,7 +15,19 @@ private _category = format ["ACE %1", localize LSTRING(DisplayName)];
     [LSTRING(heatCoef_displayName), LSTRING(heatCoef_description)],
     _category,
     [0, 5, 1, 2],
-    1
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(coolingCoef), "SLIDER",
+    [LSTRING(coolingCoef_displayName), LSTRING(coolingCoef_description)],
+    _category,
+    [0, 5, 1, 2],
+    1,
+    {},
+    true
 ] call CBA_fnc_addSetting;
 
 [
