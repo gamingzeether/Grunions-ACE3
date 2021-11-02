@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -62,3 +63,4 @@ class CfgPatches {
 #include "Cfg3DEN.hpp"
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
+*/
