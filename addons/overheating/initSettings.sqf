@@ -143,3 +143,11 @@ private _category = format ["ACE %1", localize LSTRING(DisplayName)];
     {},
     true
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(cookoffEnabled), "CHECKBOX",
+    [LSTRING(cookoffEnabled_displayName), LSTRING(cookoffEnabled_description)],
+    _category,
+    false,
+    1
+] call CBA_fnc_addSetting;
