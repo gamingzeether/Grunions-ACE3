@@ -739,5 +739,11 @@
             <Chinesesimp>备用枪管温度超级热</Chinesesimp>
             <Chinese>備用槍管溫度超級熱</Chinese>
         </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_displayName">
+            <English>Cookoff Enabled</English>
+        </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_description">
+            <English>Enable for cooking off gun when hot.</English>
+        </Key>
     </Package>
 </Project>
