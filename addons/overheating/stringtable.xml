@@ -946,5 +946,11 @@
             <Japanese>銃身交換による弾詰まり解消</Japanese>
             <Chinesesimp>更换枪管清除卡弹</Chinesesimp>
         </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_displayName">
+            <English>Cookoff Enabled</English>
+        </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_description">
+            <English>Enable for cooking off gun when hot.</English>
+        </Key>
     </Package>
 </Project>
