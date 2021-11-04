@@ -33,15 +33,21 @@ class CfgAmmo {
         airFriction = 0.1;
 
         hit = 50;
-        indirectHit = 12;
-        indirectHitRange = 15;
+        indirectHit = 15;
+        indirectHitRange = 8;
 
-        CraterEffects = "AAMissileCrater";
-        explosionEffects = "AAMissileExplosion";
+        CraterEffects = "ImpactEffectsMedium";
+        explosionEffects = "ATRocketExplosion";
         effectsMissileInit = "RocketBackEffectsRPG";
         effectsMissile = "missile3";
         soundFly[] = {"A3\Sounds_F\arsenal\weapons\Launchers\NLAW\Fly_NLAW",0.562341,1.5,700};
 
+        submunitionAmmo = "ammo_Penetrator_MRAAWS_HEAT55";
+        submunitionDirectionType = "SubmunitionModelDirection";
+        submunitionInitSpeed = 500;
+        submunitionParentSpeedCoef = 0;
+        submunitionInitialOffset[] = { 0, 0, -0.2 };
+        triggerOnImpact = 1;
 
         // Begin ACE guidance Configs
         class ace_missileguidance {
