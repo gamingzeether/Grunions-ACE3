@@ -104,7 +104,7 @@ if (terrainIntersectASL [_camPos, _pL2]) exitWith {};
 if (lineIntersects [_camPos, _pL2]) exitWith {};
 
 private _distanceFromViewer = _camPos vectorDistance _pL;
-private _size = 2 * call EFUNC(common,getZoom) / sqrt (_distanceFromViewer);
+private _size = 2 * sqrt (1 / _distance) * (call EFUNC(common,getZoom));
 
 drawIcon3D [
     "\A3\ui_f\data\IGUI\RscCustomInfo\Sensors\Targets\UnknownMan_ca.paa",
