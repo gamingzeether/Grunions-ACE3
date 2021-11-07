@@ -3,15 +3,15 @@ class CfgWeapons {
 
     class GrenadeLauncher;
     class Throw: GrenadeLauncher {
-        muzzles[] += {"ACE_Fysh_Muzzle", "ACE_Fysh_ExplosiveMuzzle"};
+        muzzles[] += {QGVAR(muzzle), GVAR(muzzle_explosive)};
 
         class ThrowMuzzle;
         
-        class ACE_Fysh_Muzzle: ThrowMuzzle {
-            magazines[] = {"ACE_Fysh"};
+        class GVAR(muzzle): ThrowMuzzle {
+            magazines[] = {QGVAR(fysh)};
         };
-        class ACE_Fysh_ExplosiveMuzzle: ThrowMuzzle {
-            magazines[] = {"ACE_FyshExplosive"};
+        class GVAR(muzzle_explosive): ThrowMuzzle {
+            magazines[] = {QGVAR(fysh_explosive)};
         };
     };
 };
