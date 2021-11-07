@@ -24,6 +24,6 @@ ACE_player addEventHandler ["SeatSwitchedMan", {
         _turret = _role select 1;
     };
     if ("SmokeLauncher" in (_vehicle weaponsTurret _turret)) then {
-        _vehicle setEffectiveCommander _unit;
+        _vehicle setEffectiveCommander _unit1;
     };
 }];
