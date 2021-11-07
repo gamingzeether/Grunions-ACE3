@@ -1,8 +1,11 @@
-ace_moresmoke
+ace_grunionstweaks
 ============
 
-Modifies vehicles to have more smoke screens
+Place for misc changes that don't fit anywhere else
 
+List of changes
+- More smoke launcher rounds
+- Fix commander smoke bug
 
 ## Maintainers
 
