@@ -2,4 +2,4 @@
 
 if (!hasInterface) exitWith {};
 
-["ace_firedPlayer", LINKFUNC(handleFired)] call CBA_fnc_addEventHandler;
+{[_x, FUNC(handleFired)] call CBA_fnc_addEventHandler} foreach ["ace_firedPlayer", "ace_firedNonPlayer", "ace_firedPlayerVehicle", "ace_firedNonPlayerVehicle"];
