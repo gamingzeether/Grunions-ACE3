@@ -2,4 +2,5 @@
 
 if (!hasInterface) exitWith {};
 
-{[_x, FUNC(handleFired)] call CBA_fnc_addEventHandler} foreach ["ace_firedPlayer", "ace_firedNonPlayer", "ace_firedPlayerVehicle", "ace_firedNonPlayerVehicle"];
+[QGVAR(fired), {true}, [true, false, true, true, false, true] call EFUNC(common,registerAmmoFiredEvent);
+[QGVAR(fired), FUNC(handleFired)] call CBA_fnc_addEventHandler;
