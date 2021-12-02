@@ -17,4 +17,4 @@
 
 params ["_vehicle", "_unit"];
 
-(count (_vehicle magazinesTurret [-1]) > 0)
+(count (_vehicle magazinesTurret [[-1], true]) > 0)
