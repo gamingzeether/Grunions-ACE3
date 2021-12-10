@@ -29,7 +29,7 @@ private _pos = getPosASL _projectile;
 private _nearTargets = _pos nearEntities ["Man", 50];
 _nearTargets = _nearTargets select {
     (alive _x) && 
-    {side _x != _side} && 
+    {[side _x, _side] call BIS_fnc_sideIsEnemy} && 
     {!lineIntersects [_pos, getPosASL _x, _projectile, _x]}
 };
 
