@@ -50,10 +50,7 @@ private _weapon = createSimpleObject [_weaponModel, [0,0,0]];
 _weapon setObjectScale _modelScale;
 _weapon attachTo [_vehicle, _mountingPosition];
 
-private _vForward = vectorDir _vehicle;
-private _vUp = vectorUp _vehicle;
-private _vRight = _vForward vectorCrossProduct _vUp;
-_weapon setVectorDirAndUp [_vRight, _vUp];
+_weapon setVectorDirAndUp [[1, 0, 0], [0, 0, 1]];
 
 private _flashSelection = getText (_wCfg >> "selectionFireAnim");
 _weapon hideSelection [_flashSelection, true];
