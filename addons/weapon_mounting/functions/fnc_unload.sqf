@@ -20,9 +20,10 @@
 
 params ["_vehicle", "_unit", "_args", ["_start", true]];
 
+private _turret = getArray (configOf _vehicle >> QGVAR(turret));
 {
     _x params ["_xClass", "_xTurret", "_xCount"];
-    if (_xTurret isEqualTo [-1]) then {
+    if (_xTurret isEqualTo _turret) then {
         GVAR(toUnload) pushBack [_vehicle, _unit, _xClass, _xCount];
     };
 } foreach (magazinesAllTurrets _vehicle);

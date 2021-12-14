@@ -34,19 +34,15 @@ params ["_vehicle", "_unit", "_weapon"];
         [_vehicle, 0, [_dummyName]] call EFUNC(interact_menu,removeActionFromObject);
         
         // End PFH if it is currently running
-        private _handle = _vehicle getVariable [QGVAR(pfhHandle), -1];
-        [_handle] call CBA_fnc_removePerFrameHandler;
-        _vehicle setVariable [QGVAR(pfhHandle), -1];
+        [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
+        GVAR(pfhHandle) = -1;
         
         // Remove events
         _vehicle removeEventHandler ["Fired", _vehicle getVariable QGVAR(eventFired)];
-        _vehicle removeEventHandler ["GetIn", _vehicle getVariable QGVAR(eventGetIn)];
-        _vehicle removeEventHandler ["GetOut", _vehicle getVariable QGVAR(eventGetOut)];
-        _vehicle removeEventHandler ["SeatSwitched", _vehicle getVariable QGVAR(eventSeatSwitched)];
         _vehicle removeMPEventHandler ["MPKilled", _vehicle getVariable QGVAR(eventMPKilled)];
         
         // Remove weapon
-        _vehicle removeWeaponTurret [_weapon, [-1]];
+        _vehicle removeWeaponTurret [_weapon, getArray (configOf _vehicle >> QGVAR(turret))];
         private _weaponModel = _vehicle getVariable QGVAR(mountedWeapon);
         [_unit, _weaponModel getVariable QGVAR(originalWeapon), true] call CBA_fnc_addWeapon;
         deleteVehicle _weaponModel;
@@ -56,9 +52,6 @@ params ["_vehicle", "_unit", "_weapon"];
         _vehicle setVariable [QGVAR(compatMags), nil, true];
         _vehicle setVariable [QGVAR(mountedWeapon), nil, true];
         _vehicle setVariable [QGVAR(eventFired), nil, true];
-        _vehicle setVariable [QGVAR(eventGetIn), nil, true];
-        _vehicle setVariable [QGVAR(eventGetOut), nil, true];
-        _vehicle setVariable [QGVAR(eventSeatSwitched), nil, true];
         _vehicle setVariable [QGVAR(eventMPKilled), nil, true];
     },
     {},

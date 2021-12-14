@@ -17,7 +17,7 @@
 
 params ["_vehicle", "_wepName", "", "", "", "", "_projectile", "_gunner"];
 
-if (_gunner != ACE_player) exitWith {};
+if (!local _projectile) exitWith {};
 
 private _weapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
 

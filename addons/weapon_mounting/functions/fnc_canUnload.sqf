@@ -17,4 +17,4 @@
 
 params ["_vehicle", "_unit"];
 
-(count (_vehicle magazinesTurret [[-1], true]) > 0)
+(count (_vehicle magazinesTurret [getArray (configOf _vehicle >> QGVAR(turret)), true]) > 0)

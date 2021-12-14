@@ -18,8 +18,6 @@
 params ["_args", "_handle"];
 _args params ["_vehicle"];
 
-if (driver _vehicle != ACE_player) exitWith {};
-
 private _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
 
 if (isNull _mountedWeapon) exitWith {
@@ -27,17 +25,17 @@ if (isNull _mountedWeapon) exitWith {
     _vehicle setVariable [QGVAR(pfhHandle), -1];
 };
 
-private _eyeForward = getCameraViewDirection ACE_player;
+private _direction = [_vehicle] call FUNC(getWeaponDirection);
 
-if ((_eyeForward vectorDotProduct (vectorDir _vehicle)) > 0.7) then {
+if (count _direction > 0) then {
     // weapon forward is the right side of the model
-    private _eyeRight = _eyeForward vectorCrossProduct (vectorUp _vehicle);
-    private _eyeUp = _eyeRight vectorCrossProduct _eyeForward;
+    private _right = _direction vectorCrossProduct (vectorUp _vehicle);
+    private _up = _right vectorCrossProduct _direction;
     
-    _eyeRight = _vehicle vectorWorldToModel _eyeRight;
-    _eyeUp = _vehicle vectorWorldToModel _eyeUp;
+    _right = _vehicle vectorWorldToModel _right;
+    _up = _vehicle vectorWorldToModel _up;
     
-    _mountedWeapon setVectorDirAndUp [_eyeRight, _eyeUp];
+    _mountedWeapon setVectorDirAndUp [_right, _up];
 };
 
 #ifdef DRAW_AIM_DIR

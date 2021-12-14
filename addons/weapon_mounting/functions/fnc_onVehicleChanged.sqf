@@ -4,42 +4,48 @@
  * Handles player changing seats, entering a vehicle, or leaving a vehicle
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
- * 1: Player <UNIT>
+ * 0: Player unit <OBJECT>
+ * 1: Changed UAV (Default: false) <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [quadbike, ACE_player] call ace_weapon_mounting_fnc_onVehicleChanged
+ * [ACE_player] call ace_weapon_mounting_fnc_onVehicleChanged
  *
  * Public: No
  */
 
-params ["_vehicle", "_unit"];
+params ["_unit", ["_isUAV", false]];
 
 if (_unit != ACE_player) exitWith {};
-private _newRole = assignedVehicleRole _unit select 0;
-private _handle = _vehicle getVariable [QGVAR(pfhHandle), -1];
 
-if (_handle == -1) then {
-    // Entering driver
-    if (_newRole != "driver" || {vehicle _unit != _vehicle}) exitWith {};
-    
-    _handle = [FUNC(vehiclePFH), 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;
-    _vehicle setVariable [QGVAR(pfhHandle), _handle];
+private _vehicle = ACE_player;
+private _newRole = "";
+if (_isUAV) then {
+    _vehicle = getConnectedUAV ACE_player;
+    _newRole = UAVControl _vehicle select 1;
+} else {
+    _vehicle = vehicle ACE_player;
+    _newRole = assignedVehicleRole ACE_player select 0;
+};
+private _vehicleRole = GVAR(controllers) get typeOf _vehicle;
+
+if (!isNil "_vehicleRole" && {_newRole isEqualTo _vehicleRole && {_vehicle != ACE_player}}) then {
+    [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
+    GVAR(pfhHandle) = [FUNC(vehiclePFH), 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;
     
     private _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
     if (isNull _mountedWeapon) exitWith {};
     
-    private _playerID = owner _unit;
+    private _playerID = owner ACE_player;
     if (_playerID != owner _mountedWeapon) then {
         _mountedWeapon setOwner _playerID;
     };
 } else {
-    // Exiting driver
-    if (_newRole == "driver" && {vehicle _unit == _vehicle}) exitWith {};
-    
-    [_handle] call CBA_fnc_removePerFrameHandler;
-    _vehicle setVariable [QGVAR(pfhHandle), -1];
+    // Exiting
+    if (isNil "_vehicleRole" || {_newRole isNotEqualTo _vehicleRole}) then {
+        [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
+        GVAR(pfhHandle) = -1;
+    };
 };

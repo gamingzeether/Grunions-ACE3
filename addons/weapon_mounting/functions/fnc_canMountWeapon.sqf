@@ -53,7 +53,4 @@ private _hasCarryable = false;
 if (!_hasCarryable) exitWith {false};
 */
 
-// Don't mount launchers
-if (_weapon isKindOf ["LauncherCore", (configFile >> "CfgWeapons")]) exitWith {false};
-
 true
