@@ -75,15 +75,21 @@ _weapon setVariable [QGVAR(originalWeapon), _originalWeapon, true];
 _vehicle setVariable [QGVAR(compatMags), _mags];
 _vehicle setVariable [QGVAR(mountedWeapon), _weapon, true];
 
+if (isNil {GVAR(controllers) get typeOf _vehicle}) then {
+    GVAR(controllers) set [typeOf _vehicle, getText (_vCfg >> QGVAR(controller))];
+    GVAR(aimRectHashMap) set [typeOf _vehicle, getArray (_vCfg >> QGVAR(aimRestrictions))];
+};
+
 // Add weapon turret to vehicle
-_vehicle addWeaponTurret [_weaponName, [-1]];
-_vehicle selectWeaponTurret [_weaponName, [-1]];
+private _turret = getArray (_vCfg >> QGVAR(turret));
+_vehicle addWeaponTurret [_weaponName, _turret];
+_vehicle selectWeaponTurret [_weaponName, _turret];
 
 /*
-private _vehWeapons = _vehicle weaponsTurret [-1];
+private _vehWeapons = _vehicle weaponsTurret _turret;
 _vehWeapons = _vehWeapons select {"horn" in toLower _x};
 {
-    _vehicle removeWeaponTurret [_x, [-1]];
+    _vehicle removeWeaponTurret [_x, _turret];
 } foreach _vehWeapons;
 */
 
@@ -142,21 +148,6 @@ private _unmountAction = [
 // Add events
 _vehicle setVariable [QGVAR(eventFired), _vehicle addEventHandler ["Fired", {
     _this call FUNC(firedWeapon);
-}]];
-_vehicle setVariable [QGVAR(eventGetIn), _vehicle addEventHandler ["GetIn", {
-    params ["_vehicle", "", "_unit"];
-    
-    [_vehicle, _unit] call FUNC(onVehicleChanged);
-}]];
-_vehicle setVariable [QGVAR(eventGetOut), _vehicle addEventHandler ["GetOut", {
-    params ["_vehicle", "", "_unit"];
-    
-    [_vehicle, _unit] call FUNC(onVehicleChanged);
-}]];
-_vehicle setVariable [QGVAR(eventSeatSwitched), _vehicle addEventHandler ["SeatSwitched", {
-    params ["_vehicle", "_unit"];
-    
-    [_vehicle, _unit] call FUNC(onVehicleChanged);
 }]];
 _vehicle setVariable [QGVAR(eventMPKilled), _vehicle addMPEventHandler ["MPKilled", {
     _this call FUNC(handleVehicleDestroyed);

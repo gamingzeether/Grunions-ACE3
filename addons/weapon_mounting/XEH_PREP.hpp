@@ -6,6 +6,7 @@ PREP(doLoadUnloadCycle);
 PREP(firedWeapon);
 PREP(getMountableWeapons);
 PREP(getSpecialWeaponProperties);
+PREP(getWeaponDirection);
 PREP(handleVehicleDestroyed);
 PREP(mountProgressBar);
 PREP(mountProgressBarSpecial);

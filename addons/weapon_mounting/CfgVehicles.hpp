@@ -17,9 +17,25 @@ class CfgVehicles {
     };
     class Car_F;
     class Quadbike_01_base_F: Car_F {
-        GVAR(mountingPositions)[] = { {0.5,0.7,-0.3} };
+        GVAR(mountingPositions)[] = { {0.5,1,-0.3} };
         unitInfoType = "RscUnitInfoTank";
+        GVAR(aimRestrictions)[] = { 0, 10, 45, 35 };
+        GVAR(controller) = "driver";
+        GVAR(turret)[] = {-1};
     };
+    
+    class Air;
+    class Helicopter: Air {
+        MACRO_ATTACH_WEAPON
+    };
+    class Helicopter_Base_F;
+    class UAV_01_base_F: Helicopter_Base_F {
+        GVAR(mountingPositions)[] = { {0,0,-0.3} };
+        GVAR(aimRestrictions)[] = { 0, -45, -1, 50 };
+        GVAR(controller) = "GUNNER";
+        GVAR(turret)[] = {0};
+    };
+    
     
     class Weapon_Bag_Base;
     class B_HMG_01_weapon_F: Weapon_Bag_Base {
