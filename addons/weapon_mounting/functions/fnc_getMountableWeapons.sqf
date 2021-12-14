@@ -22,7 +22,13 @@ _normalWeapons pushBack primaryWeapon _unit;
 _normalWeapons pushBack handgunWeapon _unit;
 
 private _specialWeapons = [];
-_specialWeapons pushBack secondaryWeapon _unit;
 _specialWeapons pushBack backpack _unit;
+
+private _launcher = secondaryWeapon _unit;
+if (getNumber (configFile >> "CfgWeapons" >> _launcher >> QGVAR(enabled)) != 1) then {
+    _normalWeapons pushBack _launcher;
+} else {
+    _specialWeapons pushBack _launcher;
+};
 
 [_normalWeapons, _specialWeapons]

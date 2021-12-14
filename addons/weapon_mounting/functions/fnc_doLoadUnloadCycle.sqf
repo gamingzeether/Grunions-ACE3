@@ -21,12 +21,13 @@ if (!_init) then {
     if (GVAR(toUnload) isNotEqualTo []) then {
         private _unload = GVAR(toUnload) deleteAt (count GVAR(toUnload) - 1);
         _unload params ["_vehicle", "_unit", "_class", "_count"];
+        private _turret = getArray (configOf _vehicle >> QGVAR(turret));
         
         // Remove specific mag with count
         private _loadedMags = [];
         {
             _x params ["_xClass", "_xTurret", "_xCount"];
-            if (_xClass == _class && {_xTurret isEqualTo [-1]}) then {
+            if (_xClass == _class && {_xTurret isEqualTo _turret}) then {
                 _loadedMags pushBack _x;
             };
         } foreach (magazinesAllTurrets _vehicle);
@@ -35,7 +36,7 @@ if (!_init) then {
                 _loadedMags deleteAt _i;
             };
         };
-        _vehicle removeMagazinesTurret [_class, [-1]];
+        _vehicle removeMagazinesTurret [_class, _turret];
         {
             _vehicle addMagazineTurret _x;
         } foreach _loadedMags;
@@ -60,9 +61,10 @@ if (!_init) then {
         if (GVAR(toLoad) isNotEqualTo []) then {
             private _load = GVAR(toLoad) deleteAt (count GVAR(toLoad) - 1);
             _load params ["_vehicle", "_unit", "_class", "_count"];
+            private _turret = getArray (configOf _vehicle >> QGVAR(turret));
             
             if ([_unit, _class, _count] call CBA_fnc_removeMagazine) then {
-                _vehicle addMagazineTurret [_class, [-1], _count];
+                _vehicle addMagazineTurret [_class, _turret, _count];
             };
         };
     };

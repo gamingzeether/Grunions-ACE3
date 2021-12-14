@@ -21,7 +21,3 @@ if (!local _vehicle) exitWith {};
 
 _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
 deleteVehicle _mountedWeapon;
-
-private _handle = _vehicle getVariable [QGVAR(pfhHandle), -1];
-[_handle] call CBA_fnc_removePerFrameHandler;
-_vehicle setVariable [QGVAR(pfhHandle), -1];
