@@ -626,5 +626,23 @@
         <Key ID="STR_ACE_Cargo_cargoNetType_ww2">
             <English>World War 2</English>
         </Key>
+        <Key ID="STR_ACE_Cargo_openAfterUnload">
+            <English>Reopen Cargo Menu</English>
+            <Turkish>Kargo Menüsünü Tekrar Aç</Turkish>
+            <Japanese>カーゴ メニューを再度開く</Japanese>
+            <French>Rouvrir le menu de cargaison</French>
+            <Russian>Переоткрыть меню погрузки</Russian>
+            <German>Frachtmenü erneut öffnen</German>
+            <Polish>Ponownie otwórz menu załadunku</Polish>
+        </Key>
+        <Key ID="STR_ACE_Cargo_openAfterUnload_description">
+            <English>Reopen the Cargo Menu after successful unload.</English>
+            <Turkish>Başarılı bir yük indirmeden sonra Kargo Menüsünü tekrar göster.</Turkish>
+            <Japanese>カーゴを降ろした後に再びカーゴ メニューを開きます。</Japanese>
+            <French>Réouvre le menu de cargaison après un déchargement réussi.</French>
+            <Russian>Переоткрыть меню погрузки после успешной выгрузки.</Russian>
+            <German>Frachtmenü erneut öffnen, nach erfolgreichen Entladen.</German>
+            <Polish>Ponownie otwórz menu załadunku po udanym wyładowaniu.</Polish>
+        </Key>
     </Package>
 </Project>
