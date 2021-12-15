@@ -453,6 +453,7 @@
         </Key>
         <Key ID="STR_ACE_Cargo_cargoNetType_ww2">
             <English>World War 2</English>
+        </Key>
         <Key ID="STR_ACE_Cargo_openAfterUnload">
             <English>Reopen Cargo Menu</English>
             <Turkish>Kargo Menüsünü Tekrar Aç</Turkish>
