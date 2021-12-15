@@ -22,7 +22,7 @@ private _types = [];
 private _countOfType = 0;
 {
     _x params ["_xClass", "_xTurret", "_xCount"];
-    if (_xTurret isNotEqualTo [-1]) then {continue};
+    if (_xTurret isNotEqualTo (getArray (configOf _vehicle >> QGVAR(turret)))) then {continue};
     
     _types pushBack _xClass;
     if (_xClass == _type) then {
