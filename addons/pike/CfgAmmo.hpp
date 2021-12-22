@@ -42,6 +42,7 @@ class CfgAmmo {
         effectsMissile = "missile3";
         soundFly[] = {"A3\Sounds_F\arsenal\weapons\Launchers\NLAW\Fly_NLAW",0.562341,1.5,700};
 
+        deleteParentWhenTriggered = 0;
         submunitionAmmo = "ammo_Penetrator_MRAAWS";
         submunitionDirectionType = "SubmunitionModelDirection";
         submunitionInitSpeed = 500;
