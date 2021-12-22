@@ -18,10 +18,12 @@
 
 params ["_vehicle", "_type"];
 
+private _compatTypes = _vehicle getVariable [QGVAR(compatMags), []];
+if (!(_type in _compatTypes)) exitWith {false};
+
 private _types = [];
 private _countOfType = 0;
 private _turret = getArray (configOf _vehicle >> QGVAR(turret));
-private _compatTypes = _vehicle getVariable [QGVAR(compatMags), []];
 {
     _x params ["_xClass", "_xTurret", "_xCount"];
     if (_xTurret isNotEqualTo _turret) then {continue};
