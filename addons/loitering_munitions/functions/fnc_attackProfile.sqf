@@ -82,11 +82,11 @@ switch (_state) do {
         };
     };
     case STATE_ATTACK: {
-        systemchat str _seekerTargetPos;
+        //systemchat str _seekerTargetPos;
         if (_seekerTargetPos isNotEqualTo [0,0,0]) then {
             _returnTargetPos = _seekerTargetPos vectorAdd [0, 0, -0.2];
         } else {
-            _returnTargetPos = _projectilePos vectorAdd (_projectile vectorModelToWorld [0, 50, 0])
+            _returnTargetPos = _projectilePos vectorAdd (_projectile vectorModelToWorld [0, 50, 0]);
         };
     };
 };
