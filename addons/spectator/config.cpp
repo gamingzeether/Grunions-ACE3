@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -27,3 +28,4 @@ class CfgRespawnTemplates {
         respawnTypes[] = {1,2,3,4,5};
     };
 };
+*/

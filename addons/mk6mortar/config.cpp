@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -33,3 +34,4 @@ class RscActiveText;
 class RscStructuredText;
 
 #include "RscInGameUI.hpp"
+*/

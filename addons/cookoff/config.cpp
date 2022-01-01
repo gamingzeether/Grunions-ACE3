@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -22,3 +23,4 @@ class CfgPatches {
 #include "CfgCloudlets.hpp"
 #include "CfgSFX.hpp"
 #include "CfgVehicles.hpp"
+*/

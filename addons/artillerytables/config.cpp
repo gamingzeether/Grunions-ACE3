@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -41,4 +42,4 @@ class ctrlButton;
 
 #include "RscTitles.hpp"
 #include "RscRangeTable.hpp"
-
+*/

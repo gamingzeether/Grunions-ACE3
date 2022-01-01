@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -12,3 +13,4 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+*/

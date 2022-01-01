@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -24,3 +25,4 @@ class CfgPatches {
 class ACE_newEvents {
     ACE_HeadlessClientJoined = QXGVAR(headlessClientJoined);
 };
+*/

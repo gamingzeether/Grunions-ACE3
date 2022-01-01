@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -21,3 +22,4 @@ class CfgPatches {
 #include "menu.hpp"
 #include "CfgActions.hpp"
 #include "renameMenu.hpp"
+*/

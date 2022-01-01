@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -41,3 +42,4 @@ class CfgCommands {
         "https://ace3.acemod.org/version.html"
     };
 };
+*/

@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -23,3 +24,4 @@ class CfgPatches {
 #include "RscDisplayMain.hpp"
 #include "ACE_Arsenal_Sorts.hpp"
 #include "ACE_Arsenal_Stats.hpp"
+*/

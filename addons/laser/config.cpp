@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -27,3 +28,4 @@ class RscPictureKeepAspect;
 
 #include "RscInGameUI.hpp"
 #include "RscTitles.hpp"
+*/

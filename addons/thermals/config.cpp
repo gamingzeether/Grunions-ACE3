@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -40,3 +41,4 @@ class CfgVehicles {
         tBody = 32; // Metabolism temperature of the model (in celsius)
     };
 };
+*/

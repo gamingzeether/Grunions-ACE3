@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -37,3 +38,4 @@ class ACE_Extensions {
 class ACE_Tests {
     fcs = QPATHTOF(dev\test_debugConfigs.sqf);
 };
+*/

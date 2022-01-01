@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -30,3 +31,4 @@ class RscEdit;
 #include "CfgVehicles.hpp"
 #include "CfgWeapons.hpp"
 #include "RscDisplayMainMap.hpp"
+*/

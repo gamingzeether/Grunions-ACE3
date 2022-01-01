@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -25,3 +26,4 @@ class CfgPatches {
 class ACE_Tests {
     vehicleTransportAmmo = QPATHTOF(dev\test_debugConfigs.sqf);
 };
+*/

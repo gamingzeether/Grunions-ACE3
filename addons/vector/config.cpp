@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -23,3 +24,4 @@ class CfgPatches {
 class CBA_PIPItems {
     GVAR(enable) = "-";
 };
+*/

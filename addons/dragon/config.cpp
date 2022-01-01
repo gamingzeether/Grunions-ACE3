@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -39,4 +40,4 @@ class GVAR(serviceExplosion) {
         lifeTime = 0.5;
     };
 };
-
+*/

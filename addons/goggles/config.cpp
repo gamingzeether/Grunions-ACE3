@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 #define COLOUR 8.0
@@ -318,3 +319,4 @@ class CfgCloudlets {
         destroyOnWaterSurface = 1;
     };
 };
+*/

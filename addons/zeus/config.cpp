@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -111,3 +112,4 @@ class ACE_Curator {
 #include "CfgVehicles.hpp"
 #include "ACE_Settings.hpp"
 #include "ui\RscAttributes.hpp"
+*/

@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 #include "script_config_macros_csw.hpp"
 
@@ -21,3 +22,4 @@ class CfgPatches {
 #include "CfgWeapons.hpp"
 #include "CfgMagazines.hpp"
 #include "CfgMagazineGroups.hpp"
+*/

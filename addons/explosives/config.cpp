@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -59,3 +60,4 @@ class CfgMineTriggers {
         mineTriggerRange = 1;
     };
 };
+*/

@@ -1,3 +1,4 @@
+/*
 #include "\z\ace\addons\huntir\script_component.hpp"
 #undef COMPONENT
 #define COMPONENT huntir_sub
@@ -24,3 +25,4 @@ class CfgWeapons {
         };
     };
 };
+*/

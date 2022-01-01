@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -18,3 +19,4 @@ class CfgPatches {
 #include "CfgMovesBasic.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
+*/

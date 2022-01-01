@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -23,3 +24,4 @@ class CfgCameraShake {
     // What does this do, really? It seems like the engine no longer respects it.
     defaultCaliberCoefWeaponFire = 0;
 };
+*/
