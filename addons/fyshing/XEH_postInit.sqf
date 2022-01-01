@@ -1,3 +1,9 @@
 #include "script_component.hpp"
 
-["ace_firedPlayer", FUNC(handleFired)] call CBA_fnc_addEventHandler;
+if (!hasInterface) exitWith {};
+
+["ace_firedPlayer", LINKFUNC(handleFired)] call CBA_fnc_addEventHandler;
+
+["weapon", LINKFUNC(handleWeaponChanged)] call CBA_fnc_addPlayerEventHandler;
+
+GVAR(PFHRunning) = false;

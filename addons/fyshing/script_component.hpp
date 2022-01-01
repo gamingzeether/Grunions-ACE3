@@ -14,3 +14,8 @@
 #endif
 
 #include "\z\ace\addons\main\script_macros.hpp"
+
+#define ROD_CANCEL 0
+#define ROD_CAST 1
+#define ROD_WAIT -1
+#define MAX_STRESS_TIME 10
