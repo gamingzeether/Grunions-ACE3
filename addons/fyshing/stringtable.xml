@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Fyshing">
+        <Key ID="STR_ACE_Fyshing_component_DisplayName">
+            <English>Fyshing</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_enableStress_DisplayName">
+            <English>Enable stress system</English>
+        </Key>
         <Key ID="STR_ACE_Fyshing_Fysh_DisplayName">
             <English>Fysh</English>
         </Key>
@@ -9,6 +15,30 @@
         </Key>
         <Key ID="STR_ACE_Fyshing_FyshExplosive_DisplayName">
             <English>Fysh (Explosive)</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_fyshingRod_displayName">
+            <English>Fyshing Rod</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_fyshingRod_description">
+            <English>A rod with a bit of fishing line.</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_CastAction">
+            <English>Cast</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_CancelAction">
+            <English>Cancel</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_ScrollAction">
+            <English>Reel in</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Caught">
+            <English>You caught %1</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_LineBroke">
+            <English>Hook broke</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_LineBroke">
+            <English>Line broke</English>
         </Key>
     </Package>
 </Project>
