@@ -4,9 +4,6 @@
         <Key ID="STR_ACE_Fyshing_component_DisplayName">
             <English>Fyshing</English>
         </Key>
-        <Key ID="STR_ACE_Fyshing_enableStress_DisplayName">
-            <English>Enable stress system</English>
-        </Key>
         <Key ID="STR_ACE_Fyshing_Fysh_DisplayName">
             <English>Fysh</English>
         </Key>
@@ -25,16 +22,13 @@
         <Key ID="STR_ACE_Fyshing_CastAction">
             <English>Cast</English>
         </Key>
-        <Key ID="STR_ACE_Fyshing_CancelAction">
-            <English>Cancel</English>
-        </Key>
-        <Key ID="STR_ACE_Fyshing_ScrollAction">
+        <Key ID="STR_ACE_Fyshing_ReelAction">
             <English>Reel in</English>
         </Key>
         <Key ID="STR_ACE_Fyshing_Caught">
             <English>You caught %1</English>
         </Key>
-        <Key ID="STR_ACE_Fyshing_LineBroke">
+        <Key ID="STR_ACE_Fyshing_HookBroke">
             <English>Hook broke</English>
         </Key>
         <Key ID="STR_ACE_Fyshing_LineBroke">
