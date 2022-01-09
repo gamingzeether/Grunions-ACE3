@@ -22,7 +22,6 @@
 params ["_args", "_handle"];
 _args params ["_bobber", "_line", "_helper", "_unit", "_startTime"];
 
-GVAR(currentLength) = ropeLength _line;
 private _distance = _helper distance _bobber;
 private _elapsedTime = CBA_missionTime - _startTime;
 
@@ -73,7 +72,9 @@ if (_exitCode != -1 && {_elapsedTime > 0.5}) exitWith {
     };
 };
 
-ropeUnwind [_line, 5, (_distance - 1) max GVAR(desiredLength)];
+if (GVAR(reeling)) then {
+    ropeUnwind [_line, 5, _distance - 1];
+};
 
 private _pos = _unit selectionPosition ["proxy:\a3\characters_f\proxies\pistol.001", 1];
 private _weaponDirAndUp = _unit selectionVectorDirAndUp ["proxy:\a3\characters_f\proxies\pistol.001", 1];
@@ -85,13 +86,3 @@ _offset = (_v1 vectorMultiply 1.2) vectorAdd (_v2 vectorMultiply -0.2) vectorAdd
 _pos = _unit modelToWorldWorld _pos;
 _pos = _pos vectorAdd _offset;
 _helper setPosASL _pos;
-
-if (GVAR(enableStress)) then {
-    if ((_distance - GVAR(currentLength)) > 1) then {
-        GVAR(stressedTime) = GVAR(stressedTime) + diag_deltaTime;
-    } else {
-        GVAR(stressedTime) = 0 max (GVAR(stressedTime) - diag_deltaTime * 3);
-    };
-    private _color = vectorLinearConversion [0, MAX_STRESS_TIME, GVAR(stressedTime), [0,1,0], [1,0,0]];
-    drawIcon3D ["\A3\ui_f\data\IGUI\RscCustomInfo\Sensors\Targets\UnknownMan_ca.paa", _color + [1], ASLtoAGL _pos, 5, 5, 45];
-};

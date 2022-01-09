@@ -36,9 +36,7 @@ _unit playActionNow "ThrowGrenade";
     
     private _ropeLength = getNumber (configFile >> "CfgWeapons" >> currentWeapon _unit >> QGVAR(ropeLength));
     private _line = ropeCreate [_ropeParent, [0,0,0], _bobber, [0,0,0], _ropeLength];
-    GVAR(desiredLength) = _ropeLength;
-    GVAR(currentLength) = _ropeLength;
-    GVAR(stressedTime) = 0;
+    GVAR(reeling) = false;
     
     [LINKFUNC(rodPFH), 0, [_bobber, _line, _ropeParent, _unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
     GVAR(PFHRunning) = true;
@@ -63,5 +61,5 @@ _unit playActionNow "ThrowGrenade";
             params ["_particleSource"];
             deleteVehicle _particleSource;
         }, [_ps1], 0.2] call CBA_fnc_waitAndExecute;
-    }, [_bobber], random [10, 10, 10]] call CBA_fnc_waitAndExecute;
+    }, [_bobber], random [10, 20, 60]] call CBA_fnc_waitAndExecute;
 }, _this, 0.5] call CBA_fnc_waitAndExecute;

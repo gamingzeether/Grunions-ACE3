@@ -5,5 +5,4 @@ PREP(getCaughtFish);
 PREP(getRandomFyshType);
 PREP(handleFired);
 PREP(handleWeaponChanged);
-PREP(reel);
 PREP(rodPFH);
