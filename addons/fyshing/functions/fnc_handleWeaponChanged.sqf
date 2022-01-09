@@ -18,7 +18,7 @@
 params ["_unit", "_newWep", "_oldWep"];
 if (_newWep == QGVAR(fyshingRod)) exitWith {
     //Show mouse buttons
-    [localize LSTRING(CastAction), localize LSTRING(CancelAction), localize LSTRING(ScrollAction)] call EFUNC(interaction,showMouseHint);
+    [LLSTRING(CastAction), LLSTRING(ReelAction)] call EFUNC(interaction,showMouseHint);
     
     GVAR(state) = ROD_WAIT;
     GVAR(PFHRunning) = true;
