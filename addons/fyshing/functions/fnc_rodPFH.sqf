@@ -29,7 +29,7 @@ private _exitCode = -1;
 if (GVAR(state) == ROD_CANCEL || {!([_unit] call FUNC(canFish))}) then {
     _exitCode = 0;
 } else {
-    if (_distance <= 1) then {
+    if (GVAR(reeling) && {_distance <= 1}) then {
         _exitCode = 1;
     } else {
         if (!(_bobber in ropeAttachedObjects _helper)) then {
@@ -67,8 +67,6 @@ if (_exitCode != -1 && {_elapsedTime > 0.5}) exitWith {
     
     if (currentWeapon _unit == QGVAR(fyshingRod) && {([_unit] call FUNC(canFish))}) then {
         GVAR(state) = ROD_WAIT;
-    } else {
-        [] call EFUNC(interaction,hideMouseHint);
     };
 };
 
