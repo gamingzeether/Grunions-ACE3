@@ -52,13 +52,11 @@ private _returnTargetPos = [0, 0, 0];
 private _projectilePos = getPosASL _projectile;
 switch (_state) do {
     case STATE_GAINALT: {
-        private _heightAboveLaunch = (_projectilePos select 2) - (_launchPos select 2);
-        
-        if (_heightAboveLaunch >= _loiterHeight * (2 / 3)) then {
+        if ((_projectilePos select 2) >= _loiterHeight - 20) then {
             _attackProfileStateParams set [0, STATE_LOITER];
         };
         
-        _returnTargetPos = _projectilePos vectorAdd [0.1, 0.1, 100];
+        _returnTargetPos = _projectilePos vectorAdd [0.1, 0.1, 50];
     };
     case STATE_LOITER: {
         private _relPosToCenter = _loiterCenter vectorFromTo _projectilePos;
@@ -77,6 +75,10 @@ switch (_state) do {
         _returnTargetPos = _projectilePos vectorAdd ((_projectilePos vectorFromTo _targetPos) vectorMultiply (vectorMagnitude velocity _projectile));
         _returnTargetPos set [2, _targetHeight];
         
+        private _targetVector = _projectilePos vectorFromTo _returnTargetPos;
+        if (_targetVector vectorDotProduct (vectorDir _projectile) < 0.2) then {
+            _returnTargetPos = _projectilePos vectorAdd ((vectorDir _projectile vectorMultiply 2) vectorAdd _targetVector);
+        };
         if (_seekerTargetPos isNotEqualTo [0,0,0]) then {
             _attackProfileStateParams set [0, STATE_ATTACK];
         };
@@ -90,5 +92,11 @@ switch (_state) do {
         };
     };
 };
+
+#ifdef DRAW_GUIDANCE_INFO
+drawLine3D [ASLtoAGL _projectilePos, ASLtoAGL _returnTargetPos, [1,0,0,1]];
+drawLine3D [ASLtoAGL _projectilePos, ASLtoAGL (_projectilePos vectorAdd velocity _projectile), [1,1,1,1]];
+drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa", [[1,1,1,1], [1,1,0,1], [1,0,0,1]] select _state, ASLtoAGL _projectilePos, 1, 1, 0];
+#endif
 
 _returnTargetPos
