@@ -32,9 +32,9 @@ class CfgAmmo {
             
             seekLastTargetPos = 1;
 
-            minDeflection = 0.001;
+            minDeflection = 0;
             maxDeflection = 0.005;
-            incDeflection = 0.001;
+            incDeflection = 0.0005;
 
             canVanillaLock = 0;
 
