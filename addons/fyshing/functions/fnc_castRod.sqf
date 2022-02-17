@@ -32,7 +32,7 @@ _unit playActionNow "ThrowGrenade";
     
     private _ropeParent = createVehicle ["Land_PortableHelipadLight_01_F", [0,0,0]];
     _ropeParent setPosASL _startPos;
-    _ropeParent hideObject true;
+    _ropeParent hideObjectGlobal true;
     
     private _ropeLength = getNumber (configFile >> "CfgWeapons" >> currentWeapon _unit >> QGVAR(ropeLength));
     private _line = ropeCreate [_ropeParent, [0,0,0], _bobber, [0,0,0], _ropeLength];
@@ -43,8 +43,10 @@ _unit playActionNow "ThrowGrenade";
     
     [{
         params ["_bobber"];
+        
         if (isNull _bobber) exitWith {};
         if (!surfaceIsWater getPosASL _bobber) exitWith {};
+        if (getPosASL _bobber select 2 > 0.1) exitWith {};
         
         private _fishType = call FUNC(getRandomFyshType);
         //private _fish = createAgent [_fishType, [0,0,0], [], 0, "CAN_COLLIDE"];

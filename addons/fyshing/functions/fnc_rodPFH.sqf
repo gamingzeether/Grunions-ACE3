@@ -71,7 +71,7 @@ if (_exitCode != -1 && {_elapsedTime > 0.5}) exitWith {
 };
 
 if (GVAR(reeling)) then {
-    ropeUnwind [_line, 5, _distance - 1];
+    ropeUnwind [_line, 5, (_distance - 1) max (ropeLength _line - 1)];
 };
 
 private _pos = _unit selectionPosition ["proxy:\a3\characters_f\proxies\pistol.001", 1];
