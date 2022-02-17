@@ -46,9 +46,11 @@ if (_exitCode != -1 && {_elapsedTime > 0.5}) exitWith {
     private _message = ["", LLSTRING(Caught), LLSTRING(HookBroke), LLSTRING(LineBroke)] select _exitCode;
     if (_exitCode == 1) then {
         private _caughtFish = [_bobber] call FUNC(getCaughtFish);
+        ["ace_caughtFish", [ACE_player, _caughtFish]] call CBA_fnc_globalEvent;
         
         if (_caughtFish isNotEqualTo "nothing") then {
             [_unit, selectRandom [QGVAR(fysh), QGVAR(fysh_explosive)], true] call CBA_fnc_addItem;
+            _caughtFish = "a " + _caughtFish;
         };
         _message = format [_message, _caughtFish];
     };

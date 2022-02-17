@@ -22,4 +22,4 @@ if (_attached isEqualTo []) exitWith {"nothing"};
 
 private _fish = _attached select 0;
 
-("a " + toLowerANSI getText (configOf _fish >> "displayName"))
+toLowerANSI getText (configOf _fish >> "displayName")
