@@ -32,6 +32,7 @@ class CfgAmmo {
         initTime = 0;
         airFriction = 0.1;
 
+        ACE_caliber = 80;
         hit = 50;
         indirectHit = 15;
         indirectHitRange = 8;
@@ -76,6 +77,7 @@ class CfgAmmo {
             // Attack profile type selection
             defaultAttackProfile = "pike";
             attackProfiles[] = { "pike", "LIN" };
+            showHintOnCycle = 1;
         };
     };
 };
