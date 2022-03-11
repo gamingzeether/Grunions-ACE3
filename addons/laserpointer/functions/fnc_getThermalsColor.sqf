@@ -32,30 +32,18 @@
  
 params ["_unit"];
  
-private _visionMode = 0;
-private _nvgItem = hmd _unit;
-
-private _cfgWeapons = configFile >> "CfgWeapons";
-if (_nvgItem == "") then {
-   //returns something like "{ "Integrated_NVG_TI_0_F" }"
-   _subItems = getArray (_cfgWeapons >> headgear _unit >> "subItems");
-   _nvgItem = _subItems select 0;
-};
-
-if (_nvgItem != "") then {
-    private _thermalModes = getArray (_cfgWeapons >> _nvgItem >> "thermalMode");
-    _visionMode = _thermalModes select 0;
-};
+private _visionMode = (currentVisionMode [_unit]) select 1;
 
 private _color = switch (_visionMode) do {
-    case 0: {[1,1,1,0,0,0]};     //White hot / Black cold
-    case 1: {[0,0,0,1,1,1]};     //Black hot / White cold
-    case 2: {[0,1,0,0,0.3,0]};   //Light Green Hot / Darker Green cold
-    case 3: {[0,0,0,0,0.3,0]};   //Black Hot / Darker Green cold
-    case 4: {[1,1,1,0,0,0]};     //Light Red Hot / Darker Red Cold
-    case 5: {[1,1,1,0,0,0]};     //Black Hot / Darker Red Cold
-    case 6: {[1,1,1,0,0,0]};     //White Hot / Darker Red Cold
-    case 7: {[1,1,1,0,0,0]};     //Thermal (Shade of Red and Green, Bodies are white)
+    case 0: {[1,1,1]};     //White hot       / Black cold
+    case 1: {[0,0,0]};     //Black hot       / White cold
+    case 2: {[0,1,0]};     //Light Green Hot / Darker Green cold
+    case 3: {[0,0,0]};     //Black Hot       / Darker Green cold
+    case 4: {[1,0,0]};     //Light Red Hot   / Darker Red Cold
+    case 5: {[0,0,0]};     //Black Hot       / Darker Red Cold
+    case 6: {[1,1,1]};     //White Hot       / Darker Red Cold
+    case 7: {[1,1,1]};     //Thermal (Shade of Red and Green, Bodies are white)
+    default {[1,1,1]};
 };
 
 _color 
