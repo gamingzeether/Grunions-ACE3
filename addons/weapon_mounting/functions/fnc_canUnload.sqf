@@ -17,4 +17,5 @@
 
 params ["_vehicle", "_unit"];
 
-(count (_vehicle magazinesTurret [getArray (configOf _vehicle >> QGVAR(turret)), true]) > 0)
+private _compatMags = _vehicle getVariable [QGVAR(compatMags), []];
+(count ((_vehicle magazinesTurret [getArray (configOf _vehicle >> QGVAR(turret)), true]) select {_x in _compatMags}) > 0)

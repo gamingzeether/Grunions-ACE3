@@ -22,6 +22,7 @@ class CfgVehicles {
         GVAR(aimRestrictions)[] = { 0, 10, 45, 35 };
         GVAR(controller) = "driver";
         GVAR(turret)[] = {-1};
+        GVAR(launchersAllowed) = 0;
     };
     
     class Air;
@@ -34,6 +35,7 @@ class CfgVehicles {
         GVAR(aimRestrictions)[] = { 0, -45, -1, 50 };
         GVAR(controller) = "GUNNER";
         GVAR(turret)[] = {0};
+        GVAR(launchersAllowed) = 1;
     };
     
     

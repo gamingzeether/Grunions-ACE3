@@ -40,9 +40,9 @@ if (_ret) exitWith {false};
 if (getText (_wCfg >> "model") == "") exitWith {false};
 
 // Check if weapon has carryable magazine
+/*
 private _mags = getArray (_wCfg >> "magazines");
 private _hasCarryable = false;
-/*
 {
     private _mCfg = (configFile >> "CfgMagazines" >> _x);
     if (getNumber (_mCfg >> "scope") == 2 && {getNumber (_mCfg >> "type") == 256}) then {
@@ -52,5 +52,9 @@ private _hasCarryable = false;
 } foreach _mags;
 if (!_hasCarryable) exitWith {false};
 */
+
+// Check if vehicle type allows launchers
+// Some vehicles like quadbikes are incompatible with launchers and the projectile disappears
+if ((_weapon isKindOf ["Launcher", configFile >> "CfgWeapons"]) && {getNumber (_vCfg >> QGVAR(launchersAllowed)) != 1}) exitWith {false};
 
 true
