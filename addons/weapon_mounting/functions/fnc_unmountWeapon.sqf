@@ -46,6 +46,7 @@ params ["_vehicle", "_unit", "_weapon"];
         private _weaponModel = _vehicle getVariable QGVAR(mountedWeapon);
         [_unit, _weaponModel getVariable QGVAR(originalWeapon), true] call CBA_fnc_addWeapon;
         deleteVehicle _weaponModel;
+        [_vehicle, _player, [], true] call FUNC(unload);
         
         // Reset variables
         _vehicle setVariable [QGVAR(freePositions), nil, true];
