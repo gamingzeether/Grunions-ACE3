@@ -1,3 +1,4 @@
 PREP(attackProfile);
+PREP(calculateTrajectory);
 PREP(handleFired);
-PREP(predictImpact);
+PREP(positionAtTime);
