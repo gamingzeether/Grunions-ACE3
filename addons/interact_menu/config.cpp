@@ -1,4 +1,3 @@
-/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -29,4 +28,3 @@ class ACE_Extensions {
         client = 1;
     };
 };
-*/

@@ -18,7 +18,7 @@ class CfgMagazines {
 
     class SmokeShell;
     class Chemlight_green: SmokeShell {
-        ACE_Attachable = "Chemlight_green";
+        ACE_Attachable = "Tuna_F";
     };
 
     class Chemlight_blue: Chemlight_green {

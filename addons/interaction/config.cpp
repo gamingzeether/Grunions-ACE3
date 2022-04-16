@@ -1,4 +1,3 @@
-/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -21,4 +20,3 @@ class CfgPatches {
 #include "ACE_Settings.hpp"
 #include "ACE_ZeusActions.hpp"
 #include "groupRename_GUI.hpp"
-*/
