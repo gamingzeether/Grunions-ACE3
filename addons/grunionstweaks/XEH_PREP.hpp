@@ -1,1 +1,2 @@
-PREP(initSmokeFix)
+PREP(initSmokeFix);
+PREP(initAutorun);
