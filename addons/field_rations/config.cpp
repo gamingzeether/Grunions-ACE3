@@ -22,7 +22,8 @@ class CfgPatches {
             "ACE_MRE_SteakVegetables_Item",
             "ACE_MRE_MeatballsPasta_Item",
             "ACE_MRE_ChickenHerbDumplings_Item",
-            "ACE_Humanitarian_Ration_Item"
+            "ACE_Humanitarian_Ration_Item",
+            "ACE_Sunflower_Seeds_Item"
         };
         weapons[] = {
             "ACE_WaterBottle",
@@ -42,7 +43,8 @@ class CfgPatches {
             "ACE_MRE_SteakVegetables",
             "ACE_MRE_MeatballsPasta",
             "ACE_MRE_ChickenHerbDumplings",
-            "ACE_Humanitarian_Ration"
+            "ACE_Humanitarian_Ration",
+            "ACE_Sunflower_Seeds"
         };
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_interact_menu"};

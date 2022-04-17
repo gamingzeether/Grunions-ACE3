@@ -61,7 +61,7 @@ if (_count > 0) then {
 };
 
 private _classCoef = (ACE_player getVariable ["ACE_GForceCoef",
-    getNumber (configFile >> "CfgVehicles" >> (typeOf ACE_player) >> "ACE_GForceCoef")]) max 0.001;
+    getNumber ((configOf ACE_player) >> "ACE_GForceCoef")]) max 0.001;
 private _suitCoef = if ((uniform ACE_player) != "") then {
     (getNumber (configFile >> "CfgWeapons" >> (uniform ACE_player) >> "ACE_GForceCoef")) max 0.001
 } else {
@@ -71,10 +71,12 @@ private _suitCoef = if ((uniform ACE_player) != "") then {
 private _gBlackOut = MAXVIRTUALG / _classCoef + MAXVIRTUALG / _suitCoef - MAXVIRTUALG;
 
 // Unconsciousness
-private _isUnconscious = (_average > _gBlackOut);
-if (GVAR(prevState) != _isUnconscious) then {
-    [ACE_player, _isUnconscious] call FUNC(setUnconscious);
-    GVAR(prevState) = _isUnconscious;
+if ((_average > _gBlackOut) && {lifeState ACE_player != INCAPACITATED}) then {
+    if (["ACE_Medical"] call EFUNC(common,isModLoaded)) then {
+        [ACE_player, true, (10 + floor(random 5)), true] call EFUNC(medical,setUnconscious);
+    } else {
+        [ACE_player, (10 + floor(random 5))] call FUNC(setUnconscious);
+    };
 };
 
 GVAR(GForces_CC) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[10,10,0,0,0,0.1,0.5]];
