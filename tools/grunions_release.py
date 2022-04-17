@@ -36,6 +36,7 @@ def main():
     
     # build no medical
     print("Building no medical")
+    subprocess.call(["git", "checkout", "master"])
     build_release(projectpath)
     for item in os.listdir(releasespath):
         itempath = os.path.join(releasespath, item)
@@ -46,7 +47,7 @@ def main():
     
     # build medical
     print("Building medical")
-    subprocess.call(["git", "checkout", "medical"])
+    subprocess.call(["git", "rebase", "master", "medical"])
     build_release(projectpath)
     
     # reset
