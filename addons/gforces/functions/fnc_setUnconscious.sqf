@@ -17,23 +17,24 @@
  * Public: No
  */
 
-params [["_unit", objNull, [objNull]], ["_isUnconscious", true, [false]]];
+params [["_unit", objNull, [objNull]], "_wakeTime"];
 
 if (!local _unit) exitWith {
     ERROR_1("Unit %1 not local or null",_unit);
 };
 
-_unit setUnconscious _isUnconscious;
+_unit setUnconscious true;
 
 if (vehicle _unit != _unit) then {
     ["gforces", _isUnconscious] call EFUNC(common,setDisableUserInputStatus);
-    if (_isUnconscious) then {
-        private _unconAnim = _unit call EFUNC(common,getDeathAnim);
-        TRACE_2("inVehicle - playing death anim",_unit,_unconAnim);
-        [_unit, _unconAnim] call EFUNC(common,doAnimation);
-    } else {
+    private _unconAnim = _unit call EFUNC(common,getDeathAnim);
+    TRACE_2("inVehicle - playing death anim",_unit,_unconAnim);
+    [_unit, _unconAnim] call EFUNC(common,doAnimation);
+    
+    [{
+        params ["_unit"];
         private _awakeAnim = _unit call EFUNC(common,getAwakeAnim);
         TRACE_2("inVehicle - playing awake anim",_unit,_awakeAnim);
         [_unit, _awakeAnim, 2] call EFUNC(common,doAnimation);
-    };
+    }, [_unit], _wakeTime] call CBA_fnc_waitAndExecute;
 };
