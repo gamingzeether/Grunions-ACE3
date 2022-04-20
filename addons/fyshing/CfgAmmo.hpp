@@ -21,4 +21,18 @@ class CfgAmmo {
         //grenadeFireSound[] = {"SmokeShellSoundHit1",0.5,};
         explosionTime = 20;
     };
+    
+    class EGVAR(pike,ammo_gl);
+    class GVAR(pike_ammo_gl): EGVAR(pike,ammo_gl) {
+        model = "\A3\animals_f\Fishes\CatShark_F";
+        EGVAR(pike,replaceWith) = QGVAR(pike_ammo_rocket);
+    };
+    
+    class EGVAR(pike,ammo_rocket);
+    class GVAR(pike_ammo_rocket): EGVAR(pike,ammo_rocket) {
+        model = "\A3\animals_f\Fishes\CatShark_F";
+        submunitionAmmo = "";
+        indirectHit = 8;
+        indirectHitRange = 5;
+    };
 };

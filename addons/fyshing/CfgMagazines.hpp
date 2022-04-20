@@ -21,4 +21,14 @@ class CfgMagazines {
         model = "\A3\animals_f\Fishes\Salema_porgy_F";
         picture = QPATHTOF(UI\ace_fyshing_fysh_ca.paa);
     };
+    
+    class ACE_40mm_Pike;
+    class ACE_40mm_PikeFysh: ACE_40mm_Pike {
+        displayName = CSTRING(pike_magazine_displayName);
+        displayNameShort = "Pike SALH";
+        ammo = QGVAR(pike_ammo_gl);
+        model = "\A3\animals_f\Fishes\CatShark_F";
+        count = 3;
+        mass = 34;
+    };
 };
