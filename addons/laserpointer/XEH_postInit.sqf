@@ -105,5 +105,5 @@ GVAR(irLaserUnits) = [];
         _unit call _fnc_processUnit;
     }, 0.1, _fnc_processUnit] call CBA_fnc_addPerFrameHandler;
 
-    addMissionEventHandler ["Draw3D", {call FUNC(onDraw)}];
+    addMissionEventHandler ["EachFrame", {call FUNC(onDraw)}];
 }] call CBA_fnc_addEventHandler;
