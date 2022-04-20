@@ -1,0 +1,19 @@
+===== added modules =====
+cba mp fix
+
+===== enabled modules =====
+advanced throwing
+casing
+common
+grunions tweaks
+interaction
+interact menu
+main
+modules
+prone launcher
+weapon select
+
+===== modified modules =====
+attach
+laser pointer
+weapon mounting
