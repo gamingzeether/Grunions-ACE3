@@ -5,6 +5,7 @@ class CfgAmmo {
         lightColor[] = {0, 0, 0, 0};
         smokeColor[] = {0, 0, 0, 0};
         timeToLive = 1;
+        GVAR(replaceWith) = QGVAR(ammo_rocket);
         
         //allow mode change
         class ace_missileguidance {

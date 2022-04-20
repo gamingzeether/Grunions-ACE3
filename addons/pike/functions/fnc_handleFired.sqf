@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: PabstMirror
- * Handlese firing the 40mm pike grenade/rocket
+ * Handles firing the 40mm pike grenade/rocket
  *
  * Arguments:
  * FiredEH
@@ -17,7 +17,7 @@
 
 //IGNORE_PRIVATE_WARNING ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
 TRACE_7("firedEH:",_unit, _weapon, _muzzle, _mode, _ammo, _magazine, _projectile);
-if (_ammo != QGVAR(ammo_gl)) exitWith {};
+if (!isText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) exitWith {};
 
 [{
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
@@ -33,7 +33,7 @@ if (_ammo != QGVAR(ammo_gl)) exitWith {};
 
     // Swap fired GL to a missile type
     deleteVehicle _projectile;
-    private _rocket = QGVAR(ammo_rocket) createVehicle (getPosATL _projectile);
+    private _rocket = (getText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) createVehicle (getPosATL _projectile);
     [QEGVAR(common,setShotParents), [_rocket, _unit, _unit]] call CBA_fnc_serverEvent;
 
     // Set correct position, velocity and direction (must set velocity before changeMissileDirection)
@@ -55,4 +55,4 @@ if (_ammo != QGVAR(ammo_gl)) exitWith {};
     }, 0.0, [_rocket, time]] call CBA_fnc_addPerFrameHandler;
     #endif
 
-}, _this, 0.1] call CBA_fnc_waitAndExecute;
+}, _this, 0.5] call CBA_fnc_waitAndExecute;
