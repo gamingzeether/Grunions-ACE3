@@ -7,5 +7,8 @@
         <Key ID="STR_ACE_GrunionsTweaks_Autorun">
             <English>Auto Run</English>
         </Key>
+        <Key ID="STR_ACE_GrunionsTweaks_AutorunCancel">
+            <English>Auto Run Cancel</English>
+        </Key>
     </Package>
 </Project>
