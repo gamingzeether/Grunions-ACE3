@@ -1209,5 +1209,11 @@
             <Turkish>Zamanlayıcı</Turkish>
             <Hungarian>Időzítő</Hungarian>
         </Key>
+        <Key ID="STR_ACE_Explosives_CursorDetonate_DisplayName">
+            <English>Detonate Cursor (Hold)</English>
+        </Key>
+        <Key ID="STR_ACE_Explosives_CursorDetonate_Tooltip">
+            <English>Detonates explosive at cursor</English>
+        </Key>
     </Package>
 </Project>
