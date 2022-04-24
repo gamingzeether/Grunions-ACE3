@@ -96,11 +96,6 @@ class GVAR(loitering_dialog): EGVAR(huntir,cam_dialog) {
     class MAP: RscMapControl {
         idc = 10;
         
-        type = CT_MAP;
-        style = ST_LEFT;
-        
-        colorBackground[] = {0.5, 0.5, 0.5, 1};
-        colorText[] = {1, 1, 1, 1};
         font = FontM;
         sizeEx = 0.02;
         
