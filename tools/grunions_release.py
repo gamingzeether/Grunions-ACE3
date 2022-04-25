@@ -4,26 +4,51 @@ import os
 import sys
 import subprocess
 
-def build_release(projectpath):
+projectpath = ""
+releasespath = ""
+forcebuilt = False
+
+def build_release():
+    global forcebuilt
     os.chdir(projectpath)
     
-    print("Compiling SQF")
-    compiler_exe = os.path.join(projectpath, "ArmaScriptCompiler.exe")
-    ret = subprocess.call([compiler_exe], cwd=projectpath, stdout=False)
-    print("")
+    if not forcebuilt:
+        print("Compiling SQF")
+        compiler_exe = os.path.join(projectpath, "ArmaScriptCompiler.exe")
+        ret = subprocess.call([compiler_exe], cwd=projectpath, stdout=False)
+        print("")
     
-    ret = subprocess.call(["hemtt.exe", "build", "--force", "--release"], stderr=subprocess.STDOUT)
-    print(ret)
-    
-    sqfcpath = os.path.join(projectpath, "tools\\clean_sqfc.py")
-    exec(open(sqfcpath).read())
+        ret = subprocess.call(["hemtt.exe", "build", "--force", "--release"], stderr=subprocess.STDOUT)
+        print(ret)
+        forcebuilt = True
+    else:
+        ret = subprocess.call(["hemtt.exe", "build", "--release"], stderr=subprocess.STDOUT)
+        print(ret)
+
+
+def rename_builds(end):
+    for item in os.listdir(releasespath):
+        if not "ver" in item:
+            itempath = os.path.join(releasespath, item)
+            if os.path.isfile(itempath):
+                os.rename(itempath, itempath[:-4] + "_ver_" + end + ".zip")
+            else:
+                os.rename(itempath, itempath + "_ver_" + end)
+
+
+def build_variant(name, branchname, nameshort):
+    print("Building " + name)
+    subprocess.call(["git", "rebase", "master", branchname])
+    build_release()
+    rename_builds(nameshort)
 
 
 def main():
+    global projectpath
+    global releasespath
     scriptpath = os.path.realpath(__file__)
     projectpath = os.path.dirname(os.path.dirname(scriptpath))
     os.chdir(projectpath)
-    
     
     releasespath = os.path.join(projectpath, "releases")
     for root, _dirs, files in os.walk(releasespath, False):
@@ -34,24 +59,15 @@ def main():
             dirpath = os.path.join(root, dir)
             os.rmdir(dirpath);
     
-    # build no medical
-    print("Building no medical")
-    subprocess.call(["git", "checkout", "master"])
-    build_release(projectpath)
-    for item in os.listdir(releasespath):
-        itempath = os.path.join(releasespath, item)
-        if os.path.isfile(itempath):
-            os.rename(itempath, itempath[:-4] + "_NoMed.zip")
-        else:
-            os.rename(itempath, itempath + "_NoMed")
-    
-    # build medical
-    print("Building medical")
-    subprocess.call(["git", "rebase", "master", "medical"])
-    build_release(projectpath)
+    # build variants
+    build_variant("No Medical", "master", "NoMed")
+    build_variant("Medical", "medical", "Med")
+    build_variant("Clientside", "clientside", "Clientside")
     
     # reset
     subprocess.call(["git", "checkout", "master"])
+    sqfcpath = os.path.join(projectpath, "tools\\clean_sqfc.py")
+    exec(open(sqfcpath).read())
 
 
 if __name__ == "__main__":
