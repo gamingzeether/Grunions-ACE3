@@ -12,8 +12,7 @@ class CfgAmmo {
             enabled = 1;
             
             defaultAttackProfile = "pike";
-            attackProfiles[] = { "pike", "LIN" };
-            showHintOnCycle = 1;
+            attackProfiles[] = { "pike" };
         };
     };
 
@@ -35,8 +34,8 @@ class CfgAmmo {
 
         ACE_caliber = 80;
         hit = 50;
-        indirectHit = 15;
-        indirectHitRange = 8;
+        indirectHit = 10;
+        indirectHitRange = 6;
 
         CraterEffects = "ImpactEffectsMedium";
         explosionEffects = "ATRocketExplosion";
@@ -45,9 +44,9 @@ class CfgAmmo {
         soundFly[] = {"A3\Sounds_F\arsenal\weapons\Launchers\NLAW\Fly_NLAW",0.562341,1.5,700};
 
         deleteParentWhenTriggered = 0;
-        submunitionAmmo = "ammo_Penetrator_MRAAWS";
+        submunitionAmmo = "ammo_Penetrator_MRAAWS_HEAT55";
         submunitionDirectionType = "SubmunitionModelDirection";
-        submunitionInitSpeed = 500;
+        submunitionInitSpeed = 1000;
         submunitionParentSpeedCoef = 0;
         submunitionInitialOffset[] = { 0, 0, -0.2 };
         triggerOnImpact = 1;
@@ -77,7 +76,7 @@ class CfgAmmo {
 
             // Attack profile type selection
             defaultAttackProfile = "pike";
-            attackProfiles[] = { "pike", "LIN" };
+            attackProfiles[] = { "pike" };
             showHintOnCycle = 1;
         };
     };
