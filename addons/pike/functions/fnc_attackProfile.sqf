@@ -37,20 +37,23 @@ if (_attackProfileStateParams isEqualTo []) then {
     _attackProfileStateParams set [0, [_projectilePos, [0, 0, 0], _projectileSpeed, _azimuth, _elevation, CBA_missionTime]];
 };
 
-private _expectedPosition = [_attackProfileStateParams select 0, CBA_missionTime] call FUNC(positionAtTime);
-// Recalculate if target position moved or off course
-if ((_attackProfileStateParams select 0 select 1) vectorDistance _seekerTargetPos > 0.5 || {_projectilePos vectorDistance _expectedPosition > 1}) then {
-    if (_seekerTargetPos isEqualTo [0, 0, 0]) then {
-        private _velNorm = vectorNormalized _projectileVel;
-        private _azimuth = (_velNorm select 0) atan2 (_velNorm select 1);
-        private _elevation = asin (_velNorm select 2);
-        _attackProfileStateParams set [0, [_projectilePos, [0, 0, 0], _projectileSpeed, _azimuth, _elevation, CBA_missionTime]];
-    } else {
-        _attackProfileStateParams set [0, [_projectilePos, _seekerTargetPos, _projectileSpeed] call FUNC(calculateTrajectory)];
+if (_seekerTargetPos vectorDistance _projectilePos < _projectileSpeed * 2) then {
+    _returnTargetPos = _seekerTargetPos;
+} else {
+    private _expectedPosition = [_attackProfileStateParams select 0, CBA_missionTime] call FUNC(positionAtTime);
+    // Recalculate if target position moved or off course
+    if ((_attackProfileStateParams select 0 select 1) vectorDistance _seekerTargetPos > 0.5 || {_projectilePos vectorDistance _expectedPosition > 1}) then {
+        if (_seekerTargetPos isEqualTo [0, 0, 0]) then {
+            private _velNorm = vectorNormalized _projectileVel;
+            private _azimuth = (_velNorm select 0) atan2 (_velNorm select 1);
+            private _elevation = asin (_velNorm select 2);
+            _attackProfileStateParams set [0, [_projectilePos, [0, 0, 0], _projectileSpeed, _azimuth, _elevation, CBA_missionTime]];
+        } else {
+            _attackProfileStateParams set [0, [_projectilePos, _seekerTargetPos, _projectileSpeed] call FUNC(calculateTrajectory)];
+        };
     };
+    _returnTargetPos = [_attackProfileStateParams select 0, CBA_missionTime + 1] call FUNC(positionAtTime);
 };
-
-_returnTargetPos = [_attackProfileStateParams select 0, CBA_missionTime + 1] call FUNC(positionAtTime);
 
 #ifdef DEBUG_MODE_FULL
 drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [0,1,0,1], ASLtoAGL _seekerTargetPos, 1, 1, 45];
