@@ -13,11 +13,5 @@
         <Key ID="STR_ACE_MGL_MGLMagazine_HE_descriptionShort">
             <English>Type: High Explosive Grenade Round&lt;br/&gt;Caliber: 40 mm&lt;br/&gt;Rounds: 6&lt;br/&gt;Used in: MGL</English>
         </Key>
-        <Key ID="STR_ACE_MGL_MGLMagazine_Pike_displayName">
-            <English>6Rnd 40mm Pike Cylinder</English>
-        </Key>
-        <Key ID="STR_ACE_MGL_MGLMagazine_Pike_descriptionShort">
-            <English>Type: High Explosive Pike Grenade Round&lt;br/&gt;Caliber: 40 mm&lt;br/&gt;Rounds: 6&lt;br/&gt;Used in: MGL&lt;</English>
-        </Key>
     </Package>
 </Project>
