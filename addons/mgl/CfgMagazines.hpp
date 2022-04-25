@@ -7,13 +7,6 @@ class CfgMagazines {
         descriptionShort = CSTRING(MGLMagazine_HE_descriptionShort);
         displayName = CSTRING(MGLMagazine_HE_displayName);
         displayNameShort = "HE Grenade";
-        mass = 40;
-    };
-    class ACE_6Rnd_40mm_Pike: ACE_6Rnd_40mm_HE {
-        ammo = QEGVAR(pike,ammo_rocket);
-        descriptionShort = CSTRING(MGLMagazine_Pike_descriptionShort);
-        displayName = CSTRING(MGLMagazine_Pike_displayName);
-        displayNameShort = "Pike SALH";
-        mass = 100;
+        mass = 30; // 3 lbs
     };
 };
