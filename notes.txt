@@ -11,6 +11,7 @@ interact menu
 main
 modules
 prone launcher
+pylons
 weapon select
 
 ===== modified modules =====
