@@ -101,5 +101,4 @@ class CfgVehicles {
         GVAR(model) = "\A3\Weapons_F\LongRangeRifles\GM6\GM6_F.p3d";
         GVAR(scale) = 2;
     };
-    */
 };

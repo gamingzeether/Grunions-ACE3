@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -5,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"ace_common"/*, "ace_csw"*/};
+        requiredAddons[] = {"ace_common", "ace_csw"};
         author = ECSTRING(common,ACETeam);
         authors[] = {"gamingzeether"};
         url = ECSTRING(main,URL);
@@ -15,4 +16,5 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
-// #include "CfgWeapons.hpp"
+#include "CfgWeapons.hpp"
+*/
