@@ -31,8 +31,9 @@ _unit playActionNow "ThrowGrenade";
     _bobber setCenterOfMass [0,0.01,-0.1];
     
     private _ropeParent = createVehicle ["Land_PortableHelipadLight_01_F", [0,0,0]];
+    hideObject _ropeParent;
+    [_ropeParent, QUOTE(ADDON)] call EFUNC(common,hideUnit);
     _ropeParent setPosASL _startPos;
-    _ropeParent hideObjectGlobal true;
     
     private _ropeLength = getNumber (configFile >> "CfgWeapons" >> currentWeapon _unit >> QGVAR(ropeLength));
     private _line = ropeCreate [_ropeParent, [0,0,0], _bobber, [0,0,0], _ropeLength];
