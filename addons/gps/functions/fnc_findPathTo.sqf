@@ -23,7 +23,8 @@ if (vehicle GVAR(pathingAgent) != GVAR(pathingAgent)) then {
     deleteVehicle vehicle GVAR(pathingAgent);
 };
 private _vehicleCopy = createVehicle [typeOf _vehicle, [0, 0, 0]];
-hideObjectGlobal _vehicleCopy;
+hideObject _vehicleCopy;
+[_vehicleCopy, QUOTE(ADDON)] call EFUNC(common,hideUnit);
 _vehicle disableCollisionWith _vehicleCopy;
 _vehicleCopy setPosASL getPosASL _vehicle;
 _vehicleCopy setVectorDir vectorDir _vehicle;
