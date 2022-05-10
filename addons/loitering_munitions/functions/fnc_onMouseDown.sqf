@@ -35,7 +35,7 @@ if (_button == 0) then {
             GVAR(altitude) = 0 max (GVAR(altitude) + (_yPos - GVAR(startY)) * -200 * GVAR(multiplier));
             GVAR(startY) = _yPos;
             
-            (findDisplay 28880 displayCtrl 11) ctrlSetStructuredText parseText format [LLSTRING(altitude), round GVAR(altitude), round (GVAR(altitude) - getTerrainHeightASL GVAR(startPosWorld))];
+            (findDisplay 28880 displayCtrl 11) ctrlSetStructuredText parseText format [LLSTRING(altitude), round GVAR(altitude), round (GVAR(altitude) - getTerrainHeightASL GVAR(startPosWorld) + getElevationOffset)];
         }]];
     } else {
         private _worldPos = _map ctrlMapScreenToWorld [_xPos, _yPos];
