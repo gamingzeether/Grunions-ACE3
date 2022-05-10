@@ -1,5 +1,20 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
+/*
+ * Author: GamingZeether
+ * Initalizes the autorun system
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * call ace_grunionstweaks_fnc_initAutorun
+ * 
+ * Public: No
+ */
 
 if (!hasInterface) exitWith {};
 

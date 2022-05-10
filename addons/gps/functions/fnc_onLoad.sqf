@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call ace_gps_fnc_onLoad
+ * call ace_gps_fnc_onLoad
  *
  * Public: No
  */

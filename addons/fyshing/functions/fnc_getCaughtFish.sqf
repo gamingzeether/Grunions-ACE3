@@ -12,7 +12,7 @@
  * Example:
  * [bobber] call ace_fyshing_fnc_getCaughtFish;
  *
- * Public: No
+ * Public: Yes
  */
 
 params ["_bobber"];

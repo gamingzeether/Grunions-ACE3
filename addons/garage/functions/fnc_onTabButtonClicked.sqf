@@ -29,13 +29,13 @@ private _customization = [_vehicle] call BIS_fnc_getVehicleCustomization;
 private _curTab = _display getVariable [QGVAR(listboxTab), -1];
 private _listBox = _display displayCtrl IDC_ACE_LISTBOX;
 private _listBackground = _display displayCtrl IDC_ACE_BACKGROUND;
-//hide listbox if clicking currently selected tab
+// Hide listbox if clicking currently selected tab
 if (_curTab == _idc) exitWith {
     _listBox ctrlShow false;
     _listBackground ctrlShow false;
     _display setVariable [QGVAR(listboxTab), -1];
 };
-//show listbox if not already showing
+// Else, show listbox if not already showing
 _listBox ctrlShow true;
 _listBackground ctrlShow true;
 _display setVariable [QGVAR(listboxTab), _idc];
@@ -52,7 +52,7 @@ for "_i" from 0 to (count _customization - 1) step 2 do {
     };
 };
 
-//fill listbox with options
+// Fill listbox with options
 private _listbox = _display displayCtrl IDC_ACE_LISTBOX;
 lbClear _listbox;
 {

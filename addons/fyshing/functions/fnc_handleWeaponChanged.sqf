@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Handles weapon changed
+ * Handles weapon changed for fyshing rod
  *
  * Arguments:
  * addPlayerEventHandler params
@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call ace_fyshing_fnc_handleWeaponChanged;
+ * call ace_fyshing_fnc_handleWeaponChanged;
  *
  * Public: No
  */

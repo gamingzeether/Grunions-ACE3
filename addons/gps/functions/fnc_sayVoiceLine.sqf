@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Says voice prompt
+ * Says random voice prompt from selection
  *
  * Arguments:
  * 0: Voice line <STRING>

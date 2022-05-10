@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Pike mini missile ballisitc attack profile
+ * Pike mini missile ballistic attack profile
  *
  * Arguments:
  * 0: Seeker Target PosASL <ARRAY>
@@ -30,6 +30,7 @@ private _projectilePos = getPosASL _projectile;
 private _projectileVel = velocity _projectile;
 private _projectileSpeed = vectorMagnitude _projectileVel;
 
+// Init trajectory if empty
 if (_attackProfileStateParams isEqualTo []) then {
     private _velNorm = vectorNormalized _projectileVel;
     private _azimuth = (_velNorm select 0) atan2 (_velNorm select 1);
@@ -38,10 +39,11 @@ if (_attackProfileStateParams isEqualTo []) then {
 };
 
 if (_seekerTargetPos vectorDistance _projectilePos < _projectileSpeed * 2) then {
+    // Go directly towards target if expected to hit in < 2 seconds
     _returnTargetPos = _seekerTargetPos;
 } else {
     private _expectedPosition = [_attackProfileStateParams select 0, CBA_missionTime] call FUNC(positionAtTime);
-    // Recalculate if target position moved or off course
+    // Recalculate trajectory if target position moved or off course
     if ((_attackProfileStateParams select 0 select 1) vectorDistance _seekerTargetPos > 0.5 || {_projectilePos vectorDistance _expectedPosition > 1}) then {
         if (_seekerTargetPos isEqualTo [0, 0, 0]) then {
             private _velNorm = vectorNormalized _projectileVel;
@@ -56,6 +58,7 @@ if (_seekerTargetPos vectorDistance _projectilePos < _projectileSpeed * 2) then 
 };
 
 #ifdef DEBUG_MODE_FULL
+// Draw guidance info and trajectory
 drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [0,1,0,1], ASLtoAGL _seekerTargetPos, 1, 1, 45];
 drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [1,0,1,1], ASLtoAGL _returnTargetPos, 1, 1, 45];
 

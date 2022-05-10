@@ -14,7 +14,7 @@
  * Example:
  * [car, "Beige"] call ace_garage_fnc_changeCamo
  *
- * Public: Yes
+ * Public: No
  */
 
 params ["_vehicle", "_source"];
@@ -29,8 +29,6 @@ if (count _texturesToApply == 0 && {isClass _cfgTextureSourcesVariant}) then
     _materialsToApply = getArray(_cfgTextureSourcesVariant >> "materials");
 };
 
-// change the textures
+// Apply the textures and materials
 {_vehicle setObjectTextureGlobal [_forEachindex, _x];} forEach _texturesToApply;
-
-// change the materials when it is appropriate
 {if (_x != "") then {_vehicle setObjectMaterialGlobal [_forEachindex, _x];};} forEach _materialsToApply;

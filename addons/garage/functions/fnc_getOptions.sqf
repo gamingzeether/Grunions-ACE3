@@ -30,6 +30,7 @@ params ["_classname"];
 private _animationCfg = (configfile >> "CfgVehicles" >> _classname >> "AnimationSources");
 private _textureCfg = (configfile >> "CfgVehicles" >> _classname >> "TextureSources");
 
+// Get textures
 private _textures = [];
 for "_i" from 0 to (count _textureCfg - 1) do {
     private _cfg = _textureCfg select _i;
@@ -40,6 +41,7 @@ for "_i" from 0 to (count _textureCfg - 1) do {
     };
 };
 
+// Get animations
 private _animations = [];
 for "_i" from 0 to (count _animationCfg - 1) do {
     private _cfg = _animationCfg select _i;

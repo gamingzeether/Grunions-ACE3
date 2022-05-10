@@ -15,11 +15,12 @@
  * Example:
  * [car, "HideBumper1", 1] call ace_garage_fnc_changeAnimation
  *
- * Public: Yes
+ * Public: No
  */
 
 params ["_vehicle", "_source", "_phase"];
 
+// Play animation
 private _phaseCurrent = _vehicle animationPhase _source;
 private _animCfg = (configOf _vehicle >> "AnimationSources" >> _source);
 if (_phase != _phaseCurrent) then {
@@ -34,10 +35,9 @@ if (_phase != _phaseCurrent) then {
     };
 };
 
-//lock cargo seats
+// Lock cargo seats
 private _lockCargoSeats = [];
 private _allCargoSeats = [];
-
 private _phase = _vehicle animationPhase _source; 
 if (!isNull (_animCfg >> "lockCargoAnimationPhase") && !isNull (_animCfg >> "lockCargo")) then {
     private _lockCargoAnimationPhase = getNumber(_animCfg >> "lockCargoAnimationPhase"); 
@@ -46,10 +46,9 @@ if (!isNull (_animCfg >> "lockCargoAnimationPhase") && !isNull (_animCfg >> "loc
         if (abs (_lockCargoAnimationPhase - _phase) < 0.001) then {_lockCargoSeats pushBackUnique _x};
     } forEach getArray (_animCfg >> "lockCargo");
 };
-
-private _code = getText(_animCfg >> "onPhaseChanged"); 
-if (_code != "") then {[_vehicle, _phase] call compile _code};
-
 {
     _vehicle lockCargo [_x, _x in _lockCargoSeats];
 } forEach _allCargoSeats;
+
+private _code = getText(_animCfg >> "onPhaseChanged"); 
+if (_code != "") then {[_vehicle, _phase] call compile _code};
