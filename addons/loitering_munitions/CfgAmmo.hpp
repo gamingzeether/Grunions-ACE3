@@ -29,8 +29,6 @@ class CfgAmmo {
         
         class ace_missileguidance {
             enabled = 1;
-            
-            seekLastTargetPos = 1;
 
             minDeflection = 0;
             maxDeflection = 0.005;
