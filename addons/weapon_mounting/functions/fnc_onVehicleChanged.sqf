@@ -31,10 +31,9 @@ if (_isUAV) then {
 };
 private _vehicleRole = GVAR(controllers) get typeOf _vehicle;
 
-if (!isNil "_vehicleRole" && {_newRole isEqualTo _vehicleRole && {_vehicle != ACE_player}}) then {
-    [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
-    GVAR(pfhHandle) = [FUNC(vehiclePFH), 0, [_vehicle]] call CBA_fnc_addPerFrameHandler;
-    
+if (!isNil "_vehicleRole" && {((_isUAV && local gunner _vehicle) || {_newRole isEqualTo _vehicleRole}) && {_vehicle != ACE_player}}) then {
+    GVAR(runPFH) = true;
+    GVAR(vehicle) = _vehicle;
     private _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
     if (isNull _mountedWeapon) exitWith {};
     
@@ -45,7 +44,6 @@ if (!isNil "_vehicleRole" && {_newRole isEqualTo _vehicleRole && {_vehicle != AC
 } else {
     // Exiting
     if (isNil "_vehicleRole" || {_newRole isNotEqualTo _vehicleRole}) then {
-        [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
-        GVAR(pfhHandle) = -1;
+        GVAR(runPFH) = false;
     };
 };

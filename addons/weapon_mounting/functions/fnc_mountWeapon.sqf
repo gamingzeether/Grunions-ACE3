@@ -72,6 +72,7 @@ _weapon setVariable [QGVAR(config), _wCfg, true];
 _weapon setVariable [QGVAR(muzzlePos), _muzzlePos, true];
 _weapon setVariable [QGVAR(flashSelection), _flashSelection, true];
 _weapon setVariable [QGVAR(originalWeapon), _originalWeapon, true];
+_weapon setVariable [QGVAR(useTurret), _turret isNotEqualTo [-1], true];
 
 _vehicle setVariable [QGVAR(compatMags), _mags];
 _vehicle setVariable [QGVAR(mountedWeapon), _weapon, true];

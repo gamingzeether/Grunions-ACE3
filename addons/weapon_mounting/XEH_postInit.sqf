@@ -2,9 +2,11 @@
 
 GVAR(toUnload) = [];
 GVAR(toLoad) = [];
-GVAR(pfhHandle) = -1;
 GVAR(aimRectHashMap) = createHashMap;
 GVAR(controllers) = createHashMap;
+
+GVAR(runPFH) = true;
+[FUNC(vehiclePFH), 0] call CBA_fnc_addPerFrameHandler;
 
 ["turret", {
     [ACE_player] call FUNC(onVehicleChanged);

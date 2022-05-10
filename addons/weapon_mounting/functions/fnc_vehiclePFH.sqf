@@ -15,25 +15,23 @@
  * Public: No
  */
 
-params ["_args", "_handle"];
-_args params ["_vehicle"];
+if (!GVAR(runPFH)) exitWith {};
 
-private _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
+private _mountedWeapon = GVAR(vehicle) getVariable [QGVAR(mountedWeapon), objNull];
 
 if (isNull _mountedWeapon) exitWith {
-    [_handle] call CBA_fnc_removePerFrameHandler;
-    _vehicle setVariable [QGVAR(pfhHandle), -1];
+    GVAR(runPFH) = false;
 };
 
-private _direction = [_vehicle] call FUNC(getWeaponDirection);
+private _direction = [GVAR(vehicle)] call FUNC(getWeaponDirection);
 
 if (count _direction > 0) then {
     // weapon forward is the right side of the model
-    private _right = _direction vectorCrossProduct (vectorUp _vehicle);
+    private _right = _direction vectorCrossProduct (vectorUp GVAR(vehicle));
     private _up = _right vectorCrossProduct _direction;
     
-    _right = _vehicle vectorWorldToModel _right;
-    _up = _vehicle vectorWorldToModel _up;
+    _right = GVAR(vehicle) vectorWorldToModel _right;
+    _up = GVAR(vehicle) vectorWorldToModel _up;
     
     _mountedWeapon setVectorDirAndUp [_right, _up];
 };
