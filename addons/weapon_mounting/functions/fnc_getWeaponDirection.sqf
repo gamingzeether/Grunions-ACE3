@@ -27,8 +27,15 @@ if (unitIsUAV _vehicle) then {
     if ((assignedVehicleRole ACE_player select 0) isNotEqualTo _controller) exitWith {[]};
 };
 
-private _cameraDirection = (AGLToASL positionCameraToWorld [0,0,0]) vectorFromTo (AGLToASL positionCameraToWorld [0,0,1]);
-private _directionModel = _vehicle vectorWorldToModel _cameraDirection;
+private _directionModel = [0, 0, 0];
+
+if (_vehicle getVariable QGVAR(useTurret)) then {
+    private _turretDirection = _vehicle weaponDirection currentWeapon _vehicle;
+    _directionModel = _vehicle vectorWorldToModel _turretDirection;
+} else {
+    private _cameraDirection = (AGLToASL positionCameraToWorld [0,0,0]) vectorFromTo (AGLToASL positionCameraToWorld [0,0,1]);
+    _directionModel = _vehicle vectorWorldToModel _cameraDirection;
+};
 
 // Clamp direction to restriction rectangle
 _aimRect params ["_azimuthOffset", "_elevationOffset", "_azimuth", "_elevation"];
