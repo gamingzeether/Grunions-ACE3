@@ -33,10 +33,6 @@ params ["_vehicle", "_unit", "_weapon"];
         [_vehicle, 0, [_dummyName, QGVAR(unmount)]] call EFUNC(interact_menu,removeActionFromObject);
         [_vehicle, 0, [_dummyName]] call EFUNC(interact_menu,removeActionFromObject);
         
-        // End PFH if it is currently running
-        [GVAR(pfhHandle)] call CBA_fnc_removePerFrameHandler;
-        GVAR(pfhHandle) = -1;
-        
         // Remove events
         _vehicle removeEventHandler ["Fired", _vehicle getVariable QGVAR(eventFired)];
         _vehicle removeMPEventHandler ["MPKilled", _vehicle getVariable QGVAR(eventMPKilled)];
