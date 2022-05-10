@@ -57,6 +57,7 @@ _weapon hideSelection [_flashSelection, true];
 
 // Set variables
 private _mags = [_weaponName, true] call CBA_fnc_compatibleMagazines;
+private _turret = getArray (_vCfg >> QGVAR(turret));
 
 /*
 _mags = _mags select {
@@ -74,6 +75,7 @@ _weapon setVariable [QGVAR(originalWeapon), _originalWeapon, true];
 
 _vehicle setVariable [QGVAR(compatMags), _mags];
 _vehicle setVariable [QGVAR(mountedWeapon), _weapon, true];
+_vehicle setVariable [QGVAR(useTurret), _turret isNotEqualTo [-1], true];
 
 if (isNil {GVAR(controllers) get typeOf _vehicle}) then {
     GVAR(controllers) set [typeOf _vehicle, getText (_vCfg >> QGVAR(controller))];
@@ -81,7 +83,6 @@ if (isNil {GVAR(controllers) get typeOf _vehicle}) then {
 };
 
 // Add weapon turret to vehicle
-private _turret = getArray (_vCfg >> QGVAR(turret));
 _vehicle addWeaponTurret [_weaponName, _turret];
 _vehicle selectWeaponTurret [_weaponName, _turret];
 
