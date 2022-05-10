@@ -15,7 +15,7 @@
         
         // Initalize agent
         GVAR(pathingAgent) = createAgent ["B_Soldier_F", [0,0,0], [], 0, "CAN_COLLIDE"];
-        hideObjectGlobal GVAR(pathingAgent);
+        [GVAR(pathingAgent), QUOTE(ADDON)] call EFUNC(common,hideUnit);
         GVAR(pathingAgent) addEventHandler ["PathCalculated", {
             params ["_agent", "_path"];
             if (!GVAR(findingPath)) exitWith {};
