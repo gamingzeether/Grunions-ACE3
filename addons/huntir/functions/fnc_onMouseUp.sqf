@@ -18,6 +18,5 @@
 params ["", "_button"];
 
 if (_button == 0) then {
-    GVAR(panId) call CBA_fnc_removePerFrameHandler;
-    GVAR(panId) = -1;
+    GVAR(mouseDown) = false;
 };
