@@ -1,7 +1,7 @@
 ace_grunionstweaks
 ============
 
-Place for misc changes that don't fit anywhere else
+Place for small changes that don't fit anywhere else
 
 List of changes
 - More smoke launcher rounds

@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Finds a path
+ * Finds a path to target position and triggers pathing event
  *
  * Arguments:
  * 0: Vehicle to copy <OBJECT>

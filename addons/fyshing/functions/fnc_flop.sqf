@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Makes a fysh flop around towards an enemy
+ * Makes a fysh flop around
+ * Tries to flop towards an enemy of _side
  *
  * Arguments:
  * 0: Projectile <OBJECT>

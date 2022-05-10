@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Works through voice prompt queue
+ * Works through voice prompt queue until it is empty
  * 
  * Arguments:
  * None

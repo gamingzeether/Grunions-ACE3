@@ -1,4 +1,21 @@
 #include "script_component.hpp"
+/*
+ * Author: GamingZeether
+ * Initalizes commander smoke fix
+ * Fixes bug where commander does not get access to smoke screens if they
+ * get in the commander seat and another player entered the vehicle first
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * call ace_grunionstweaks_fnc_initSmokeFix
+ * 
+ * Public: No
+ */
 
 if (!hasInterface) exitWith {};
 

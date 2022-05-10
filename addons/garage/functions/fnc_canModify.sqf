@@ -13,10 +13,12 @@
  * Example:
  * [cursorObject, player] call ace_garage_fnc_canModify
  *
- * Public: No
+ * Public: Yes
  */
 
 params ["_vehicle", "_unit"];
+
+if (!alive _vehicle) exitWith {false};
 
 //copied from ace_repair_fnc_can_repair
 private _return = true;
@@ -43,4 +45,4 @@ if (!("All" in _fullRepairLocations)) then {
     } forEach _fullRepairLocations;
 };
 
-_return && {alive _vehicle};
+_return

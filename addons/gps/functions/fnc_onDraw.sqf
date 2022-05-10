@@ -17,9 +17,11 @@
 
 params ["_control"];
 
+// Draw player position
 private _vehicle = vehicle ACE_player;
 _control drawIcon ["a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa", [0.2, 0.3, 1, 1], _vehicle, 35, 35, getDir _vehicle];
 
+// Draw path
 if (GVAR(isNavigating)) then {
     private _prevPos;
     private _nextPos = getPosASL _vehicle;

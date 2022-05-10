@@ -33,6 +33,7 @@ private _azimuth = (_offset select 0) atan2 (_offset select 1);
 
 private _d = (_speed * _speed * _speed * _speed) - TRAJECTORY_GRAVITY * (TRAJECTORY_GRAVITY * _distance2D * _distance2D + 2 * _speed * _speed * _heightOffset);
 private _sqrt = sqrt _d;
+// Only need 1 solution and low usually has shorter time to impact
 private _elevationLow  = atan ((_speed * _speed - _sqrt) / (TRAJECTORY_GRAVITY * _distance2D));
 // private _elevationHigh = atan ((_speed * _speed + _sqrt) / (TRAJECTORY_GRAVITY * _distance2D));
 

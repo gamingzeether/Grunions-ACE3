@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Cancels pathing
+ * Cancels active navigation
  *
  * Arguments:
  * None

@@ -14,6 +14,7 @@ class CfgPatches {
     };
 };
 
+#include "\z\ace\addons\common\define.hpp"
 #include "ui\RscAttributes.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"

@@ -2,5 +2,3 @@
 
 [QGVAR(camoChanged), FUNC(changeCamo)] call CBA_fnc_addEventHandler;
 [QGVAR(animChanged), FUNC(changeAnimation)] call CBA_fnc_addEventHandler;
-
-if (!hasInterface) exitWith {};

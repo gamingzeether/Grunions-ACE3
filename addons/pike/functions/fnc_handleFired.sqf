@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: PabstMirror
- * Handles firing the 40mm pike grenade/rocket
+ * Handles firing the pike grenade and replaces it with the missile
  *
  * Arguments:
  * FiredEH
@@ -23,7 +23,7 @@ if (!isText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) exitWith {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
     TRACE_7("rocket stage",_unit, _weapon, _muzzle, _mode, _ammo, _magazine, _projectile);
 
-    //If null (deleted or hit water) exit:
+    // If null (deleted or hit water) exit:
     if (isNull _projectile) exitWith {};
 
     // Save grenade state

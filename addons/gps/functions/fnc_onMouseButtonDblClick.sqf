@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call ace_gps_fnc_onMouseButtonDblClick
+ * call ace_gps_fnc_onMouseButtonDblClick
  *
  * Public: No
  */

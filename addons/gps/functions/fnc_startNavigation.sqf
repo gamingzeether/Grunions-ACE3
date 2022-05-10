@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
- * Starts following path
+ * Starts navigation after pathing agent finds a path
+ * Modifies the path
  *
  * Arguments:
  * None

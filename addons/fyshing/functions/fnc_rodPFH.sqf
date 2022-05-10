@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: GamingZeether
+ * Runs when rod is cast and bobber is active
  * Called from per frame handler
  *
  * Arguments:
@@ -22,8 +23,8 @@
 params ["_args", "_handle"];
 _args params ["_bobber", "_line", "_helper", "_unit", "_startTime"];
 
+// Check to end fishing
 private _distance = _helper distance _bobber;
-private _elapsedTime = CBA_missionTime - _startTime;
 
 private _exitCode = -1;
 if (GVAR(state) == ROD_CANCEL || {!([_unit] call FUNC(canFish))}) then {
@@ -42,7 +43,7 @@ if (GVAR(state) == ROD_CANCEL || {!([_unit] call FUNC(canFish))}) then {
     };
 };
 
-if (_exitCode != -1 && {_elapsedTime > 0.5}) exitWith {
+if (_exitCode != -1 && {CBA_missionTime - _startTime > 0.5}) exitWith {
     private _message = ["", LLSTRING(Caught), LLSTRING(HookBroke), LLSTRING(LineBroke)] select _exitCode;
     if (_exitCode == 1) then {
         private _caughtFish = [_bobber] call FUNC(getCaughtFish);
@@ -76,6 +77,7 @@ if (GVAR(reeling)) then {
     ropeUnwind [_line, 5, (_distance - 1) max (ropeLength _line - 1)];
 };
 
+// Update rope start position
 private _pos = _unit selectionPosition ["proxy:\a3\characters_f\proxies\pistol.001", 1];
 private _weaponDirAndUp = _unit selectionVectorDirAndUp ["proxy:\a3\characters_f\proxies\pistol.001", 1];
 private _v2 = _unit vectorModelToWorld (_weaponDirAndUp select 0); //right
