@@ -7,12 +7,12 @@
  * Player unit <OBJECT>
  *
  * Return Value:
- * Can fish <BOOL?
+ * Can fish <BOOL>
  *
  * Example:
  * [ACE_Player] call ace_fyshing_fnc_canFish;
  *
- * Public: No
+ * Public: Yes
  */
 
 params ["_unit"];

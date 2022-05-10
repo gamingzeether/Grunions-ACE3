@@ -2,6 +2,7 @@
 
 ["CBA_settingsInitialized", {
     if (GVAR(enabled) && {hasInterface}) then {
+        // Navigation variables
         GVAR(activeNavMarkers) = [];
         GVAR(turns) = [];
         GVAR(findingPath) = false;

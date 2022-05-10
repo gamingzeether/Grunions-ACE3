@@ -19,7 +19,7 @@
 
 params ["_ctrl", "_index"];
 
-//update listbox
+// Update listbox
 private _display = ctrlParent _ctrl;
 private _isChecked = (_ctrl lbPicture _index != toLower getText (configfile >> "RscCheckBox" >> "textureChecked"));
 private _curTab = _display getVariable [QGVAR(listboxTab), -1];
@@ -36,9 +36,9 @@ private _checkboxTextures = [
 private _imagePath = _checkboxTextures select _isChecked;
 _ctrl lbSetPicture [_index, _imagePath];
 
-//update vehicle
 private _lbSize = (lbSize _ctrl) - 1;
 if (_isComponentsTab) then {
+    // Play animation
     private _phase = parseNumber _isChecked;
     private _animations = [_source, _phase];
 
@@ -76,6 +76,7 @@ if (_isComponentsTab) then {
         [QGVAR(animChanged), [_vehicle, _animations select _i, _animations select (_i + 1)]] call CBA_fnc_globalEvent;
     };
 } else {
+    // Apply textures and materials
     for "_i" from 0 to _lbSize do {
         _ctrl lbSetPicture [_i, _checkboxTextures select (_i == _index)];
     };
