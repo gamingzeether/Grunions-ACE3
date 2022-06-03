@@ -110,6 +110,18 @@ class CfgVehicles {
         hiddenSelectionsTextures[] = {"#(argb,8,8,3)color(0.009,0.009,0.009,1.0,co)"};
         segmentType = QGVAR(fuelHoseSegment);
         model = QPATHTOF(data\hose.p3d);
+    class Man;
+    class CAManBase: Man {
+        class ACE_SelfActions {
+            class GVAR(deployContainer) {
+                displayName = CSTRING(Place);
+                condition = QUOTE([ACE_player] call FUNC(canDeploy));
+                statement = QUOTE([ACE_player] call FUNC(deployContainer));
+                exceptions[] = {};
+                showDisabled = 1;
+                icon = QPATHTOF(ui\icon_refuel_interact.paa);
+            };
+        };
     };
 
     class All;
