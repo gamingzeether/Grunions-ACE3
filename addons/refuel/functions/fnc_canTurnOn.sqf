@@ -43,6 +43,7 @@ private _isFull = if (_refuelContainer) then {
 };
 
 !(_nozzle getVariable [QGVAR(isRefueling), false]) &&
+    {!(_nozzle getVariable [QGVAR(isSiphoning), false])} && 
     {[_source] call FUNC(getFuel) != 0} &&
     {!isNull _sink} &&
     {!_isFull} &&

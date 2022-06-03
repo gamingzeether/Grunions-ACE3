@@ -91,6 +91,20 @@ class CfgVehicles {
         };
     };
 
+    class Man;
+    class CAManBase: Man {
+        class ACE_SelfActions {
+            class GVAR(deployContainer) {
+                displayName = CSTRING(Place);
+                condition = QUOTE([ACE_player] call FUNC(canDeploy));
+                statement = QUOTE([ACE_player] call FUNC(deployContainer));
+                exceptions[] = {};
+                showDisabled = 1;
+                icon = QPATHTOF(ui\icon_refuel_interact.paa);
+            };
+        };
+    };
+
     class All;
     class Static: All {};
     class Building: Static {};

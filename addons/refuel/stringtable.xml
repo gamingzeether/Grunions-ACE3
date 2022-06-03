@@ -547,5 +547,26 @@
             <Czech>Souřadnice na modelu pro připojení hadice na palivo.</Czech>
             <Spanish>Coordenadas del modelo usado para la boquilla de la manguera</Spanish>
         </Key>
+        <Key ID="STR_ACE_Refuel_Place">
+            <English>Place Container</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_Pickup">
+            <English>Pick Up Container</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_Siphon">
+            <English>Start Siphoning</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_SiphonStarted">
+            <English>Siphon Started</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_SiphonCompleted">
+            <English>Siphon Completed</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_5LContainer_Empty_DisplayName">
+            <English>5L Fuel Container (Empty)</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_5LContainer_Full_DisplayName">
+            <English>5L Fuel Container (Full)</English>
+        </Key>
     </Package>
 </Project>
