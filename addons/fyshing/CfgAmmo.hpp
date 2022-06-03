@@ -35,4 +35,15 @@ class CfgAmmo {
         indirectHit = 8;
         indirectHitRange = 5;
     };
+    
+    class B_12Gauge_Pellets_Submunition;
+    class GVAR(flyshette): B_12Gauge_Pellets_Submunition {
+        submunitionAmmo = QGVAR(flyshette_submunition);
+        submunitionConeAngle = 1;
+        submunitionConeType[] = { "poissondisc", 20 };
+    };
+    class B_12Gauge_Pellets_Submunition_Deploy;
+    class GVAR(flyshette_submunition): B_12Gauge_Pellets_Submunition_Deploy {
+        hit = 5;
+    };
 };

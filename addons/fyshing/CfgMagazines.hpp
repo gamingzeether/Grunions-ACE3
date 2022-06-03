@@ -31,4 +31,15 @@ class CfgMagazines {
         count = 3;
         mass = 34;
     };
+    
+    class UGL_FlareWhite_F;
+    class ACE_40mm_Flyshchette: UGL_FlareWhite_F {
+        displayName = CSTRING(Flyshchette_Magazine_displayName);
+        displayNameShort = CSTRING(Flyshchette_Magazine_displayNameShort);
+        ammo = QGVAR(flyshette);
+        count = 1;
+        initSpeed = 270;
+        mass = 3;
+        model = "\A3\animals_f\Fishes\ornate_F.p3d";
+    };
 };
