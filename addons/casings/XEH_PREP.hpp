@@ -1,2 +1,0 @@
-PREP(firedEH);
-PREP(getCasingEjectDirection);
