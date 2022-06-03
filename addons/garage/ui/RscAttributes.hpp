@@ -1,3 +1,4 @@
+#include "\z\ace\addons\common\define.hpp"
 #include "defines.hpp"
 
 class RscButtonArsenal;
