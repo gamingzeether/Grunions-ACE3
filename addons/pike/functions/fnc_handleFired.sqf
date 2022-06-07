@@ -25,6 +25,9 @@ if (!isText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) exitWith {
 
     // If null (deleted or hit water) exit:
     if (isNull _projectile) exitWith {};
+    
+    // Minimum arming distance
+    if (_projectile distance _unit <= 15) exitWith {};
 
     // Save grenade state
     private _posASL = getPosASL _projectile;
