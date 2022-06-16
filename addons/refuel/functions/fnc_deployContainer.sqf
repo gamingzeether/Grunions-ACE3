@@ -43,7 +43,7 @@ private _pickupAction = [
     FUNC(pickupContainer),
     {
         params ["_container", "_player"];
-        [_player, _container] call FUNC(canDisconnect)
+        [_player, _container] call FUNC(canDisconnect) || {[_player, _container] call FUNC(canTakeNozzle)}
     }
 ] call EFUNC(interact_menu,createAction);
 [_container, 0, ["ACE_MainActions", QGVAR(Refuel)], _pickupAction] call EFUNC(interact_menu,addActionToObject);
