@@ -45,7 +45,7 @@ _args params ["_weaponOriginal", "_weapon", "_model", "_scale", "_type"];
         };
         if (_exit) exitWith {};
         
-        [_weapon, _vehicle, [], _model, _scale, _weaponOriginal] call FUNC(mountWeapon);
+        [QGVAR(mountWeapon), [_weapon, _vehicle, [], _model, _scale, _weaponOriginal]] call CBA_fnc_globalEvent;
     },
     {},
     format [LLSTRING(mount_title), getText (configFile >> "CfgWeapons" >> _weapon >> "displayName")]
