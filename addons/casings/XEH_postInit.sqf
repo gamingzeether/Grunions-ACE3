@@ -14,11 +14,9 @@
     
     ["CAManBase", "FiredMan", {call FUNC(createCasing)}] call CBA_fnc_addClassEventHandler;
 
-    ["ace_settingsChanged", {
-        if (count GVAR(casings) == GVAR(maxCasings)) exitWith {};
-    
+    ["CBA_SettingChanged", {
         // If maxCasings changed, then delete casings and resize the array
-        for "_i" from (count GVAR(casings)) to GVAR(maxCasings) - 1 do {
+        for "_i" from (GVAR(maxCasings) - 1) to (count GVAR(casings) - 1) do {
             deleteVehicle (GVAR(casings) select _i);
         };
         GVAR(casings) resize GVAR(maxCasings);
