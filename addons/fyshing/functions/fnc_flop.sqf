@@ -27,11 +27,10 @@ if (vectorMagnitude velocity _projectile > 0.1) exitWith {
 
 private _pos = getPosASL _projectile;
 
-private _nearTargets = _pos nearEntities ["Man", 50];
+private _nearTargets = _pos nearEntities ["Man", 100];
 _nearTargets = _nearTargets select {
     (alive _x) && 
-    {[side _x, _side] call BIS_fnc_sideIsEnemy} && 
-    {!lineIntersects [_pos, getPosASL _x, _projectile, _x]}
+    {[side _x, _side] call BIS_fnc_sideIsEnemy}
 };
 
 private _targetPos = [];
