@@ -32,15 +32,10 @@ if (_isUAV) then {
 private _vehicleRole = GVAR(controllers) get typeOf _vehicle;
 
 if (!isNil "_vehicleRole" && {((_isUAV && local gunner _vehicle) || {_newRole isEqualTo _vehicleRole}) && {_vehicle != ACE_player}}) then {
-    GVAR(runPFH) = true;
-    GVAR(vehicle) = _vehicle;
     private _mountedWeapon = _vehicle getVariable [QGVAR(mountedWeapon), objNull];
     if (isNull _mountedWeapon) exitWith {};
-    
-    private _playerID = owner ACE_player;
-    if (_playerID != owner _mountedWeapon) then {
-        _mountedWeapon setOwner _playerID;
-    };
+    GVAR(runPFH) = true;
+    GVAR(vehicle) = _vehicle;
 } else {
     // Exiting
     if (isNil "_vehicleRole" || {_newRole isNotEqualTo _vehicleRole}) then {

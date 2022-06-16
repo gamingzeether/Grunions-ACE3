@@ -11,6 +11,11 @@ GVAR(runPFH) = true;
 ["turret", {
     [ACE_player] call FUNC(onVehicleChanged);
 }] call CBA_fnc_addPlayerEventHandler;
+
 ["ACE_controlledUAV", {
     [ACE_player, true] call FUNC(onVehicleChanged);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(mountWeapon), {
+    _this call FUNC(mountWeapon);
 }] call CBA_fnc_addEventHandler;
