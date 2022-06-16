@@ -39,7 +39,7 @@ params ["_vehicle", "_unit", "_weapon"];
         
         [_unit, _weapon] call CBA_fnc_removeWeapon;
         _weapon = ([_weapon] call CBA_fnc_weaponComponents) select 0;
-        [_weapon, _vehicle] call FUNC(mountWeapon);
+        [QGVAR(mountWeapon), [_weapon, _vehicle]] call CBA_fnc_globalEvent;
     },
     {},
     format [LLSTRING(mount_title), getText (configFile >> "CfgWeapons" >> _weapon >> "displayName")]
