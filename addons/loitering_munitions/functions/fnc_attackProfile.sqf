@@ -21,31 +21,56 @@
 
 params ["_seekerTargetPos", "_args", "_attackProfileStateParams"];
 _args params ["_firedEH"];
+_firedEH params ["_shooter","","","","_ammo","","_projectile"];
 
 if (_attackProfileStateParams isEqualTo []) then {
-    _firedEH params ["_shooter","","","","_ammo","","_projectile"];
+    private _ammoConfig = (configFile >> "CfgAmmo" >> _ammo);
     
-    if (isNil QGVAR(startPosWorld)) then {
-        GVAR(startPosWorld) = getPosASL _shooter;
-    };
-    if (isNil QGVAR(radius)) then {
-        GVAR(radius) = (call FUNC(getLoiterDistance)) select 0;
-    };
-    if (isNil QGVAR(altitude)) then {
-        GVAR(altitude) = (getPosASL ACE_player select 2) + 100;
-    };
+    private _followShooter = (getNumber (_ammoConfig >> QUOTE(ADDON) >> "loiterShooter") == 1);
     
-    _attackProfileStateParams set [0, STATE_GAINALT];
-    _attackProfileStateParams set [1, getPosASL _shooter];
-    _attackProfileStateParams set [2, GVAR(startPosWorld)];
-    _attackProfileStateParams set [3, GVAR(radius)];
-    _attackProfileStateParams set [4, GVAR(altitude)];
-    _attackProfileStateParams set [5, getNumber (configOf _projectile >> QUOTE(ADDON) >> "minTerrainHeight")];
-    
-    _attackProfileStateParams set [6, [0]];
-    _attackProfileStateParams set [7, 0];
+    if (getNumber (_ammoConfig >> QUOTE(ADDON) >> "noParams") == 1) then {
+        _attackProfileStateParams set [0, STATE_GAINALT];
+        _attackProfileStateParams set [1, getPosASL _shooter];
+        _attackProfileStateParams set [2, getPosASL _shooter];
+        _attackProfileStateParams set [3, ([_ammo] call FUNC(getLoiterDistance)) select 0];
+        _attackProfileStateParams set [4, getPosASL ACE_player select 2];
+        _attackProfileStateParams set [5, getNumber (_ammoConfig >> QUOTE(ADDON) >> "minTerrainHeight")];
+        
+        _attackProfileStateParams set [6, [0]];
+        _attackProfileStateParams set [7, 0];
+        
+        _attackProfileStateParams set [8, _followShooter];
+    } else {
+        if (isNil QGVAR(startPosWorld)) then {
+            GVAR(startPosWorld) = getPosASL _shooter;
+        };
+        
+        if (isNil QGVAR(radius)) then {
+            GVAR(radius) = ([_ammo] call FUNC(getLoiterDistance)) select 0;
+        };
+        
+        if (isNil QGVAR(altitude)) then {
+            GVAR(altitude) = getPosASL ACE_player select 2;
+        };
+        
+        _attackProfileStateParams set [0, STATE_GAINALT];
+        _attackProfileStateParams set [1, getPosASL _shooter];
+        _attackProfileStateParams set [2, GVAR(startPosWorld)];
+        _attackProfileStateParams set [3, GVAR(radius)];
+        _attackProfileStateParams set [4, GVAR(altitude)];
+        _attackProfileStateParams set [5, getNumber (_ammoConfig >> QUOTE(ADDON) >> "minTerrainHeight")];
+        
+        _attackProfileStateParams set [6, [0]];
+        _attackProfileStateParams set [7, 0];
+        
+        _attackProfileStateParams set [8, _followShooter];
+    };
 };
-_attackProfileStateParams params ["_state", "_launchPos", "_loiterCenter", "_loiterRadius", "_loiterHeight", "_minHeight", "_heightValues", "_counter"];
+_attackProfileStateParams params ["_state", "_launchPos", "_loiterCenter", "_loiterRadius", "_loiterHeight", "_minHeight", "_heightValues", "_counter", "_followShooter"];
+
+if (_followShooter) then {
+    _loiterCenter = getPosASL _shooter;
+};
 
 private _returnTargetPos = [0, 0, 0];
 

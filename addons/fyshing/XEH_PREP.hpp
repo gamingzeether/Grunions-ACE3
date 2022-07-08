@@ -5,4 +5,6 @@ PREP(getCaughtFish);
 PREP(getRandomFyshType);
 PREP(handleFired);
 PREP(handleWeaponChanged);
+PREP(Fysh_onFired);
 PREP(rodPFH);
+PREP(seekerType_Fysh);

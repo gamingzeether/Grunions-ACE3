@@ -13,6 +13,9 @@
         <Key ID="STR_ACE_Fyshing_FyshExplosive_DisplayName">
             <English>Fysh (Explosive)</English>
         </Key>
+        <Key ID="STR_ACE_Fyshing_FyshLoitering_DisplayName">
+            <English>Fysh (Loitering)</English>
+        </Key>
         <Key ID="STR_ACE_Fyshing_fyshingRod_displayName">
             <English>Fyshing Rod</English>
         </Key>
