@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call ace_fyshing_fnc_Fysh_onFired
+ * [] call ace_fyshing_fnc_fysh_onFired
  *
  * Public: No
  */
