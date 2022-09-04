@@ -43,5 +43,8 @@
         <Key ID="STR_ACE_Fyshing_Flyshchette_Magazine_displayNameShort">
             <English>Flyschette</English>
         </Key>
+        <Key ID="STR_ACE_Fyshing_Cap_displayName">
+            <English>Cap (Fysh)</English>
+        </Key>
     </Package>
 </Project>
