@@ -12,15 +12,21 @@
  *  1: Max distance <NUMBER>
  *
  * Example:
- * [] call ace_loitering_munitions_fnc_getLoiterDistance
+ * [ammo] call ace_loitering_munitions_fnc_getLoiterDistance
  *
  * Public: No
  */
 
+params ["_ammo"];
+
+if (isNil "_ammo") then {
+    _ammo = getText (configFile >> "CfgMagazines" >> currentMagazine (vehicle ACE_player) >> "ammo");
+};
+
 [
-    [],
+    [_ammo],
     {
-        private _ammo = getText (configFile >> "CfgMagazines" >> currentMagazine (vehicle ACE_player) >> "ammo");
+        params ["_ammo"];
         private _ammoCfg = (configFile >> "CfgAmmo" >> _ammo >> QUOTE(ADDON));
         if (getNumber (_ammoCfg >> "enabled") != 1) exitWith {[-1, -1]};
         
