@@ -144,6 +144,7 @@ PREP(removeSpecificMagazine);
 PREP(requestCallback);
 PREP(resetAllDefaults);
 PREP(restoreVariablesJIP);
+PREP(rscObjectHelper);
 PREP(runAfterSettingsInit);
 PREP(runTests);
 PREP(sanitizeString);

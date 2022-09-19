@@ -40,3 +40,4 @@ PREP(startTimer);
 PREP(triggerType);
 PREP(allowDefuse);
 PREP(isAllowedDefuse);
+PREP(checkDetonateHandlers);
