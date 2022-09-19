@@ -22,6 +22,17 @@ class CfgMagazines {
         picture = QPATHTOF(UI\ace_fyshing_fysh_ca.paa);
     };
     
+    class GVAR(fysh_loitering): SmokeShell {
+        author = ECSTRING(common,ACETeam);
+        ammo = QGVAR(fysh_loitering_throw);
+        displayName = CSTRING(FyshLoitering_DisplayName);
+        displayNameShort = CSTRING(FyshLoitering_DisplayName);
+        descriptionShort = CSTRING(Fysh_DescriptionShort);
+        mass = 20;
+        model = "\A3\animals_f\Fishes\ornate_F";
+        picture = QPATHTOF(UI\ace_fyshing_fysh_ca.paa);
+    };
+    
     class ACE_40mm_Pike;
     class ACE_40mm_PikeFysh: ACE_40mm_Pike {
         displayName = CSTRING(pike_magazine_displayName);
