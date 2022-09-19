@@ -50,7 +50,7 @@ if (_exitCode != -1 && {CBA_missionTime - _startTime > 0.5}) exitWith {
         ["ace_caughtFish", [ACE_player, _caughtFish]] call CBA_fnc_globalEvent;
         
         if (_caughtFish isNotEqualTo "nothing") then {
-            [_unit, selectRandom [QGVAR(fysh), QGVAR(fysh_explosive)], true] call CBA_fnc_addItem;
+            [_unit, selectRandom [QGVAR(fysh), QGVAR(fysh_explosive), QGVAR(fysh_loitering)], true] call CBA_fnc_addItem;
             _caughtFish = "a " + _caughtFish;
         };
         _message = format [_message, _caughtFish];
