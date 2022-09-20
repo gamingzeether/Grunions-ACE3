@@ -34,7 +34,7 @@ if (isNil "_target" || {isNull _target}) then {
         
         private _shooterSide = side _shooter;
         _nearTargets = _nearTargets select {
-            {alive _x} && 
+            (alive _x) && 
             {[_projectile, aimPos _x, _seekerAngle] call EFUNC(missileguidance,checkSeekerAngle)} && 
             {[_projectile, _x] call EFUNC(missileguidance,checkLos)} && 
             {[side _x, _shooterSide] call BIS_fnc_sideIsEnemy}
@@ -46,8 +46,8 @@ if (isNil "_target" || {isNull _target}) then {
     _targetParams set [0, _target];
 };
 
-if (isNull _target) exitWith {[0, 0, 0]};
-if (!alive _target) exitWith {_target = objNull};
+if (isNil "_target" || {isNull _target}) exitWith {[0, 0, 0]};
+if (!alive _target) exitWith {_targetParams set [0, objNull]};
 
 private _foundTargetPos = aimPos _target;
 
