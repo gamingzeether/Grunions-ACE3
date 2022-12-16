@@ -4,27 +4,6 @@
 // Spare barrel item to magazine
 ["ACE_SpareBarrel_Item", "ACE_SpareBarrel"] call EFUNC(common,registerItemReplacement);
 
-if (hasInterface) then {
-    //hide ace unjam if dzn extended jamming is loaded
-    GVAR(showUnjam) = false;
-    if (!isClass (configfile >> "CfgPatches" >> "dzn_EJAM")) then {
-        GVAR(showUnjam) = true;
-        
-        // Add keybinds
-        ["ACE3 Weapons", QGVAR(unjamWeapon), localize LSTRING(UnjamWeapon), {
-            // Conditions: canInteract
-            if !([ACE_player, objNull, ["isNotInside"]] call EFUNC(common,canInteractWith)) exitWith {false};
-            // Conditions: specific
-    
-            if !(GVAR(enabled) && {[ACE_player] call FUNC(canUnjam)}) exitWith {false};
-    
-            // Statement
-            [ACE_player, currentMuzzle ACE_player, false] call FUNC(clearJam);
-            true
-        }, {false}, [19, [true, false, false]], false] call CBA_fnc_addKeybind; //SHIFT + R Key
-    };
-};
-
 ["CBA_settingsInitialized", {
     TRACE_1("SettingsInitialized eh", GVAR(enabled));
     if (!GVAR(enabled)) exitWith {};
@@ -50,9 +29,28 @@ if (hasInterface) then {
 
     if !(hasInterface) exitWith {};
 
-    GVAR(cacheWeaponData) = createHashMap;
-    GVAR(cacheAmmoData) = createHashMap;
-    GVAR(cacheSilencerData) = createHashMap;
+    //hide ace unjam if dzn extended jamming is loaded
+    GVAR(showUnjam) = false;
+    if (!(["dzn_EJAM"] call EFUNC(common,isModLoaded)) && dzn_EJAM_Force) then {
+        GVAR(showUnjam) = true;
+        
+        // Add keybinds
+        ["ACE3 Weapons", QGVAR(unjamWeapon), localize LSTRING(UnjamWeapon), {
+            // Conditions: canInteract
+            if !([ACE_player, objNull, ["isNotInside"]] call EFUNC(common,canInteractWith)) exitWith {false};
+            // Conditions: specific
+    
+            if !(GVAR(enabled) && {[ACE_player] call FUNC(canUnjam)}) exitWith {false};
+    
+            // Statement
+            [ACE_player, currentMuzzle ACE_player, false] call FUNC(clearJam);
+            true
+        }, {false}, [19, [true, false, false]], false] call CBA_fnc_addKeybind; //SHIFT + R Key
+    };
+
+    GVAR(cacheWeaponData) = call CBA_fnc_createNamespace;
+    GVAR(cacheAmmoData) = call CBA_fnc_createNamespace;
+    GVAR(cacheSilencerData) = call CBA_fnc_createNamespace;
 
     //Add Take EH if required
     if (GVAR(unJamOnReload) || {GVAR(cookoffCoef) > 0}) then {
