@@ -24,6 +24,25 @@ class CfgVehicles {
         GVAR(turret)[] = {-1};
         GVAR(launchersAllowed) = 0;
     };
+    class Kart_01_Base_F: Car_F {
+        GVAR(mountingPositions)[] = { {0, 1, -0.5} };
+        unitInfoType = "RscUnitInfoTank";
+        GVAR(aimRestrictions)[] = { 0, 10, 45, 35 };
+        GVAR(controller) = "driver";
+        GVAR(turret)[] = {-1};
+        GVAR(launchersAllowed) = 0;
+    };
+    class StaticWeapon: LandVehicle {
+        MACRO_ATTACH_WEAPON
+    };
+    class Static_Designator_01_base_F: StaticWeapon {
+        GVAR(mountingPositions)[] = { {0.2,0,0.1} };
+        GVAR(aimRestrictions)[] = { 0, 0, -1, -1 };
+        GVAR(controller) = "GUNNER";
+        GVAR(turret)[] = {0};
+        GVAR(launchersAllowed) = 0;
+        GVAR(memPoint) = "maingun";
+    };
     
     class Air;
     class Helicopter: Air {
@@ -38,7 +57,7 @@ class CfgVehicles {
         GVAR(launchersAllowed) = 1;
     };
     
-    
+    // CSW bags
     class Weapon_Bag_Base;
     class B_HMG_01_weapon_F: Weapon_Bag_Base {
         GVAR(enabled) = 1;
