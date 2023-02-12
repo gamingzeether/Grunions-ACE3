@@ -31,7 +31,6 @@ _unit playActionNow "ThrowGrenade";
     _bobber setCenterOfMass [0,0.01,-0.1];
     
     private _ropeParent = createVehicle ["Land_PortableHelipadLight_01_F", [0,0,0]];
-    hideObject _ropeParent;
     [_ropeParent, QUOTE(ADDON)] call EFUNC(common,hideUnit);
     _ropeParent setPosASL _startPos;
     
