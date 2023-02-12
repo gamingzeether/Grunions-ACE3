@@ -47,7 +47,9 @@ params ["_vehicle", "_unit", "_weapon"];
         // Reset variables
         _vehicle setVariable [QGVAR(freePositions), nil, true];
         _vehicle setVariable [QGVAR(compatMags), nil, true];
+        _vehicle setVariable [QGVAR(compatMags), nil, true];
         _vehicle setVariable [QGVAR(mountedWeapon), nil, true];
+        _vehicle setVariable [QGVAR(mountedWeaponName), nil, true];
         _vehicle setVariable [QGVAR(eventFired), nil, true];
         _vehicle setVariable [QGVAR(eventMPKilled), nil, true];
     },

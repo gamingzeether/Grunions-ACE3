@@ -24,6 +24,7 @@ if (!_init) then {
         private _turret = getArray (configOf _vehicle >> QGVAR(turret));
         
         // Remove specific mag with count
+        private _removed = false;
         private _loadedMags = [];
         {
             _x params ["_xClass", "_xTurret", "_xCount"];
@@ -34,6 +35,7 @@ if (!_init) then {
         for "_i" from 0 to count _loadedMags - 1 do {
             if (((_loadedMags select _i) select 2) == _count) exitWith {
                 _loadedMags deleteAt _i;
+                _removed = true;
             };
         };
         _vehicle removeMagazinesTurret [_class, _turret];
@@ -43,7 +45,28 @@ if (!_init) then {
         
         //[_unit, _class, _count, true] call CBA_fnc_addMagazine;
         
+        if (!_removed) exitWith {};
+        
         // Modified from CBA_fnc_addMagazine
+        // Check if it uses csw carry mags
+        if (_vehicle getVariable [QGVAR(cswMags), false]) then {
+            private _found = false;
+            private _cswMagGroups = configFile >> QEGVAR(csw,groups);
+            for "_i" from 0 to (count _cswMagGroups - 1) do { 
+                private _group = _cswMagGroups select _i;
+                for "_j" from 0 to (count _group - 1) do { 
+                    private _configName = configName (_group select _j);
+                    if (_configName == _class) then {
+                        _class = configName _group;
+                        _found = true;
+                        break;
+                    };
+                };
+                if (_found) then {
+                    break;
+                };
+            };
+        };
         if (_count > 0) then {
             if (_unit canAdd _class) then {
                 _unit addMagazine [_class, _count];
@@ -62,8 +85,13 @@ if (!_init) then {
             private _load = GVAR(toLoad) deleteAt (count GVAR(toLoad) - 1);
             _load params ["_vehicle", "_unit", "_class", "_count"];
             private _turret = getArray (configOf _vehicle >> QGVAR(turret));
+            private _weapon = (_vehicle weaponsTurret _turret) select 0;
             
             if ([_unit, _class, _count] call CBA_fnc_removeMagazine) then {
+                // Check if it uses csw carry mags
+                if (_vehicle getVariable [QGVAR(cswMags), false]) then {
+                    _class = [_vehicle, _turret, _class] call EFUNC(csw,reload_getVehicleMagazine);
+                };
                 _vehicle addMagazineTurret [_class, _turret, _count];
             };
         };
