@@ -29,6 +29,7 @@ if (_isUAV) then {
     _vehicle = vehicle ACE_player;
     _newRole = assignedVehicleRole ACE_player select 0;
 };
+if (!(_vehicle getVariable QGVAR(usePFH))) exitWith {};
 private _vehicleRole = GVAR(controllers) get typeOf _vehicle;
 
 if (!isNil "_vehicleRole" && {((_isUAV && local gunner _vehicle) || {_newRole isEqualTo _vehicleRole}) && {_vehicle != ACE_player}}) then {
