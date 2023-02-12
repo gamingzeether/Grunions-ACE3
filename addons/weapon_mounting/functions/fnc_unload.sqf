@@ -21,7 +21,13 @@
 params ["_vehicle", "_unit", "_args", ["_start", true]];
 
 private _turret = getArray (configOf _vehicle >> QGVAR(turret));
-private _compatMags = _vehicle getVariable [QGVAR(compatMags), []];
+private _compatMags = [];
+if (_vehicle getVariable [QGVAR(cswMags), false]) then {
+    private _weaponName = _vehicle getVariable QGVAR(mountedWeaponName);
+    _compatMags = [_weaponName, true] call CBA_fnc_compatibleMagazines;
+} else {
+    _compatMags = _vehicle getVariable [QGVAR(compatMags), []];
+};
 {
     _x params ["_xClass", "_xTurret", "_xCount"];
     if (_xTurret isEqualTo _turret && {_xClass in _compatMags}) then {
