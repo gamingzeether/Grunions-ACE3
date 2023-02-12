@@ -58,7 +58,25 @@ if (local _vehicle) then {
     _weapon hideSelection [_flashSelection, true];
     
     // Set variables
-    private _mags = [_weaponName, true] call CBA_fnc_compatibleMagazines;
+    private _baseMags = [_weaponName, true] call CBA_fnc_compatibleMagazines;
+    private _mags = [];
+    private _cswMagGroups = configFile >> QEGVAR(csw,groups);
+    for "_i" from 0 to count _cswMagGroups - 1 do { 
+        private _group = _cswMagGroups select _i;
+        for "_j" from 0 to count _group - 1 do { 
+            private _configName = configName (_group select _j);
+            if (_configName in _baseMags) then {
+                _mags pushBack configName _group;
+            };
+        }
+    };
+    _mags = _mags arrayIntersect _mags;
+    private _usesCSWMags = _mags isNotEqualTo [];
+    if (_usesCSWMags) then {
+        _mags = _mags;
+    } else {
+        _mags = _baseMags;
+    };
     private _turret = getArray (_vCfg >> QGVAR(turret));
     
     /*
@@ -77,7 +95,9 @@ if (local _vehicle) then {
     _weapon setVariable [QGVAR(useTurret), _turret isNotEqualTo [-1], true];
     
     _vehicle setVariable [QGVAR(compatMags), _mags, true];
+    _vehicle setVariable [QGVAR(cswMags), _usesCSWMags, true];
     _vehicle setVariable [QGVAR(mountedWeapon), _weapon, true];
+    _vehicle setVariable [QGVAR(mountedWeaponName), configName _wCfg, true];
     _vehicle setVariable [QGVAR(useTurret), _turret isNotEqualTo [-1], true];
     
     if (isNil {GVAR(controllers) get typeOf _vehicle}) then {
@@ -148,7 +168,7 @@ private _unmountAction = [
     format [LLSTRING(unmountAction_displayName), getText (_wCfg >> "displayName")],
     "",
     {call FUNC(unmountWeapon)},
-    {true},
+    {!call FUNC(canUnload)},
     {},
     _weaponName,
     _mountingPosition,
