@@ -48,9 +48,9 @@
         }, {false}, [19, [true, false, false]], false] call CBA_fnc_addKeybind; //SHIFT + R Key
     };
 
-    GVAR(cacheWeaponData) = call CBA_fnc_createNamespace;
-    GVAR(cacheAmmoData) = call CBA_fnc_createNamespace;
-    GVAR(cacheSilencerData) = call CBA_fnc_createNamespace;
+    GVAR(cacheWeaponData) = createHashMap;
+    GVAR(cacheAmmoData) = createHashMap;
+    GVAR(cacheSilencerData) = createHashMap;
 
     //Add Take EH if required
     if (GVAR(unJamOnReload) || {GVAR(cookoffCoef) > 0}) then {

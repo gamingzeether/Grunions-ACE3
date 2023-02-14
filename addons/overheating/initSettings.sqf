@@ -19,7 +19,7 @@ private _category = format ["ACE %1", localize LSTRING(DisplayName)];
     {
         if (!GVAR(enabled)) exitWith {};
         TRACE_2("reseting cache",GVAR(heatCoef),count GVAR(cacheAmmoData));
-        GVAR(cacheAmmoData) = call CBA_fnc_createNamespace;
+        GVAR(cacheAmmoData) = createHashMap;
     },
     false
 ] call CBA_fnc_addSetting;
@@ -43,7 +43,7 @@ private _category = format ["ACE %1", localize LSTRING(DisplayName)];
     {
         if (!GVAR(enabled)) exitWith {};
         TRACE_2("reseting cache",GVAR(suppressorCoef),count GVAR(cacheSilencerData));
-        GVAR(cacheSilencerData) = call CBA_fnc_createNamespace;
+        GVAR(cacheSilencerData) = createHashMap;
     },
     false
 ] call CBA_fnc_addSetting;
