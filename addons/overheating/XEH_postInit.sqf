@@ -31,7 +31,7 @@
 
     //hide ace unjam if dzn extended jamming is loaded
     GVAR(showUnjam) = false;
-    if (!(["dzn_EJAM"] call EFUNC(common,isModLoaded)) && dzn_EJAM_Force) then {
+    if (!(["dzn_EJAM"] call EFUNC(common,isModLoaded)) && !dzn_EJAM_Force) then {
         GVAR(showUnjam) = true;
         
         // Add keybinds
