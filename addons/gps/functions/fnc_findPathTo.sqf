@@ -19,13 +19,19 @@
 params ["_vehicle", "_target"];
 
 GVAR(findingPath) = true;
-if (vehicle GVAR(pathingAgent) != GVAR(pathingAgent)) then {
-    deleteVehicle vehicle GVAR(pathingAgent);
-};
-private _vehicleCopy = createVehicle [typeOf _vehicle, [0, 0, 0]];
-[_vehicleCopy, QUOTE(ADDON)] call EFUNC(common,hideUnit);
-_vehicle disableCollisionWith _vehicleCopy;
-_vehicleCopy setPosASL getPosASL _vehicle;
-_vehicleCopy setVectorDir vectorDir _vehicle;
-GVAR(pathingAgent) moveInDriver _vehicleCopy;
-GVAR(pathingAgent) setDestination [_target, "LEADER PLANNED", true];
+deleteVehicle vehicle GVAR(pathingAgent);
+deleteVehicle GVAR(pathingAgent);
+GVAR(pathingAgent) = calculatePath [typeOf _vehicle, "SAFE", getPosASL ACE_player, _target];
+GVAR(pathingAgent) addEventHandler ["PathCalculated", {
+    params ["_agent", "_path"];
+    if (!GVAR(findingPath)) exitWith {};
+    GVAR(findingPath) = false;
+    GVAR(activeNavMarkers) = _path;
+    call FUNC(startNavigation);
+    
+    // Reset agent
+    if (vehicle _agent != _agent) then {
+        deleteVehicle vehicle _agent;
+    };
+    deleteVehicle _agent;
+}];
