@@ -14,23 +14,6 @@
         GVAR(voiceLineQueue) = [];
         GVAR(speakerHelperActive) = false;
         
-        // Initalize agent
-        GVAR(pathingAgent) = createAgent ["B_Soldier_F", [0,0,0], [], 0, "CAN_COLLIDE"];
-        [GVAR(pathingAgent), QUOTE(ADDON)] call EFUNC(common,hideUnit);
-        GVAR(pathingAgent) addEventHandler ["PathCalculated", {
-            params ["_agent", "_path"];
-            if (!GVAR(findingPath)) exitWith {};
-            GVAR(findingPath) = false;
-            GVAR(activeNavMarkers) = _path;
-            call FUNC(startNavigation);
-            
-            // Reset agent
-            if (vehicle _agent != _agent) then {
-                deleteVehicle vehicle _agent;
-            };
-            _agent setPosASL [0, 0, 0];
-        }];
-        
         // Scheduler to update trip progress
         [{
             if (GVAR(isNavigating)) then {
