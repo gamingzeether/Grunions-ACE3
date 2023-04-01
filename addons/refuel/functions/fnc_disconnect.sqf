@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 /*
  * Author: GitHawk
- * Disconnect a fuel nozzle and make unit pick it up.
+ * Disconnects a fuel nozzle and makes unit pick it up.
  *
  * Arguments:
- * 0: Unit <OBJECT> (default: objNull - drop on floor)
+ * 0: Unit <OBJECT> (default: objNull)
  * 1: Nozzle <OBJECT>
  *
  * Return Value:

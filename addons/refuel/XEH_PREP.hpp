@@ -1,5 +1,6 @@
 PREP(canCheckFuel);
 PREP(canDeploy);
+PREP(canConnectNozzle);
 PREP(canDisconnect);
 PREP(canReturnNozzle);
 PREP(canTakeNozzle);
@@ -10,6 +11,7 @@ PREP(connectNozzleAction);
 PREP(deployContainer);
 PREP(disconnect);
 PREP(dropNozzle);
+PREP(getCapacity);
 PREP(getFuel);
 PREP(handleDisconnect);
 PREP(handleRespawn);

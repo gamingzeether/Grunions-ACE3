@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: GitHawk
+ * Author: GitHawk, QuantX
  * Refuels the vehicle.
  *
  * Arguments:
@@ -20,15 +20,26 @@
 
 params [["_unit", objNull, [objNull]], ["_sink", objNull, [objNull]], ["_nozzle", objNull, [objNull]], ["_connectToPoint", [0,0,0], [[]], 3]];
 
-private _cfgFlowRate = configFile >> "CfgVehicles" >> typeOf _sink >> QGVAR(flowRate);
-private _rate = GVAR(rate); // Default to 1 (jerry cans for example have no flow rate defined)
-if (isNumber _cfgFlowRate) then {
-    _rate = _rate * getNumber _cfgFlowRate;
+private _config = configOf _sink;
+private _rate = if (isNumber (_config >> QGVAR(flowRate))) then {
+    getNumber (_config >> QGVAR(flowRate)) * GVAR(rate)
+} else {
+    // Jerry cans for example have no flow rate defined, default to 1
+    GVAR(rate)
+};
+
+// How much fuel is in a vehicle's fuel tank
+private _maxFuelTank = getNumber (_config >> QGVAR(fuelCapacity));
+// Fall back to vanilla fuelCapacity value (only air and sea vehicles don't have this defined by default by us)
+// Air and sea vehicles have that value properly defined in liters, unlike ground vehicles which is is formula of (range * tested factor) - different fuel consumption system than ground vehicles
+if (_maxFuelTank == 0) then {
+    _maxFuelTank = getNumber (_config >> "fuelCapacity");
 };
 
 [{
     params ["_args", "_pfID"];
-    _args params ["_source", "_sink", "_unit", "_nozzle", "_rate", "_connectFromPoint", "_connectToPoint"];
+
+    _args params [["_source", objNull, [objNull]], ["_sink", objNull, [objNull]], ["_unit", objNull, [objNull]], ["_nozzle", objNull, [objNull]], ["_rate", 1, [0]], ["_maxFuelTank", 1, [0]], ["_connectFromPoint", [0,0,0], [[]], 3], ["_connectToPoint", [0,0,0], [[]], 3]];
 
     if !(_nozzle getVariable [QGVAR(isConnected), false]) exitWith {
         [_pfID] call CBA_fnc_removePerFrameHandler;
@@ -53,66 +64,69 @@ if (isNumber _cfgFlowRate) then {
     private _finished = false;
     private _fueling = _nozzle getVariable [QGVAR(isRefueling), false];
     if (_fueling) then {
+        private _refuelContainer = _nozzle getVariable [QGVAR(refuelContainer), false];
+        
+        // Use special cargo refuel rate when refueling containers
+        // TODO: Add flow dedicated input/output flow rates for every container and use the lower of the two instead
+        if (_refuelContainer) then {_rate = GVAR(cargoRate)};
+
         // Calculate rate using mission time to take time acceleration and pause into account
         private _addedFuel = _rate * (CBA_missionTime - (_nozzle getVariable [QGVAR(lastTickMissionTime), CBA_missionTime]));
         _nozzle setVariable [QGVAR(lastTickMissionTime), CBA_missionTime];
 
-        // Subtract fuel of source, quit if empty
+        // Figure out exactly how much fuel to transfer while being sure not to take too much from source
         private _fuelInSource = [_source] call FUNC(getFuel);
-        if (_fuelInSource != REFUEL_INFINITE_FUEL) then {
-            _fuelInSource = _fuelInSource - _addedFuel;
-
-            // Check if source is now empty
-            if (_fuelInSource <= 0) then {
-                _addedFuel = _addedFuel + _fuelInSource; // Cannot take more fuel than available from source
+        if (([_source] call FUNC(getCapacity)) != REFUEL_INFINITE_FUEL) then {
+            if (_addedFuel > _fuelInSource) then {
+                _addedFuel = _fuelInSource;
                 _fuelInSource = 0;
                 _finished = true;
                 [LSTRING(Hint_SourceEmpty), 2, _unit] call EFUNC(common,displayTextStructured);
+            } else {
+                _fuelInSource = _fuelInSource - _addedFuel;
             };
+        };
+        
+        private _fuelInSink = (if (_refuelContainer) then {
+            [_sink] call FUNC(getFuel)
         } else {
-            // For infinite fuel sources only increase counter
-            private _fuelCounter = _source getVariable [QGVAR(fuelCounter), 0];
-            _source setVariable [QGVAR(fuelCounter), _fuelCounter + _addedFuel, true];
-        };
-
-        // Add fuel to target
-        private _refuelContainer = _nozzle getVariable [QGVAR(refuelContainer), false];
-        private _fuelInSink = if (_refuelContainer) then {
-            // No caching when refueling containers - public variables are fast enough
-            ([_sink] call FUNC(getFuel)) + _addedFuel;
-        } else {
-            (_nozzle getVariable QGVAR(tempFuel)) + _addedFuel;
-        };
-        if (_fuelInSource <= 0 && {_fuelInSource != REFUEL_INFINITE_FUEL}) then {
-            _fuelInSource = 0;
-            [_source, _fuelInSource] call FUNC(setFuel);
-            _finished = true;
-            [LSTRING(Hint_SourceEmpty), 2, _unit] call EFUNC(common,displayTextStructured);
-        };
-
-        private _maxFuel = _nozzle getVariable QGVAR(maxFuel);
-        if (_maxFuel - _fuelInSink <= 0) then {
+            // How full the gas tank is. We keep our own record, since `fuel _sink` doesn't update quick enough
+            (_nozzle getVariable [QGVAR(tempFuel), fuel _sink]) * _maxFuelTank
+        }) + _addedFuel;
+        
+        // Add fuel to target while being sure not to put too much into sink
+        private _maxFuelContainer = [_sink] call FUNC(getCapacity);
+        private _maxFuel = [_maxFuelTank, _maxFuelContainer] select _refuelContainer;
+        if (_fuelInSink >= _maxFuel) then {
+            // Put any extra fuel back
+            _fuelInSource = _fuelInSource + (_fuelInSink - _maxFuel);
+            _addedFuel = _maxFuel - _fuelInSink;
+            // We're done
             _fuelInSink = _maxFuel;
             _finished = true;
             [LSTRING(Hint_Completed), 2, _unit] call EFUNC(common,displayTextStructured);
         };
-
-        [QGVAR(tick), [_source, _sink, _rateTime]] call CBA_fnc_localEvent;
-
-        [QEGVAR(common,setFuel), [_sink, _fuelInSink], _sink] call CBA_fnc_targetEvent;
         
         if (_refuelContainer) then {
             [_sink, _fuelInSink] call FUNC(setFuel);
         } else {
-            [QEGVAR(common,setFuel), [_sink, _fuelInSink / _maxFuel], _sink] call CBA_fnc_targetEvent;
-            _nozzle setVariable [QGVAR(tempFuel), _fuelInSink];
+            private _fillRatio = _fuelInSink / _maxFuelTank;
+            [QEGVAR(common,setFuel), [_sink, _fillRatio], _sink] call CBA_fnc_targetEvent;
+            _nozzle setVariable [QGVAR(tempFuel), _fillRatio];
         };
+        
+        // Increment fuel counter
+        _source setVariable [QGVAR(fuelCounter), (_source getVariable [QGVAR(fuelCounter), 0]) + _addedFuel, true];
+
+        [QGVAR(tick), [_source, _sink, _addedFuel, _refuelContainer]] call CBA_fnc_localEvent;
 
         [_source, _fuelInSource] call FUNC(setFuel);
+    } else {
+        _nozzle setVariable [QGVAR(tempFuel), fuel _sink];
     };
 
     // Reset variables when done
-    if (_finished) exitWith {
+    if (_finished) then {
         [QGVAR(stopped), [_source, _sink]] call CBA_fnc_localEvent;
         _nozzle setVariable [QGVAR(lastTickMissionTime), nil];
         _nozzle setVariable [QGVAR(isRefueling), false, true];
@@ -123,6 +137,7 @@ if (isNumber _cfgFlowRate) then {
     _unit,
     _nozzle,
     _rate,
+    _maxFuelTank,
     _nozzle getVariable [QGVAR(attachPos), [0,0,0]],
     _connectToPoint
 ]] call CBA_fnc_addPerFrameHandler;

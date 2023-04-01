@@ -72,6 +72,8 @@ private _attachPosModel = _sink worldToModel (ASLtoAGL _bestPosASL);
         _args params [["_unit", objNull, [objNull]], ["_nozzle", objNull, [objNull]], ["_sink", objNull, [objNull]], ["_endPosTestOffset", [0,0,0], [[]], 3]];
         _unit setVariable [QGVAR(nozzle), nil, true];
         _unit setVariable [QGVAR(isRefueling), false];
+        
+        private _source = _nozzle getVariable QGVAR(source);
 
         detach _nozzle;
         _nozzle attachTo [_sink, _endPosTestOffset];
@@ -111,19 +113,13 @@ private _attachPosModel = _sink worldToModel (ASLtoAGL _bestPosASL);
         _nozzle setVariable [QGVAR(isConnected), true, true];
         _sink setVariable [QGVAR(nozzle), _nozzle, true];
 
-        private _source = _nozzle getVariable QGVAR(source);
-        private _fuel = [_source] call FUNC(getFuel);
-        if (_fuel == REFUEL_INFINITE_FUEL) then {
-            _source setVariable [QGVAR(fuelCounter), 0, true];
-        } else {
-            _source setVariable [QGVAR(fuelCounter), _fuel, true];
-        };
+        // Reset fuel counter
+        _source setVariable [QGVAR(fuelCounter), 0, true];
 
         [_unit, _sink, _nozzle, _endPosTestOffset] call FUNC(refuel);
 
-        private _canReceive = getNumber (configFile >> "CfgVehicles" >> typeOf _sink >> QGVAR(canReceive)) == 1;
-        private _isContainer = !(isNil {_sink getVariable QGVAR(currentFuelCargo)})
-                               || {isNumber (configFile >> "CfgVehicles" >> typeOf _sink >> QGVAR(fuelCargo))};
+        private _canReceive = getNumber ((configOf _sink) >> QGVAR(canReceive)) == 1;
+        private _isContainer = ([_sink] call FUNC(getCapacity)) != REFUEL_DISABLED_FUEL;
 
         // Decide if cargo or vehicle will be refueled
         switch (true) do {

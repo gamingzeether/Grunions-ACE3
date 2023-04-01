@@ -38,7 +38,7 @@
             <English>Auto add fortify item</English>
             <German>Füge das Bauwerkzeug automatisch hinzu</German>
             <Japanese>自動的に要塞ツールを追加</Japanese>
-            <Korean>자동 추가 요새 항목</Korean>
+            <Korean>요새화 도구 자동으로 추가</Korean>
             <Chinese>自動增加要塞物品</Chinese>
             <Chinesesimp>自动增加设防物品</Chinesesimp>
             <Polish>Automatycznie dodaj narzędzie do fortyfikowania</Polish>
@@ -329,6 +329,16 @@
             <German>Groß (Grün)</German>
             <Chinesesimp>大型（绿色）</Chinesesimp>
             <Korean>대형 (초목)</Korean>
+        </Key>
+        <Key ID="STR_ACE_Fortify_bigCombo">
+            <English>Big (Both)</English>
+            <Polish>Duże (Oba)</Polish>
+            <Russian>Большой (Оба)</Russian>
+            <Turkish>Büyük (İkisi de)</Turkish>
+            <Japanese>大型 (両方)</Japanese>
+            <German>Groß (Beide)</German>
+            <Chinesesimp>大型（两方）</Chinesesimp>
+            <Korean>대형 (둘 다)</Korean>
         </Key>
     </Package>
 </Project>

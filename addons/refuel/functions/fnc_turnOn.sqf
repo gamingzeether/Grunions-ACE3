@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Unit <OBJECT>
  * 1: Nozzle <OBJECT>
- * 2: Refuel container (optional) <BOOL>
+ * 2: Refuel container <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -39,6 +39,7 @@ if (_refuelContainer) then {
 
 _nozzle setVariable [QGVAR(maxFuel), _maxFuel];
 _nozzle setVariable [QGVAR(lastTickMissionTime), CBA_missionTime];
+_nozzle setVariable [QGVAR(refuelContainer), _refuelContainer];
 _nozzle setVariable [QGVAR(isRefueling), true, true];
 _nozzle setVariable [QGVAR(refuelContainer), _refuelContainer];
 [LSTRING(Hint_Started), 1.5, _unit] call EFUNC(common,displayTextStructured);
