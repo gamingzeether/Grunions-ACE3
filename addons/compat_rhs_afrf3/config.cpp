@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 #if __has_include("\rhsafrf\addons\rhs_main\loadorder\config.bin")
@@ -31,3 +32,4 @@ class CfgPatches {
 #include "CfgVehicles.hpp"
 
 #endif
+*/

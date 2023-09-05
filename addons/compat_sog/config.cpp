@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 #if __has_include("\vn\weapons_f_vietnam\config.bin")
@@ -67,3 +68,4 @@ class CfgPatches {
 #include "EMM_mainMenu_CfgMenus.hpp"
 
 #endif
+*/

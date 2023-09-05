@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 #if __has_include("\rhssaf\addons\rhssaf_main\loadorder\config.bin")
@@ -28,3 +29,4 @@ class CfgPatches {
 #include "CfgWeapons.hpp"
 
 #endif
+*/

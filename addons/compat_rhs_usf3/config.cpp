@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 #if __has_include("\rhsusf\addons\rhsusf_main\loadorder\config.bin")
@@ -33,3 +34,4 @@ class CfgPatches {
 #include "CfgGlasses.hpp"
 
 #endif
+*/
