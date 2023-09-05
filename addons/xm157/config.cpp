@@ -1,3 +1,4 @@
+/*
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -25,3 +26,4 @@ class asdg_OpticRail1913: asdg_OpticRail {
         ace_xm157_prototype = 1;
     };
 };
+*/
