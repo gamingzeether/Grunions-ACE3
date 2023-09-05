@@ -2,7 +2,7 @@
 class CfgWeapons {
     class GrenadeLauncher;
     class Throw: GrenadeLauncher {
-        muzzles[] += {QGVAR(muzzle_nonexplosive), GVAR(muzzle_explosive), GVAR(muzzle_loitering)};
+        muzzles[] += {QGVAR(muzzle_nonexplosive), QGVAR(muzzle_explosive), QGVAR(muzzle_loitering)};
 
         class ThrowMuzzle;
         
