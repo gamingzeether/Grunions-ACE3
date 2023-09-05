@@ -14,4 +14,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgMagazines.hpp"
+//#include "CfgMagazines.hpp"
