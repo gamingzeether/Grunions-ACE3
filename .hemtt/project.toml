@@ -12,6 +12,7 @@ include = [
     "AUTHORS.txt",
     "LICENSE",
     "logo_ace3_ca.paa",
+    "logo_grunions_ca.paa",
     "meta.cpp",
 ]
 
