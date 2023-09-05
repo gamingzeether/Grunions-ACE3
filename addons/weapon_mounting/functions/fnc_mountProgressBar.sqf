@@ -38,7 +38,6 @@ params ["_vehicle", "_unit", "_weapon"];
         } foreach (_unit weaponAccessories _weapon);
         
         [_unit, _weapon] call CBA_fnc_removeWeapon;
-        _weapon = ([_weapon] call CBA_fnc_weaponComponents) select 0;
         [QGVAR(mountWeapon), [_weapon, _vehicle]] call CBA_fnc_globalEvent;
     },
     {},
