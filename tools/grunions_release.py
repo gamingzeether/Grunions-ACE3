@@ -6,24 +6,13 @@ import subprocess
 
 projectpath = ""
 releasespath = ""
-forcebuilt = False
 
 def build_release():
     global forcebuilt
     os.chdir(projectpath)
     
-    if not forcebuilt:
-        print("Compiling SQF")
-        compiler_exe = os.path.join(projectpath, "ArmaScriptCompiler.exe")
-        ret = subprocess.call([compiler_exe], cwd=projectpath, stdout=False)
-        print("")
-    
-        ret = subprocess.call(["hemtt.exe", "build", "--force", "--release"], stderr=subprocess.STDOUT)
-        print(ret)
-        forcebuilt = True
-    else:
-        ret = subprocess.call(["hemtt.exe", "build", "--release"], stderr=subprocess.STDOUT)
-        print(ret)
+    ret = subprocess.call(["hemtt.exe", "release"], stderr=subprocess.STDOUT)
+    print(ret)
 
 
 def rename_builds(end):
@@ -66,8 +55,6 @@ def main():
     
     # reset
     subprocess.call(["git", "checkout", "master"])
-    sqfcpath = os.path.join(projectpath, "tools\\clean_sqfc.py")
-    exec(open(sqfcpath).read())
 
 
 if __name__ == "__main__":

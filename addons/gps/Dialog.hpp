@@ -51,29 +51,12 @@
 #define ST_WITH_RECT      160
 #define ST_LINE           176
 #define FontM             "RobotoCondensed"
-#define __XA SafeZoneXAbs
-#define __X SafeZoneX
-#define __Y SafeZoneY
-#define __WA SafeZoneWAbs
-#define __W SafeZoneW
-#define __H SafeZoneH
 
 class RscMapControl;
 class EGVAR(huntir,cam_dialog);
 class GVAR(gps_dialog): EGVAR(huntir,cam_dialog) {
     idd = 28881;
     onLoad = QUOTE(call FUNC(onLoad));
-    
-    controls[] = {
-        TOP_BORDER,
-        BOTTOM_BORDER,
-        LEFT_BORDER,
-        RIGHT_BORDER,
-        //HELP_DIALOG,
-        CAM_BG,
-        MAP_BG,
-        MAP
-    };
     
     class MAP_BG {
         idc = -1;
@@ -87,21 +70,21 @@ class GVAR(gps_dialog): EGVAR(huntir,cam_dialog) {
         sizeEx = 0.02;
         text = "";
         
-        x = __W * 0.141146 + __X;
-        y = __H * 0.159259 + __Y;
-        w = __W * 0.642188;
-        h = __H * 0.542593;
+        x = "SafeZoneW * 0.141146 + SafeZoneX";
+        y = "SafeZoneH * 0.159259 + SafeZoneY";
+        w = "SafeZoneW * 0.642188";
+        h = "SafeZoneH * 0.542593";
     };
-    class MAP: RscMapControl {
+    class MAP_CTRL: RscMapControl {
         idc = 10;
         
         font = FontM;
         sizeEx = 0.02;
         
-        x = __W * 0.141146 + __X;
-        y = __H * 0.159259 + __Y;
-        w = __W * 0.642188;
-        h = __H * 0.542593;
+        x = "SafeZoneW * 0.141146 + SafeZoneX";
+        y = "SafeZoneH * 0.159259 + SafeZoneY";
+        w = "SafeZoneW * 0.642188";
+        h = "SafeZoneH * 0.542593";
         
         onMouseButtonDblClick = QUOTE(_this call FUNC(onMouseButtonDblClick));
         onDraw = QUOTE(call FUNC(onDraw));
