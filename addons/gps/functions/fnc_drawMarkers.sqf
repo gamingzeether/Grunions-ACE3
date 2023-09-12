@@ -32,7 +32,7 @@ _nextTurn params ["_position", "_turnDirection", "_warning", "_vector"];
 private _alpha = 0.1 * sin (CBA_missionTime * 360) + GVAR(turnAlpha);
 private _turnSize = 20 / sqrt (_cameraPos distance _position);
 // Calculate angle to turn
-private _carVector = vectorDir vehicle ACE_player;
+private _carVector = (vectorDir vehicle ACE_player) select [0, 2];
 private _vectorLeft = [(_vector select 1) * -1, _vector select 0];
 private _angle = ((_vectorLeft vectorDotProduct _carVector) atan2 (_vector vectorDotProduct _carVector)) * -1 + 180;
 drawIcon3D [

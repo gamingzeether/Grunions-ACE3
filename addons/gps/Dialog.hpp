@@ -58,6 +58,17 @@ class GVAR(gps_dialog): EGVAR(huntir,cam_dialog) {
     idd = 28881;
     onLoad = QUOTE(call FUNC(onLoad));
     
+    controls[] = {
+        "TOP_BORDER",
+        "BOTTOM_BORDER",
+        "LEFT_BORDER",
+        "RIGHT_BORDER",
+        //"HELP_DIALOG",
+        "CAM_BG",
+        "MAP_BG",
+        "MAP_CTRL"
+    };
+    
     class MAP_BG {
         idc = -1;
         

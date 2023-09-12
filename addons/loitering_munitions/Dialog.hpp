@@ -58,6 +58,18 @@ class GVAR(loitering_dialog): EGVAR(huntir,cam_dialog) {
     idd = 28880;
     onUnload = QUOTE(call FUNC(closeDialog));
     
+    controls[] = {
+        "TOP_BORDER",
+        "BOTTOM_BORDER",
+        "LEFT_BORDER",
+        "RIGHT_BORDER",
+        //"HELP_DIALOG",
+        "CAM_BG",
+        "MAP_BG",
+        "HEIGHT_TXT",
+        "MAP_CTRL"
+    };
+    
     class MAP_BG {
         idc = -1;
         

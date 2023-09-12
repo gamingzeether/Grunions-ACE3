@@ -40,7 +40,7 @@ if (_button == 0) then {
     } else {
         private _worldPos = _map ctrlMapScreenToWorld [_xPos, _yPos];
         GVAR(startPosWorld) = _worldPos;
-        GVAR(radius) = (call FUNC(getLoiterDistance)) select 0;
+        GVAR(radius) = ([] call FUNC(getLoiterDistance)) select 0;
         
         // Get radius of circle
         _map setVariable [QGVAR(movingEventID), _map ctrlAddEventHandler ["MouseMoving", {
@@ -50,7 +50,7 @@ if (_button == 0) then {
             private _distance = _worldPos vectorDistance GVAR(startPosWorld);
             
             // Get world pos between min and max distance rings
-            private _distMinMax = call FUNC(getLoiterDistance);
+            private _distMinMax = [] call FUNC(getLoiterDistance);
             GVAR(radius) = (_distMinMax select 1) min (_distance max (_distMinMax select 0));
         }]];
     };
