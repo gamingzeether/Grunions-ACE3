@@ -17,7 +17,7 @@
 
 createDialog QGVAR(loitering_dialog);
 GVAR(startPosWorld) = getPosASL ACE_player;
-GVAR(radius) = (call FUNC(getLoiterDistance)) select 0;
+GVAR(radius) = ([] call FUNC(getLoiterDistance)) select 0;
 GVAR(altitude) = (getPosASL ACE_player select 2) + 100;
 
 private _map = findDisplay 28880 displayCtrl 10;
