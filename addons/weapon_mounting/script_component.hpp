@@ -16,6 +16,6 @@
 
 #include "\z\ace\addons\main\script_macros.hpp"
 
-#define TYPE_FAIL -1
-#define TYPE_LAUNCHER 0
-#define TYPE_BACKPACK 1
+#define WEAPONMOUNTING_TYPE_FAIL -1
+#define WEAPONMOUNTING_TYPE_LAUNCHER 0
+#define WEAPONMOUNTING_TYPE_BACKPACK 1

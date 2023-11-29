@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Vdauphin
  * Check if an item will fit in the empty space already used by loaded items.

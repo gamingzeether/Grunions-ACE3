@@ -20,7 +20,7 @@
  * Public: No
  */
 #define DEBUG_MODE_FULL
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_eventName", "_condition", "_fireForPlayer", "_fireForPlayerNonLocal", "_fireForNonPlayer", "_fireForPlayerVehicle", "_fireForPlayerVehicleNonLocal", "_fireForNonPlayerVehicle"];
 

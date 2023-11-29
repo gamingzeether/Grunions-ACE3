@@ -116,7 +116,6 @@ GVAR(objectAction) = [
     LINKFUNC(addCargoVehiclesActions)
 ] call EFUNC(interact_menu,createAction);
 
-<<<<<<< HEAD
 GVAR(objectActions) = [
     [QGVAR(renameObject), LELSTRING(common,rename), "\a3\Modules_F_Curator\Data\iconMissionName_ca.paa",
         {
@@ -161,13 +160,10 @@ GVAR(objectActions) = [
 ];
 
 // Find all remaining configured classes and init them, see XEH_preStart.sqf
-=======
 {
     [_x, 1, ["ACE_SelfActions"], GVAR(unloadAllVehiclesAction), true] call EFUNC(interact_menu,addActionToClass);
 } forEach ["LandVehicle", "Ship", "Air"];
 
-// find all remaining configured classes and init them, see XEH_preStart.sqf
->>>>>>> 77ad0f065 (Vdauphin VIV cargo)
 private _vehicleClassesAddAction = call (uiNamespace getVariable [QGVAR(initializedVehicleClasses), {[]}]);
 
 {

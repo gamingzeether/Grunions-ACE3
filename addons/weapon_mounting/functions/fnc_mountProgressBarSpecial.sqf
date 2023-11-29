@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: GamingZeether
  * Starts progress bar for mounting a special weapon
@@ -30,12 +30,12 @@ _args params ["_weaponOriginal", "_weapon", "_model", "_scale", "_type"];
         // Remove item
         private _exit = false;
         switch _type do {
-            case TYPE_LAUNCHER: {
+            case WEAPONMOUNTING_TYPE_LAUNCHER: {
                 if (!([_unit, _weaponOriginal] call CBA_fnc_removeWeapon)) then {
                     _exit = true;
                 };
             };
-            case TYPE_BACKPACK: {
+            case WEAPONMOUNTING_TYPE_BACKPACK: {
                 if (backpack _unit == _weaponOriginal) then {
                     removeBackpack _unit;
                 } else {

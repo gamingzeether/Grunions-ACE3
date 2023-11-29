@@ -58,6 +58,7 @@
     {[QGVAR(carryAfterUnload), _this] call EFUNC(common,cbaSettings_settingChanged)}
 ] call CBA_fnc_addSetting;
 
+[
     QGVAR(cargoNetType), "LIST",
     [LSTRING(cargoNetType), LSTRING(cargoNetType_description)],
     [LELSTRING(OptionsMenu,CategoryLogistics), LLSTRING(openMenu)],

@@ -9,7 +9,6 @@ PREP(getNameItem);
 PREP(getSizeItem);
 PREP(getSurfaceItem);
 PREP(getVehicleCargo);
-PREP(handleDeleted);
 PREP(handleDestroyed);
 PREP(initObject);
 PREP(initVehicle);
