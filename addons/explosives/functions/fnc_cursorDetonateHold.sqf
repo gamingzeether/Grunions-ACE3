@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: GamingZeether
  * Code to run while holding down cursor detonate keybind

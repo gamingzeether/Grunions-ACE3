@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: GamingZeether
  * Handles player changing seats, entering a vehicle, or leaving a vehicle

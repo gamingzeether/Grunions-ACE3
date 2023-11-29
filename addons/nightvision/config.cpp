@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 #pragma hemtt flag pe23_ignore_has_include
-#if __has_include("\z\ace\addons\norealisticnames\script_component.hpp")
+#if __has_include("\z\ace\addons\grunionstweaks\script_component.hpp")
 #define PATCH_SKIP "No Nightvision"
 #endif
 
@@ -20,7 +20,7 @@ class CfgPatches {
             "ACE_NVG_Gen2_Black",
             "ACE_NVG_Gen2_Brown",
             "ACE_NVG_Gen2",
-            *//*"ACE_NVG_Gen3",*//*
+            /*"ACE_NVG_Gen3",*/
             "ACE_NVG_Gen4_Black",
             "ACE_NVG_Gen4_Black_WP",
             "ACE_NVG_Gen4",

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: GamingZeether
  * Creates child actions for mounting weapons
@@ -46,7 +46,7 @@ private _weapons = [_unit] call FUNC(getMountableWeapons);
 {
     private _properties = [_x] call FUNC(getSpecialWeaponProperties);
     _properties params ["_displayName", "_icon", "_wName", "_model", "_scale", "_type"];
-    if (_type == TYPE_FAIL) then {continue};
+    if (_type == WEAPONMOUNTING_TYPE_FAIL) then {continue};
     
     private _action = [
         _wName,

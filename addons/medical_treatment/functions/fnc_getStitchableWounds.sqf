@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: mharis001
  * Returns a list of all the stitchable wounds that the given unit has.

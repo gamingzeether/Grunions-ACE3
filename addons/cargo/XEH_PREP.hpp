@@ -13,7 +13,6 @@ PREP(getSelectedItem);
 PREP(getSizeItem);
 PREP(getSurfaceItem);
 PREP(getVehicleCargo);
-PREP(handleDeleted);
 PREP(handleDestroyed);
 PREP(handleDeployInterrupt);
 PREP(handleScrollWheel);

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: GamingZeether
  * Returns properties of special weapon
@@ -35,7 +35,7 @@ if (isClass (_weaponConfig) && {getNumber (_weaponConfig >> QGVAR(enabled)) == 1
     _properties pushBack _weapon;
     _properties pushBack getText (_weaponConfig >> QGVAR(model));
     _properties pushBack getNumber (_weaponConfig >> QGVAR(scale));
-    _properties pushBack TYPE_LAUNCHER;
+    _properties pushBack WEAPONMOUNTING_TYPE_LAUNCHER;
 } else {
     if (isClass (_backpackConfig) && {getNumber (_backpackConfig >> QGVAR(enabled)) == 1} && {getNumber (_backpackConfig >> "isBackpack") == 1}) then {
         private _weapon = getText (_backpackConfig >> QGVAR(weapon));
@@ -45,9 +45,9 @@ if (isClass (_weaponConfig) && {getNumber (_weaponConfig >> QGVAR(enabled)) == 1
         _properties pushBack _weapon;
         _properties pushBack getText (_backpackConfig >> QGVAR(model));
         _properties pushBack getNumber (_backpackConfig >> QGVAR(scale));
-        _properties pushBack TYPE_BACKPACK;
+        _properties pushBack WEAPONMOUNTING_TYPE_BACKPACK;
     } else {
-        _properties = ["", "", "", "", -1, TYPE_FAIL];
+        _properties = ["", "", "", "", -1, WEAPONMOUNTING_TYPE_FAIL];
     };
 };
 

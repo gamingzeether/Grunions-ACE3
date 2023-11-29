@@ -74,9 +74,9 @@ private _gBlackOut = MAXVIRTUALG / _classCoef + MAXVIRTUALG / _suitCoef - MAXVIR
 if (GETEGVAR(medical,enabled,false)) then {
     if ((_average > _gBlackOut) && {ACE_player call EFUNC(common,isAwake)}) then {
         [ACE_player, true, (10 + floor(random 5)), true] call EFUNC(medical,setUnconscious);
+    } else {
+        [ACE_player, (10 + floor(random 5))] call FUNC(setUnconscious);
     };
-} else {
-    [ACE_player, _isUnconscious] call FUNC(setUnconscious);
 };
 
 GVAR(GForces_CC) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[10,10,0,0,0,0.1,0.5]];
