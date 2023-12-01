@@ -44,6 +44,7 @@ private _ejectDir = _weapDir vectorCrossProduct [0, 0, 1];
 private _angle = random 360;
 private _distance = 0.8 * (random 1) ^ 0.6;
 private _pos = _unitPos
+    vectorAdd [0, 0, 1]
     vectorAdd (_ejectDir vectorMultiply _ejectDistance)
     vectorAdd ([_distance * cos _angle, _distance * sin _angle, 0]);
 
