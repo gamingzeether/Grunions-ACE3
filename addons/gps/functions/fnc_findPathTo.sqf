@@ -30,7 +30,7 @@ GVAR(pathingAgent) addEventHandler ["PathCalculated", {
     call FUNC(startNavigation);
     
     // Reset agent
-    if (vehicle _agent != _agent) then {
+    if (!isNull objectParent _agent) then {
         deleteVehicle vehicle _agent;
     };
     deleteVehicle _agent;

@@ -16,12 +16,12 @@
  */
 
 //IGNORE_PRIVATE_WARNING ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
-TRACE_7("firedEH:",_unit, _weapon, _muzzle, _mode, _ammo, _magazine, _projectile);
+TRACE_7("firedEH:",_unit,_weapon,_muzzle,_mode,_ammo,_magazine,_projectile);
 if (!isText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) exitWith {};
 
 [{
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
-    TRACE_7("rocket stage",_unit, _weapon, _muzzle, _mode, _ammo, _magazine, _projectile);
+    TRACE_7("rocket stage",_unit,_weapon,_muzzle,_mode,_ammo,_magazine,_projectile);
 
     // If null (deleted or hit water) exit:
     if (isNull _projectile) exitWith {};
@@ -53,7 +53,7 @@ if (!isText (configFile >> "CfgAmmo" >> _ammo >> QGVAR(replaceWith))) exitWith {
         params ["_args", "_pfID"];
         _args params [["_rocket", objNull], "_startTime"];
         if (!alive _rocket) exitWith {systemChat "done"; [_pfID] call CBA_fnc_removePerFrameHandler;};
-        drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa", [1,0,1,1], ASLtoAGL getPosASL _rocket, 0.75, 0.75, 0, "", 1, 0.025, "TahomaB"];
+        drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa", [1,0,1,1], ASLToAGL getPosASL _rocket, 0.75, 0.75, 0, "", 1, 0.025, "TahomaB"];
         hintSilent format ["vel %1\n%2 mps\n%3dist %3\ntof %4",velocity _rocket, round vectorMagnitude velocity _rocket, _rocket distance player, time - _startTime];
     }, 0.0, [_rocket, time]] call CBA_fnc_addPerFrameHandler;
     #endif

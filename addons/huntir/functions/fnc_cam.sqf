@@ -36,8 +36,8 @@ closeDialog 0;
 createDialog QGVAR(cam_dialog);
 uiNamespace setVariable [QGVAR(monitor), findDisplay 18880];
 (uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["Keydown", QUOTE(_this call FUNC(keyPressed))];
-(uiNameSpace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(onMouseDown))];
-(uiNameSpace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(onMouseUp))];
+(uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(onMouseDown))];
+(uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(onMouseUp))];
 
 ctrlSetText [4, "0X"];
 

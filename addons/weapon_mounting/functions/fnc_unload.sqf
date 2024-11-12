@@ -33,7 +33,7 @@ if (_vehicle getVariable [QGVAR(cswMags), false]) then {
     if (_xTurret isEqualTo _turret && {_xClass in _compatMags}) then {
         GVAR(toUnload) pushBack [_vehicle, _unit, _xClass, _xCount];
     };
-} foreach (magazinesAllTurrets _vehicle);
+} forEach (magazinesAllTurrets _vehicle);
 
 if (_start) then {
     [true] call FUNC(doLoadUnloadCycle);

@@ -21,8 +21,8 @@ params ["_vehicle", "_unit"];
 private _actions = [];
 private _carryMags = magazinesAmmo _unit;
 {
-    _carryMags set [_foreachIndex, _x select 0];
-} foreach _carryMags;
+    _carryMags set [_forEachIndex, _x select 0];
+} forEach _carryMags;
 private _compatibleMags = (_vehicle getVariable [QGVAR(compatMags), []]) arrayIntersect _carryMags;
 
 {
@@ -40,6 +40,6 @@ private _compatibleMags = (_vehicle getVariable [QGVAR(compatMags), []]) arrayIn
         _x
     ] call EFUNC(interact_menu,createAction);
     _actions pushBack [_action, [], _vehicle];
-} foreach _compatibleMags;
+} forEach _compatibleMags;
 
 _actions

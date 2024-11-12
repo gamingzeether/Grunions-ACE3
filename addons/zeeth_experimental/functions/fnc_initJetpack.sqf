@@ -68,7 +68,7 @@ GVAR(jetpackInAir) = false;
     
     private _fuelBar = (uiNamespace getVariable [QGVAR(overlay), displayNull]) displayCtrl 1 controlsGroupCtrl 0;
     // Jetpack movement and fuel
-    if ((GVAR(jetpackDown) && {vehicle ACE_player == ACE_player} && {getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> animationState ACE_player >> "disableWeapons") == 0})) then {
+    if ((GVAR(jetpackDown) && {isNull objectParent ACE_player} && {getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> animationState ACE_player >> "disableWeapons") == 0})) then {
         if (_heightTerrain > 1) then {
             GVAR(jetpackInAir) = true;
         };

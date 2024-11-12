@@ -22,7 +22,7 @@ if (!alive _vehicle) exitWith {false};
 
 //copied from ace_repair_fnc_can_repair
 private _return = true;
-private _fullRepairLocations = getArray (configfile >> "ACE_Repair" >> "Actions" >> "FullRepair" >> "repairLocations");
+private _fullRepairLocations = getArray (configFile >> "ACE_Repair" >> "Actions" >> "FullRepair" >> "repairLocations");
 if (!("All" in _fullRepairLocations)) then {
     private _repairFacility = {([_unit] call EFUNC(repair,isInRepairFacility)) || ([_vehicle] call EFUNC(repair,isInRepairFacility))};
     private _repairVeh = {([_unit] call EFUNC(repair,isNearRepairVehicle)) || ([_vehicle] call EFUNC(repair,isNearRepairVehicle))};

@@ -119,7 +119,7 @@ private _vehWeapons = _vehicle weaponsTurret _turret;
 _vehWeapons = _vehWeapons select {"horn" in toLower _x};
 {
     _vehicle removeWeaponTurret [_x, _turret];
-} foreach _vehWeapons;
+} forEach _vehWeapons;
 */
 
 _vehicle setVariable [QGVAR(eventMPKilled), _vehicle addMPEventHandler ["MPKilled", {
@@ -168,7 +168,7 @@ private _unloadAction = [
     4
 ] call EFUNC(interact_menu,createAction);
 private _unmountAction = [
-    format [QGVAR(unmount), _weaponName],
+    format [QGVAR(unmount_%1), _weaponName],
     format [LLSTRING(unmountAction_displayName), getText (_wCfg >> "displayName")],
     "",
     {call FUNC(unmountWeapon)},

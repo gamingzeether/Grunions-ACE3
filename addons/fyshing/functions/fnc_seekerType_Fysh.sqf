@@ -58,7 +58,7 @@ if (!(([_projectile, _foundTargetPos, _seekerAngle] call EFUNC(missileguidance,c
     [0, 0, 0]
 };
 
-TRACE_2("", _target, _foundTargetPos);
+TRACE_2("",_target,_foundTargetPos);
 // @TODO: Configurable lead for seekers
 private _projectileSpeed = (vectorMagnitude velocity _projectile);
 private _distanceToTarget = (getPosASL _projectile) vectorDistance _foundTargetPos;

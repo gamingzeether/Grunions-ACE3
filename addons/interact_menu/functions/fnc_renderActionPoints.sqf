@@ -45,7 +45,7 @@ private _fnc_renderNearbyActions = {
             || {_target in [ACE_player, vehicle ACE_player]}
         ) then {continue};
 
-        private _hasInteractions = false;
+        private _hasinteractions = false;
 
         // Iterate through object actions, find base level actions and render them if appropiate
         GVAR(objectActionList) = _target getVariable [QGVAR(actions), []];
@@ -55,7 +55,7 @@ private _fnc_renderNearbyActions = {
             // Try to render the menu
             private _action = _x;
             if ([_target, _action] call FUNC(renderBaseMenu)) then {
-                _hasInteractions = true;
+                _hasinteractions = true;
                 GVAR(foundActions) pushBack [_target, _action, GVAR(objectActionList)];
             };
         } forEach GVAR(objectActionList);
@@ -66,13 +66,13 @@ private _fnc_renderNearbyActions = {
             private _action = _x;
             // Try to render the menu
             if ([_target, _action] call FUNC(renderBaseMenu)) then {
-                _hasInteractions = true;
+                _hasinteractions = true;
                 GVAR(foundActions) pushBack [_target, _action, GVAR(objectActionList)];
             };
         } forEach _classActions;
 
         // Limit the amount of objects the player can interact with
-        if (_hasInteractions) then {
+        if (_hasinteractions) then {
             INC(_numInteractObjects);
             if (_numInteractObjects >= MAXINTERACTOBJECTS) then {break};
         };

@@ -20,5 +20,5 @@ params ["_targets"];
     if (!(_x in _targets)) then {
         _x setVariable [QGVAR(smartPistol_lockProgress), 0];
     };
-} foreach GVAR(smartPistolTargets);
+} forEach GVAR(smartPistolTargets);
 GVAR(smartPistolTargets) = _targets;

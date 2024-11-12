@@ -52,7 +52,7 @@ private _foundIntersections = [];
             _foundIntersections pushBack _pos;
         };
     };
-} foreach GVAR(activeNavMarkers);
+} forEach GVAR(activeNavMarkers);
 
 // Insert intersections
 {
@@ -74,7 +74,7 @@ private _foundIntersections = [];
             };
         };
     };
-} foreach _foundIntersections;
+} forEach _foundIntersections;
 
 // Turns
 private _prevPos;

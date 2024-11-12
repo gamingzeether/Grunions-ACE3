@@ -92,9 +92,9 @@ GVAR(CurrentSpeedDial) = 0;
 }] call CBA_fnc_addEventHandler;
 
 // Cursor detonation
-GVAR(explosiveIcons) = createHashmap;
-GVAR(detonatorRanges) = createHashmap;
-GVAR(triggerDetonator) = createHashmap;
+GVAR(explosiveIcons) = createHashMap;
+GVAR(detonatorRanges) = createHashMap;
+GVAR(triggerDetonator) = createHashMap;
 GVAR(selectedExplosive) = [];
 
 private _weapons = (configFile >> "CfgWeapons");

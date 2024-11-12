@@ -25,7 +25,7 @@ if (!local _unit) exitWith {
 
 _unit setUnconscious true;
 
-if (vehicle _unit != _unit) then {
+if (!isNull objectParent _agent) then {
     ["gforces", _isUnconscious] call EFUNC(common,setDisableUserInputStatus);
     private _unconAnim = _unit call EFUNC(common,getDeathAnim);
     TRACE_2("inVehicle - playing death anim",_unit,_unconAnim);

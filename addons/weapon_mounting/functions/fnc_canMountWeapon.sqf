@@ -49,7 +49,7 @@ private _hasCarryable = false;
         _hasCarryable = true;
         break;
     };
-} foreach _mags;
+} forEach _mags;
 if (!_hasCarryable) exitWith {false};
 */
 

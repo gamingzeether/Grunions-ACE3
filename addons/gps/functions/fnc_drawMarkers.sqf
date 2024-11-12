@@ -22,7 +22,7 @@ for "_i" from 1 to GVAR(waypointCount) do {
     if (_index >= count GVAR(activeNavMarkers)) exitWith {};
     private _pos = GVAR(activeNavMarkers) select _index;
     private _size = 10 / sqrt (_cameraPos distance _pos);
-    drawIcon3D ["a3\ui_f\data\GUI\Cfg\Ranks\private_pr.paa", [0.2, 0.3, 1, (GVAR(waypointAlpha) / sqrt _i)], ASLtoAGL _pos, _size, _size, 180];
+    drawIcon3D ["a3\ui_f\data\GUI\Cfg\Ranks\private_pr.paa", [0.2, 0.3, 1, (GVAR(waypointAlpha) / sqrt _i)], ASLToAGL _pos, _size, _size, 180];
 };
 
 // Turns
@@ -38,7 +38,7 @@ private _angle = ((_vectorLeft vectorDotProduct _carVector) atan2 (_vector vecto
 drawIcon3D [
     "a3\ui_f\data\GUI\Cfg\Ranks\sergeant_gs.paa", 
     [0.8, 0.3, 0.3, _alpha], 
-    ASLtoAGL _position vectorAdd [0, 0, 4], 
+    ASLToAGL _position vectorAdd [0, 0, 4], 
     _turnSize, _turnSize, 
     _angle, 
     [" ", "!", "!!"] select _warning,

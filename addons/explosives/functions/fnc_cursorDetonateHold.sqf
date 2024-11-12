@@ -17,8 +17,8 @@
 
 if (!([ACE_player] call FUNC(canDetonate))) exitWith {};
 
-private _cameraPosition = AGLtoASL positionCameraToWorld [0, 0, 0];
-private _cameraVector = _cameraPosition vectorFromTo (AGLtoASL positionCameraToWorld [0, 0, 1]);
+private _cameraPosition = AGLToASL positionCameraToWorld [0, 0, 0];
+private _cameraVector = _cameraPosition vectorFromTo (AGLToASL positionCameraToWorld [0, 0, 1]);
 private _explosives = [ACE_player] call FUNC(getPlacedExplosives);
 private _iconBaseSize = 2 * call EFUNC(common,getZoom);
 private _closestExplosive = -1;
@@ -36,7 +36,7 @@ private _explosiveIcons = [];
         continue;
     };
     if (_vectorDot > _closestExplosiveDot && {_vectorDot > 0.998}) then {
-        _closestExplosive = _foreachIndex;
+        _closestExplosive = _forEachIndex;
         _closestExplosiveDot = _vectorDot;
     };
     
@@ -68,8 +68,8 @@ private _explosiveIcons = [];
     };
     _color set [3, _alpha];
     
-    _explosiveIcons pushBack [_icon, _color, ASLtoAGL _position];
-} foreach _explosives;
+    _explosiveIcons pushBack [_icon, _color, ASLToAGL _position];
+} forEach _explosives;
 
 if (_closestExplosive != -1) then {
     GVAR(selectedExplosive) = _explosives select _closestExplosive;
@@ -88,7 +88,7 @@ if (_closestExplosive != -1) then {
     _x params ["_icon", "_color", "_position"];
     
     private _size = _iconBaseSize;
-    if (_foreachIndex == _closestExplosive) then {
+    if (_forEachIndex == _closestExplosive) then {
         _color set [3, 1];
         _size = _size + 1;
         private _circleSize = _size + 1;
@@ -108,4 +108,4 @@ if (_closestExplosive != -1) then {
         _size, _size,
         0
     ];
-} foreach _explosiveIcons;
+} forEach _explosiveIcons;

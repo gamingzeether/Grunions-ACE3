@@ -63,9 +63,9 @@ lbClear _listbox;
     _listbox lbSetData [_index, _source];
     
     private _imagePath = if (_source in _checkedOptions) then {
-        toLower getText (configfile >> "RscCheckBox" >> "textureChecked")
+        toLower getText (configFile >> "RscCheckBox" >> "textureChecked")
     } else {
-        toLower getText (configfile >> "RscCheckBox" >> "textureUnchecked")
+        toLower getText (configFile >> "RscCheckBox" >> "textureUnchecked")
     };
     _listbox lbSetPicture [_index, _imagePath];
-} foreach _options;
+} forEach _options;

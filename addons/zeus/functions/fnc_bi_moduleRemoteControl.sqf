@@ -152,7 +152,7 @@ if (_activated && local _logic && !isNull curatorCamera) then {
                     &&
                     {!isNull getAssignedCuratorLogic player}
                     //&&
-                    //{(_unit getvariable ["bis_fnc_moduleRemoteControl_owner",objnull] == player)}
+                    //{(_unit getvariable ["bis_fnc_moduleRemoteControl_owner",objNull] == player)}
                 ) then {
                     sleep 2;
                     ("bis_fnc_moduleRemoteCurator" call bis_fnc_rscLayer) cutText ["","black out",1];

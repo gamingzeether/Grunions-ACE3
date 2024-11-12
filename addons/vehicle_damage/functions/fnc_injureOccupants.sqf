@@ -20,7 +20,7 @@
  */
 
 params ["_vehicle", "_chance", "_count", ["_source", objNull], ["_probabilityModifier", [1, 1, 1, 1]]];
-TRACE_4("adding damage to units", _vehicle, _chance, _count, _source);
+TRACE_4("adding damage to units",_vehicle,_chance,_count,_source);
 
 private _vehicleCrew = crew _vehicle;
 private _crewCount = count _vehicleCrew;
@@ -64,7 +64,7 @@ private _injuryCount = 0;
                 
                 // arbitrary percentages
                 private _injuredBodyPart = ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"] selectRandomWeighted [0.3, 0.8, 0.5, 0.5, 0.3, 0.3];
-                private _currentUnitDamage = _casualty getHitpointDamage _injuredBodyPart;
+                private _currentUnitDamage = _casualty getHitPointDamage _injuredBodyPart;
                 private _damageAmount = (_currentUnitDamage + random 1.8) max (_currentUnitDamage + 0.1);
 
                 if (["ace_medical"] call EFUNC(common,isModLoaded)) then {

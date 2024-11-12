@@ -118,9 +118,9 @@ switch (_state) do {
 };
 
 #ifdef DRAW_GUIDANCE_INFO
-drawLine3D [ASLtoAGL _projectilePos, ASLtoAGL _returnTargetPos, [1,0,0,1]];
-drawLine3D [ASLtoAGL _projectilePos, ASLtoAGL (_projectilePos vectorAdd velocity _projectile), [1,1,1,1]];
-drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa", [[1,1,1,1], [1,1,0,1], [1,0,0,1]] select _state, ASLtoAGL _projectilePos, 1, 1, 0];
+drawLine3D [ASLToAGL _projectilePos, ASLToAGL _returnTargetPos, [1,0,0,1]];
+drawLine3D [ASLToAGL _projectilePos, ASLToAGL (_projectilePos vectorAdd velocity _projectile), [1,1,1,1]];
+drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa", [[1,1,1,1], [1,1,0,1], [1,0,0,1]] select _state, ASLToAGL _projectilePos, 1, 1, 0];
 #endif
 
 _returnTargetPos

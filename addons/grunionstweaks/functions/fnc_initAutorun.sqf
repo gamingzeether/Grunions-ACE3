@@ -40,7 +40,7 @@ GVAR(autorunning) = false;
 [{
     if (GVAR(autorunning)) then {
         private _playerPos = getPosASL ACE_player vectorAdd [0, 0, 0.1];
-        if ((!isNull (ACE_controlledUAV select 0)) || {vehicle ACE_player != ACE_player} || {surfaceIsWater (getPosASL ACE_player)} || {damage ACE_player >= 0.5} || {!(lifeState ACE_player in ["HEALTHY", "INJURED"])}) exitWith {
+        if ((!isNull (ACE_controlledUAV select 0)) || {!isNull objectParent ACE_player} || {surfaceIsWater (getPosASL ACE_player)} || {damage ACE_player >= 0.5} || {!(lifeState ACE_player in ["HEALTHY", "INJURED"])}) exitWith {
             GVAR(autorunning) = false;
         };
         
@@ -48,11 +48,7 @@ GVAR(autorunning) = false;
         private _speedIndex = if (_heightDiff < 0.3) then {
             2
         } else {
-            if (_heightDiff < 0.55) then {
-                1
-            } else {
-                0
-            }
+            parseNumber _heightDiff < 0.55
         };
         
         if (!isSprintAllowed ACE_player || {getFatigue ACE_player == 1}) then {

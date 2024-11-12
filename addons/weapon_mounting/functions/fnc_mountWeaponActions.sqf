@@ -40,7 +40,7 @@ private _weapons = [_unit] call FUNC(getMountableWeapons);
         _x
     ] call EFUNC(interact_menu,createAction);
     _actions pushBack [_action, [], _vehicle];
-} foreach (_weapons select 0);
+} forEach (_weapons select 0);
 
 // Special weapons
 {
@@ -58,6 +58,6 @@ private _weapons = [_unit] call FUNC(getMountableWeapons);
         [_x, _wName, _model, _scale, _type]
     ] call EFUNC(interact_menu,createAction);
     _actions pushBack [_action, [], _vehicle];
-} foreach (_weapons select 1);
+} forEach (_weapons select 1);
 
 _actions

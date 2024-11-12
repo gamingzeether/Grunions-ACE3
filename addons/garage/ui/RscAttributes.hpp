@@ -3,7 +3,6 @@
 
 class RscButtonArsenal;
 class RscText;
-class RscListBox;
 class GVAR(display) {
     idd = IDD_ACE_GARAGE;
     enableSimulation = 1;

@@ -31,7 +31,7 @@ if (!_init) then {
             if (_xClass == _class && {_xTurret isEqualTo _turret}) then {
                 _loadedMags pushBack _x;
             };
-        } foreach (magazinesAllTurrets _vehicle);
+        } forEach (magazinesAllTurrets _vehicle);
         for "_i" from 0 to count _loadedMags - 1 do {
             if (((_loadedMags select _i) select 2) == _count) exitWith {
                 _loadedMags deleteAt _i;
@@ -41,7 +41,7 @@ if (!_init) then {
         _vehicle removeMagazinesTurret [_class, _turret];
         {
             _vehicle addMagazineTurret _x;
-        } foreach _loadedMags;
+        } forEach _loadedMags;
         
         //[_unit, _class, _count, true] call CBA_fnc_addMagazine;
         

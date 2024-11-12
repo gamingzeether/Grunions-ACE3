@@ -59,15 +59,15 @@ if (_seekerTargetPos vectorDistance _projectilePos < _projectileSpeed * 2) then 
 
 #ifdef DEBUG_MODE_FULL
 // Draw guidance info and trajectory
-drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [0,1,0,1], ASLtoAGL _seekerTargetPos, 1, 1, 45];
-drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [1,0,1,1], ASLtoAGL _returnTargetPos, 1, 1, 45];
+drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [0,1,0,1], ASLToAGL _seekerTargetPos, 1, 1, 45];
+drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Radar\radar_ca.paa", [1,0,1,1], ASLToAGL _returnTargetPos, 1, 1, 45];
 
 private _pos;
 private _nextPos = _projectilePos;
 for "_i" from 0 to 30 do {
     _pos = _nextPos;
     _nextPos = [_attackProfileStateParams select 0, CBA_missionTime + _i * 0.5] call FUNC(positionAtTime);
-    drawLine3D [ASLtoAGL _pos, ASLtoAGL _nextPos, [1,0,0,1]];
+    drawLine3D [ASLToAGL _pos, ASLToAGL _nextPos, [1,0,0,1]];
 };
 #endif
 

@@ -27,8 +27,8 @@
  
 params ["_classname"];
 
-private _animationCfg = (configfile >> "CfgVehicles" >> _classname >> "AnimationSources");
-private _textureCfg = (configfile >> "CfgVehicles" >> _classname >> "TextureSources");
+private _animationCfg = (configFile >> "CfgVehicles" >> _classname >> "AnimationSources");
+private _textureCfg = (configFile >> "CfgVehicles" >> _classname >> "TextureSources");
 
 // Get textures
 private _textures = [];

@@ -26,7 +26,7 @@ _cargoMags = _cargoMags select {(_x select 0) == _mag};
 private _highestCount = -1;
 {
     _highestCount = _highestCount max (_x select 1);
-} foreach _cargoMags;
+} forEach _cargoMags;
 
 if (_highestCount > 0) then {
     GVAR(toLoad) pushBack [_vehicle, _unit, _mag, _highestCount];

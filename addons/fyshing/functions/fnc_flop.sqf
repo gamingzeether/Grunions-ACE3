@@ -47,7 +47,7 @@ if (_nearTargets isEqualTo []) then {
             _target = _x;
             _dist = _dist2;
         };
-    } foreach _nearTargets;
+    } forEach _nearTargets;
     _targetPos = (aimPos _target) vectorAdd (velocity _target);
     _dist = _targetPos distance _projectile;
 };

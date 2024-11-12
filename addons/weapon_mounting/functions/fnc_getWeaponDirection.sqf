@@ -51,7 +51,7 @@ if (_azimuth != -1) then {
     _targetAz = _curAz;
 };
 
-private _curEl = aSin (_directionModel select 2);
+private _curEl = asin (_directionModel select 2);
 if (_elevation != -1) then {
     private _angleDiff = (_elevationOffset - _curEl + 540) % 360 - 180;
     

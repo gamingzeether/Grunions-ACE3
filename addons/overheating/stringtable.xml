@@ -517,6 +517,12 @@
             <Japanese>過熱暴発係数</Japanese>
             <Chinesesimp>过热诱发系数</Chinesesimp>
         </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_description">
+            <English>Enable for cooking off gun when hot.</English>
+        </Key>
+        <Key ID="STR_ACE_Overheating_cookoffEnabled_displayName">
+            <English>Cookoff Enabled</English>
+        </Key>
         <Key ID="STR_ACE_Overheating_coolingCoef_description">
             <English>Coefficient for how quickly a weapon cools down.\nHigher value increases cooling speed.</English>
             <French>Coefficient de rapidité de refroidissement de l'arme.\nUne valeur élevée augmente la vitesse de refroidissement.</French>
@@ -753,25 +759,25 @@
         </Key>
         <Key ID="STR_ACE_Overheating_showParticleEffects_displayName">
             <English>Overheating Particle Effects</English>
-            <German>Partikeleffekt bei Überhitzung</German>
-            <Polish>Efekty cząsteczkowe przegrzania</Polish>
-            <Italian>Effetti Particelle Surriscaldamento</Italian>
-            <Spanish>Efectos de partículas</Spanish>
-            <French>Effets de particules </French>
             <Czech>Částicové efekty přehřívání</Czech>
+            <French>Effets de particules</French>
+            <Spanish>Efectos de partículas</Spanish>
+            <Italian>Effetti Particelle Surriscaldamento</Italian>
+            <Polish>Efekty cząsteczkowe przegrzania</Polish>
             <Portuguese>Efeito de partícula de superaquecimento</Portuguese>
             <Russian>Эффект частиц при перегреве</Russian>
-            <Japanese>過熱の視覚効果</Japanese>
+            <German>Partikeleffekt bei Überhitzung</German>
             <Korean>과열 입자 효과</Korean>
-            <Chinesesimp>枪管过热特效</Chinesesimp>
+            <Japanese>過熱の視覚効果</Japanese>
             <Chinese>槍管過熱特效</Chinese>
+            <Chinesesimp>枪管过热特效</Chinesesimp>
             <Hungarian>Részecskék túlmelegedése</Hungarian>
-        </Key>
-        <Key ID="STR_ACE_Overheating_showUnjam_displayName">
-            <English>Show unjam action</English>
         </Key>
         <Key ID="STR_ACE_Overheating_showUnjam_description">
             <English>Show the unjam action when the weapon is jammed.</English>
+        </Key>
+        <Key ID="STR_ACE_Overheating_showUnjam_displayName">
+            <English>Show unjam action</English>
         </Key>
         <Key ID="STR_ACE_Overheating_statBarrelType">
             <English>Barrel Type</English>
@@ -945,12 +951,6 @@
             <Korean>총열 교환 시 기능고장 해결</Korean>
             <Japanese>銃身交換による弾詰まり解消</Japanese>
             <Chinesesimp>更换枪管清除卡弹</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACE_Overheating_cookoffEnabled_displayName">
-            <English>Cookoff Enabled</English>
-        </Key>
-        <Key ID="STR_ACE_Overheating_cookoffEnabled_description">
-            <English>Enable for cooking off gun when hot.</English>
         </Key>
     </Package>
 </Project>

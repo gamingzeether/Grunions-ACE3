@@ -23,7 +23,7 @@ params ["", "_key"];
 
 if !(isNull objectParent ACE_player) exitWith {false};
 private _launcherWeapon = secondaryWeapon ACE_player;
-if (_launcherWeapon isEqualTo "") exitwith {false};
+if (_launcherWeapon isEqualTo "") exitWith {false};
 if (currentWeapon ACE_player != _launcherWeapon) exitWith {false};
 if (!isNull (ACE_controlledUAV select 0)) exitWith {false};
 

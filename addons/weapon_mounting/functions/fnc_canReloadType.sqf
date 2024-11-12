@@ -34,7 +34,7 @@ private _turret = getArray (configOf _vehicle >> QGVAR(turret));
     if (_xClass == _type) then {
         _countOfType = _countOfType + 1;
     };
-} foreach (magazinesAllTurrets _vehicle);
+} forEach (magazinesAllTurrets _vehicle);
 _types pushBack _type;
 _types = _types arrayIntersect _types;
 

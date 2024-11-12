@@ -86,7 +86,7 @@ addMissionEventHandler ["Draw3D", {
                 drawIcon3D [
                     "\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa",
                     [1.0, 0.0, 0.1, 0.9],
-                    ASLtoAGL _targetPos,
+                    ASLToAGL _targetPos,
                     _reticuleSize, _reticuleSize,
                     45
                 ];
@@ -112,8 +112,8 @@ addMissionEventHandler ["Draw3D", {
                     private _nextPos = _muzzlePos vectorAdd (_v1 vectorMultiply _lineY) vectorAdd (_xVector vectorMultiply _lineX);
                     
                     drawLine3D [
-                        ASLtoAGL _prevPos,
-                        ASLtoAGL _nextPos,
+                        ASLToAGL _prevPos,
+                        ASLToAGL _nextPos,
                         [1, 0, 0, 1]
                     ];
                     _prevPos = _nextPos;
@@ -127,12 +127,12 @@ addMissionEventHandler ["Draw3D", {
             drawIcon3D [
                 "\a3\ui_f\data\IGUI\Cfg\Cursors\selectover_ca.paa",
                 [1.0, (SMARTPISTOL_LOCKTHRESHOLD - _lockProgress) / SMARTPISTOL_LOCKTHRESHOLD, 0.1, 0.8],
-                ASLtoAGL _targetPos,
+                ASLToAGL _targetPos,
                 _reticuleSize, _reticuleSize,
                 0
             ];
         };
-    } foreach GVAR(smartPistolTargets);
+    } forEach GVAR(smartPistolTargets);
     
     // Select target closest to center
     private _maxAngle = -1;
@@ -143,7 +143,7 @@ addMissionEventHandler ["Draw3D", {
             GVAR(smartPistolPrimaryTarget) = _target;
             _maxAngle = _angle;
         };
-    } foreach _lockedTargets;
+    } forEach _lockedTargets;
     
     [ACE_player, currentWeapon ACE_player, isNull GVAR(smartPistolPrimaryTarget)] call EFUNC(safemode,setWeaponSafety);
 }];

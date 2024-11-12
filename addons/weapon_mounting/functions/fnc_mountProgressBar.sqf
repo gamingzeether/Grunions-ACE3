@@ -32,10 +32,10 @@ params ["_vehicle", "_unit", "_weapon"];
             if (_xLoaded && {_xLocation == _weapon}) then {
                 [_unit, _xName, _xCount, true] call CBA_fnc_addMagazine;
             };
-        } foreach (magazinesAmmoFull _unit);
+        } forEach (magazinesAmmoFull _unit);
         {
             [_unit, _x, true] call CBA_fnc_addItem;
-        } foreach (_unit weaponAccessories _weapon);
+        } forEach (_unit weaponAccessories _weapon);
         
         [_unit, _weapon] call CBA_fnc_removeWeapon;
         [QGVAR(mountWeapon), [_weapon, _vehicle]] call CBA_fnc_globalEvent;

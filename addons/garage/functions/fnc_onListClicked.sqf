@@ -21,7 +21,7 @@ params ["_ctrl", "_index"];
 
 // Update listbox
 private _display = ctrlParent _ctrl;
-private _isChecked = (_ctrl lbPicture _index != toLower getText (configfile >> "RscCheckBox" >> "textureChecked"));
+private _isChecked = (_ctrl lbPicture _index != toLower getText (configFile >> "RscCheckBox" >> "textureChecked"));
 private _curTab = _display getVariable [QGVAR(listboxTab), -1];
 private _isComponentsTab = (_curTab == IDC_ACE_TABCOMPONENTS);
 
@@ -30,8 +30,8 @@ private _source = _ctrl lbData _index;
 private _customization = [_vehicle] call BIS_fnc_getVehicleCustomization;
 
 private _checkboxTextures = [
-    toLower getText (configfile >> "RscCheckBox" >> "textureUnchecked"),
-    toLower getText (configfile >> "RscCheckBox" >> "textureChecked")
+    toLower getText (configFile >> "RscCheckBox" >> "textureUnchecked"),
+    toLower getText (configFile >> "RscCheckBox" >> "textureChecked")
 ];
 private _imagePath = _checkboxTextures select _isChecked;
 _ctrl lbSetPicture [_index, _imagePath];

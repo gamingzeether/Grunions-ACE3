@@ -36,7 +36,7 @@ if (GVAR(state) == ROD_CANCEL || {!([_unit] call FUNC(canFish))}) then {
         if (!(_bobber in ropeAttachedObjects _helper)) then {
             _exitCode = 2;
         } else {
-            if (GVAR(stressedTime) > MAX_STRESS_TIME) then {
+            if (GVAR(stressedTime) > 5) then {
                 _exitCode = 3;
             };
         };
@@ -66,7 +66,7 @@ if (_exitCode != -1 && {CBA_missionTime - _startTime > 0.5}) exitWith {
     deleteVehicle _helper;
     ropeDestroy _line;
     private _attachedFish = _bobber getVariable [QGVAR(attachedFish), []];
-    {deleteVehicle _x} foreach _attachedFish;
+    {deleteVehicle _x} forEach _attachedFish;
     
     if (currentWeapon _unit == QGVAR(fyshingRod) && {([_unit] call FUNC(canFish))}) then {
         GVAR(state) = ROD_WAIT;

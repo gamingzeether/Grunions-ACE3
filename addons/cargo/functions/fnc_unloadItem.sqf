@@ -107,6 +107,7 @@ if (_object isEqualType objNull) then {
         } forEach _UAVCrew;
 
         _object setVariable [QGVAR(isUAV), nil, true];
+    };
     
     [objNull, _object] call EFUNC(common,claim);
     [_object, 0, ["ACE_MainActions", "unloadVIVItem"]] call EFUNC(interact_menu,removeActionFromObject);
@@ -126,7 +127,7 @@ if (_object isEqualType objNull) then {
         };
     } else {
         objNull setVehicleCargo _object;
-        _object setPosASL (AGLtoASL _emptyPosAGL);
+        _object setPosASL (AGLToASL _emptyPosAGL);
     };
 } else {
     _object = createVehicle [_item, _emptyPosAGL, [], 0, "NONE"];

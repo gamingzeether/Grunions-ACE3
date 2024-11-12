@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Refuel">
+        <Key ID="STR_ACE_Refuel_5LContainer_Empty_DisplayName">
+            <English>5L Fuel Container (Empty)</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_5LContainer_Full_DisplayName">
+            <English>5L Fuel Container (Full)</English>
+        </Key>
         <Key ID="STR_ACE_Refuel_Cancel">
             <English>Cancel</English>
             <Czech>Zrušit</Czech>
@@ -335,6 +341,12 @@
             <Chinesesimp>已加满至最大油量。</Chinesesimp>
             <Turkish>Maksimum yakıt hortumu uzunluğuna ulaşıldı.</Turkish>
         </Key>
+        <Key ID="STR_ACE_Refuel_Pickup">
+            <English>Pick Up Container</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_Place">
+            <English>Place Container</English>
+        </Key>
         <Key ID="STR_ACE_Refuel_Refuel">
             <English>Refuel</English>
             <Czech>Natankovat</Czech>
@@ -493,6 +505,15 @@
             <Chinesesimp>正在放回加油枪...</Chinesesimp>
             <Turkish>Yakıt Pompası Geri Koyuluyor</Turkish>
         </Key>
+        <Key ID="STR_ACE_Refuel_Siphon">
+            <English>Start Siphoning</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_SiphonCompleted">
+            <English>Siphon Completed</English>
+        </Key>
+        <Key ID="STR_ACE_Refuel_SiphonStarted">
+            <English>Siphon Started</English>
+        </Key>
         <Key ID="STR_ACE_Refuel_TakeFuelCanister">
             <English>Pick up fuel canister</English>
             <French>Ramasser le réservoir de carburant</French>
@@ -648,27 +669,6 @@
             <Japanese>給油ノズルの取り付け座標</Japanese>
             <Chinese>加油軟管安裝位置</Chinese>
             <Chinesesimp>加油软管安装位置</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACE_Refuel_Place">
-            <English>Place Container</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_Pickup">
-            <English>Pick Up Container</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_Siphon">
-            <English>Start Siphoning</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_SiphonStarted">
-            <English>Siphon Started</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_SiphonCompleted">
-            <English>Siphon Completed</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_5LContainer_Empty_DisplayName">
-            <English>5L Fuel Container (Empty)</English>
-        </Key>
-        <Key ID="STR_ACE_Refuel_5LContainer_Full_DisplayName">
-            <English>5L Fuel Container (Full)</English>
         </Key>
     </Package>
 </Project>

@@ -21,7 +21,6 @@
 params [["_item", "", [objNull, ""]], ["_vehicle", objNull, [objNull]], ["_ignoreInteraction", false, [false]]];
 TRACE_3("params",_item,_vehicle,_ignoreInteraction);
 
-<<<<<<< HEAD
 // Get config sensitive case name
 if (_item isEqualType "") then {
     _item = _item call EFUNC(common,getConfigName);

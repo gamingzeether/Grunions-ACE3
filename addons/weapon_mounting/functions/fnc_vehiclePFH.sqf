@@ -41,8 +41,8 @@ private _startPos = _mountedWeapon modelToWorldVisualWorld (_mountedWeapon getVa
 private _vec = (vectorUp _mountedWeapon) vectorCrossProduct (vectorDir _mountedWeapon);
 private _endPos = _startPos vectorAdd (_vec vectorMultiply 500);
 
-_startPos = ASLtoAGL _startPos;
-_endPos = ASLtoAGL _endPos;
+_startPos = ASLToAGL _startPos;
+_endPos = ASLToAGL _endPos;
 
 drawLine3D [_startPos, _endPos, [1,0,0,1]];
 #endif
