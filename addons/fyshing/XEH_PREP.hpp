@@ -1,0 +1,10 @@
+PREP(canFish);
+PREP(castRod);
+PREP(flop);
+PREP(getCaughtFish);
+PREP(getRandomFyshType);
+PREP(handleFired);
+PREP(handleWeaponChanged);
+PREP(fysh_onFired);
+PREP(rodPFH);
+PREP(seekerType_Fysh);

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Weapon_Mounting">
+        <Key ID="STR_ACE_Weapon_Mounting_displayName">
+            <English>Weapon Mounting</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_loading_title">
+            <English>Reloading...</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_maxOfType_description">
+            <English>Maximum amount of magazines of a type</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_maxOfType_displayName">
+            <English>Max magazines</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_maxTypes_description">
+            <English>Maximum types of magazines loaded</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_maxTypes_displayName">
+            <English>Maximum types</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_mountAction_displayName">
+            <English>Mount Weapon</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_mount_title">
+            <English>Attaching %1...</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_reload_displayName">
+            <English>Reload</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_unload_displayName">
+            <English>Unload all</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_unloading_title">
+            <English>Unloading...</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_unmountAction_displayName">
+            <English>Remove %1</English>
+        </Key>
+        <Key ID="STR_ACE_Weapon_Mounting_unmount_title">
+            <English>Removing %1...</English>
+        </Key>
+    </Package>
+</Project>

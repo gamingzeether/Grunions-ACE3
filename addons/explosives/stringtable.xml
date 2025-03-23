@@ -95,6 +95,12 @@
             <Turkish>Temiz</Turkish>
             <Hungarian>Törlés</Hungarian>
         </Key>
+        <Key ID="STR_ACE_Explosives_CursorDetonate_DisplayName">
+            <English>Detonate Cursor (Hold)</English>
+        </Key>
+        <Key ID="STR_ACE_Explosives_CursorDetonate_Tooltip">
+            <English>Detonates explosive at cursor</English>
+        </Key>
         <Key ID="STR_ACE_Explosives_CycleActiveTrigger">
             <English>Cycle Active Clacker</English>
             <French>Modifier le détonateur actif</French>

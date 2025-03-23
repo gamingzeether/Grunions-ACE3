@@ -91,6 +91,41 @@ GVAR(vehicleAction) = [
     }
 ] call EFUNC(interact_menu,createAction);
 
+GVAR(unloadAllVehiclesAction) = [
+    QGVAR(unloadAllvehicles), localize "STR_A3_ACTION_UNLOAD_ALL_VEHICLES", "\A3\Ui_f\data\IGUI\Cfg\Actions\unloadAllVehicles_ca.paa",
+    {
+        params ["_target"];
+        [_target] call FUNC(unloadAllVehicles);
+    },
+    {
+        params ["_target", "_player"];
+        [_target, _player] call FUNC(canShowUnloadAllVehicles);
+    }
+] call EFUNC(interact_menu,createAction);
+
+GVAR(objectAction) = [
+    QGVAR(load), localize LSTRING(loadObject), "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa",
+    {
+        params ["_target", "_player"];
+        [_player, _target] call FUNC(startLoadIn);
+    },
+    {
+        //IGNORE_PRIVATE_WARNING ["_target", "_player"];
+        GVAR(enable) &&
+        {(_target getVariable [QGVAR(canLoad), getNumber (configOf _target >> QGVAR(canLoad))]) in [true, 1]} &&
+        {locked _target < 2} &&
+        {alive _target} &&
+        {[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)} &&
+        {((nearestObjects [_target, GVAR(cargoHolderTypes), (MAX_LOAD_DISTANCE + 10)]) findIf {
+            private _hasCargoConfig = 1 == getNumber (configOf _x >> QGVAR(hasCargo));
+            private _hasCargoPublic = _x getVariable [QGVAR(hasCargo), false];
+            (_hasCargoConfig || {_hasCargoPublic}) && {_x != _target} && {alive _x} && {locked _x < 2} &&
+            {([_target, _x] call EFUNC(interaction,getInteractionDistance)) < MAX_LOAD_DISTANCE}
+        }) > -1}
+    },
+    LINKFUNC(addCargoVehiclesActions)
+] call EFUNC(interact_menu,createAction);
+
 GVAR(objectActions) = [
     [QGVAR(renameObject), LELSTRING(common,rename), "\a3\Modules_F_Curator\Data\iconMissionName_ca.paa",
         {
@@ -144,6 +179,10 @@ GVAR(objectActions) = [
 ];
 
 // Find all remaining configured classes and init them, see XEH_preStart.sqf
+{
+    [_x, 1, ["ACE_SelfActions"], GVAR(unloadAllVehiclesAction), true] call EFUNC(interact_menu,addActionToClass);
+} forEach ["LandVehicle", "Ship", "Air"];
+
 private _vehicleClassesAddAction = call (uiNamespace getVariable [QGVAR(initializedVehicleClasses), {[]}]);
 
 {
