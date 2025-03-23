@@ -19,3 +19,4 @@ ArmaScriptCompiler.exe
 *.sqfc
 target/
 !extras/**/*.zip
+keys/*

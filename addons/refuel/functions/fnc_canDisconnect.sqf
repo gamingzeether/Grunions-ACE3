@@ -26,4 +26,4 @@ if (isNull _unit ||
     {(_nozzle distance _unit) > REFUEL_ACTION_DISTANCE}) exitWith {false};
 
 private _sink = _nozzle getVariable [QGVAR(sink), objNull];
-!((isNull _sink) || {_nozzle getVariable [QGVAR(isRefueling), false]})
+!((isNull _sink) || {_nozzle getVariable [QGVAR(isRefueling), false]} || {_nozzle getVariable [QGVAR(isSiphoning), false]})

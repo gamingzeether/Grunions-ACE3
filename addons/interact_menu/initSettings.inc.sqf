@@ -108,7 +108,7 @@ private _categoryColors = [_category, format ["| %1 |", LELSTRING(common,subcate
     QGVAR(useListMenu), "CHECKBOX",
     LSTRING(UseListMenu),
     [_category, LLSTRING(Category_InteractionMenu)],
-    true,
+    false,
     false
 ] call CBA_fnc_addSetting;
 

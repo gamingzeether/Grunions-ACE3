@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="MGL">
+        <Key ID="STR_ACE_MGL_MGLMagazine_HE_descriptionShort">
+            <English>Type: High Explosive Grenade Round&lt;br/&gt;Caliber: 40 mm&lt;br/&gt;Rounds: 6&lt;br/&gt;Used in: MGL</English>
+        </Key>
+        <Key ID="STR_ACE_MGL_MGLMagazine_HE_displayName">
+            <English>6Rnd 40mm HE Cylinder</English>
+        </Key>
+        <Key ID="STR_ACE_MGL_MGL_description">
+            <English>Grenade Launcher&lt;br/&gt;Caliber: 40mm</English>
+        </Key>
+        <Key ID="STR_ACE_MGL_MGL_displayName">
+            <English>MGL</English>
+        </Key>
+    </Package>
+</Project>

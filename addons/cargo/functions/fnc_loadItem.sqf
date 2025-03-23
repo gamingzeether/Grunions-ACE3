@@ -32,6 +32,11 @@ if !([_item, _vehicle, _ignoreInteraction] call FUNC(canLoadItemIn)) exitWith {
     false // return
 };
 
+if (_item in (_vehicle getVariable [QGVAR(loaded), []])) exitWith {
+    TRACE_2("already loaded",_item,_vehicle); 
+    false
+};
+
 private _loaded = _vehicle getVariable [QGVAR(loaded), []];
 _loaded pushBack _item;
 _vehicle setVariable [QGVAR(loaded), _loaded, true];
@@ -45,9 +50,45 @@ _vehicle setVariable [QGVAR(space), _cargoSpace - _itemSize, true];
 
 // Attach object 100m below vehicle
 if (_item isEqualType objNull) then {
+    //disable interactions
+    [_vehicle, _item] call EFUNC(common,claim);
+
+    //add unload action to loaded object
+    private _unloadAction = [
+        "unloadVIVItem", 
+        "Unload Item", 
+        "", 
+        {
+            params ["_target"];
+            private _vehicle = isVehicleCargo _target;
+            if ([_target, _vehicle, ACE_player] call FUNC(canUnloadItem)) then {
+            
+                private _size = [_target] call FUNC(getSizeItem);
+
+                [
+                    GVAR(loadTimeCoefficient) * _size,
+                    [_target, _vehicle, ACE_player],
+                    {TRACE_1("unload finish",_this); ["ace_unloadCargo", _this select 0] call CBA_fnc_localEvent},
+                    {TRACE_1("unload fail",_this);},
+                    localize LSTRING(UnloadingItem),
+                    {
+                        (_this select 0) params ["_item", "_target", "_player"];
+                        
+                        (alive _target)
+                        && {locked _target < 2}
+                        && {([_player, _target] call EFUNC(interaction,getInteractionDistance)) < MAX_LOAD_DISTANCE}
+                        && {_item in (_target getVariable [QGVAR(loaded), []])}
+                    },
+                    ["isNotSwimming"]
+                ] call EFUNC(common,progressBar);
+            }
+        }, 
+        {true}
+    ] call EFUNC(interact_menu,createAction);
+    
+    [_item, 0, ["ACE_MainActions"], _unloadAction] call EFUNC(interact_menu,addActionToObject);
+
     detach _item;
-    _item attachTo [_vehicle, [0, 0, -100]];
-    [QEGVAR(common,hideObjectGlobal), [_item, true]] call CBA_fnc_serverEvent;
 
     if (["ace_zeus"] call EFUNC(common,isModLoaded)) then {
         private _objectCurators = objectCurators _item;
@@ -59,19 +100,48 @@ if (_item isEqualType objNull) then {
 
         [QEGVAR(zeus,removeObjects), [[_item], _objectCurators]] call CBA_fnc_serverEvent;
     };
+    
+    if !(_vehicle setVehicleCargo _item) then {
+        private _itemsCargo = _loaded arrayIntersect getVehicleCargo _vehicle;
+        private _cargoNet = createVehicle [GVAR(cargoNetType), [0, 0, 0], [], 0, "CAN_COLLIDE"];
+        if ([_vehicle, _cargoNet, _itemsCargo] call FUNC(canItemCargo)) then {
+            while {!(_vehicle setVehicleCargo _cargoNet)} do { // Move ViV cargo to ACE Cargo
+                if (_itemsCargo isEqualTo []) exitWith {deleteVehicle _cargoNet; /*Should not happen*/};
+                private _itemViV = _itemsCargo deleteAt 0;
 
-    // Some objects below water will take damage over time, eventually becoming "water logged" and unfixable (because of negative z attach)
-    [_item, "blockDamage", QUOTE(ADDON), true] call EFUNC(common,statusEffect_set);
+                if !(objNull setVehicleCargo _itemViV) exitWith {deleteVehicle _cargoNet;};
 
-    // Prevent UAVs from firing
-    private _UAVCrew = _item call EFUNC(common,getVehicleUAVCrew);
+                _itemViV setVariable [QGVAR(cargoNet), _cargoNet, true];
+                _itemViV attachTo [_vehicle, [0,0,-100]];
+                [QEGVAR(common,hideObjectGlobal), [_itemViV, true]] call CBA_fnc_serverEvent;
 
-    if (_UAVCrew isNotEqualTo []) then {
-        {
-            [_x, true] call EFUNC(common,disableAiUAV);
-        } forEach _UAVCrew;
+                // Some objects below water will take damage over time and eventualy become "water logged" and unfixable (because of negative z attach)
+                [_itemViV, "blockDamage", "ACE_cargo", true] call EFUNC(common,statusEffect_set);
+            };
+        } else {
+            deleteVehicle _cargoNet;
+        };
+        if !(isNull _cargoNet) then {
+            _cargoNet setVariable [QGVAR(isCargoNet), true, true];
+            _item setVariable [QGVAR(cargoNet), _cargoNet, true];
+        };
 
-        _item setVariable [QGVAR(isUAV), _UAVCrew, true];
+        _item attachTo [_vehicle, [0,0,-100]];
+        [QEGVAR(common,hideObjectGlobal), [_item, true]] call CBA_fnc_serverEvent;
+
+        // Some objects below water will take damage over time and eventualy become "water logged" and unfixable (because of negative z attach)
+        [_item, "blockDamage", "ACE_cargo", true] call EFUNC(common,statusEffect_set);
+
+        // Prevent UAVs from firing
+        private _UAVCrew = _item call EFUNC(common,getVehicleUAVCrew);
+    
+        if (_UAVCrew isNotEqualTo []) then {
+            {
+                [_x, true] call EFUNC(common,disableAiUAV);
+            } forEach _UAVCrew;
+    
+            _item setVariable [QGVAR(isUAV), _UAVCrew, true];
+        };
     };
 };
 

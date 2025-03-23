@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="GrunionsTweaks">
+        <Key ID="STR_ACE_GrunionsTweaks_Autorun">
+            <English>Auto Run</English>
+        </Key>
+        <Key ID="STR_ACE_GrunionsTweaks_AutorunCancel">
+            <English>Auto Run Cancel</English>
+        </Key>
+        <Key ID="STR_ACE_GrunionsTweaks_Category">
+            <English>Grunions Tweaks</English>
+        </Key>
+    </Package>
+</Project>

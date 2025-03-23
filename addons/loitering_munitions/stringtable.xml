@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Loitering_Munitions">
+        <Key ID="STR_ACE_Loitering_Munitions_Hero120_carry_displayName">
+            <English>[CSW] Hero-120 Canister</English>
+        </Key>
+        <Key ID="STR_ACE_Loitering_Munitions_Hero120_displayName">
+            <English>Hero-120</English>
+        </Key>
+        <Key ID="STR_ACE_Loitering_Munitions_Hero120_mag_description">
+            <English>Type: Anti-Tank &lt;br/&gt;Rounds: 1 &lt;br/&gt;Used in: Hero-120</English>
+        </Key>
+        <Key ID="STR_ACE_Loitering_Munitions_Hero120_mag_displayName">
+            <English>Hero-120 Missile</English>
+        </Key>
+        <Key ID="STR_ACE_Loitering_Munitions_altitude">
+            <English>Altitude (ASL): %1 m&lt;br/&gt;Altitude (AGL): %2 m</English>
+        </Key>
+        <Key ID="STR_ACE_Loitering_Munitions_openDialog">
+            <English>Activate Munitions Controller</English>
+        </Key>
+    </Package>
+</Project>

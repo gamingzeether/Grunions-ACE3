@@ -1,5 +1,14 @@
 #include "script_component.hpp"
 
+#pragma hemtt flag pe23_ignore_has_include
+#if __has_include("\z\ace\addons\grunionstweaks\script_component.hpp")
+#define PATCH_SKIP "No Nightvision"
+#endif
+
+#ifdef PATCH_SKIP
+ACE_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
+#else
+
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
@@ -38,3 +47,5 @@ class CfgPatches {
 #include "ACE_Settings.hpp"
 #include "RscTitles.hpp"
 #include "ACE_Arsenal_Stats.hpp"
+
+#endif

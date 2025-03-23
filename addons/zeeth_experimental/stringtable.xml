@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Zeeth_Experimental">
+        <Key ID="STR_ACE_Zeeth_Experimental_Addon">
+            <English>ACE Experimental</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Jetpack_KeybindActivate">
+            <English>Jetpack</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_MagOfHolding_Description">
+            <English>Caliber: 6.5x39 mm Tracer - Red&lt;br/&gt;Rounds: A lot&lt;br/&gt;Used in: MX/C/M/SW/3GL</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_MagOfHolding_DisplayName">
+            <English>Mag of Holding</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_KeybindDown">
+            <English>Pitch Down</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_KeybindLeft">
+            <English>Yaw Left</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_KeybindRight">
+            <English>Yaw Right</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_KeybindUp">
+            <English>Pitch Up</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_Mag_Description">
+            <English>Type: Phoenix rocket&lt;br/&gt;Rounds: 1&lt;br/&gt;Used in: NC15 Phoenix</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_Mag_DisplayName">
+            <English>Phoenix Rocket</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_Weapon_Description">
+            <English>Rocket Launcher &lt;br/&gt;Ammo: Phoenix Rocket</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_Weapon_DisplayName">
+            <English>NC15 Phoenix</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_Phoenix_Weapon_LibDescription">
+            <English>The NC15 Phoenix Rocket Launcher is a shoulder system for launching TV-guided rockets.</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_SmartPistol_Mag_Description">
+            <English>Caliber: 9x21 mm &lt;br/&gt;Rounds: 12 &lt;br/&gt;Used in: Smart Pistol MK6</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_SmartPistol_Mag_DisplayName">
+            <English>9mm 12Rnd Smart Pistol Mag</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_SmartPistol_Weapon_DisplayName">
+            <English>Smart Pistol MK6</English>
+        </Key>
+        <Key ID="STR_ACE_Zeeth_Experimental_SmartPistol_Weapon_LibDescription">
+            <English>The Smart Pistol MK6 is a semi-automatic pistol that can lock onto targets.</English>
+        </Key>
+    </Package>
+</Project>

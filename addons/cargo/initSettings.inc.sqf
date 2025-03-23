@@ -66,3 +66,22 @@ private _category = [ELSTRING(main,Category_Logistics), LSTRING(openMenu)];
     LSTRING(checkSizeInteraction),
     _category
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(enableRename),
+    "CHECKBOX",
+    [LSTRING(ModuleSettings_enableRename), LSTRING(ModuleSettings_enableRename_Description)],
+    _category,
+    true,
+    false,
+    {[QGVAR(enableRename), _this, true] call EFUNC(common,cbaSettings_settingChanged)}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(cargoNetType), "LIST",
+    [LSTRING(cargoNetType), LSTRING(cargoNetType_description)],
+    _category,
+    [["CargoNet_01_box_F", "Land_WoodenBox_02_F"], [LSTRING(cargoNetType_modernStyle), LSTRING(cargoNetType_ww2)], 0],
+    true,
+    {[QGVAR(cargoNetType), _this, true] call EFUNC(common,cbaSettings_settingChanged)}
+] call CBA_fnc_addSetting;

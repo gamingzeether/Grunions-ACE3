@@ -108,6 +108,27 @@ if (_object isEqualType objNull) then {
 
         _object setVariable [QGVAR(isUAV), nil, true];
     };
+    
+    [objNull, _object] call EFUNC(common,claim);
+    [_object, 0, ["ACE_MainActions", "unloadVIVItem"]] call EFUNC(interact_menu,removeActionFromObject);
+    if (isNull isVehicleCargo _object) then {
+        detach _object;
+        // hideObjectGlobal must be executed before setPos to ensure light objects are rendered correctly
+        // do both on server to ensure they are executed in the correct order
+        [QGVAR(serverUnload), [_object, _emptyPosAGL]] call CBA_fnc_serverEvent;
+
+        private _cargoNet = _object getVariable [QGVAR(cargoNet), objNull];
+        if !(isNull _cargoNet) then {
+            private _itemsRemaining = _loaded select {_x getVariable [QGVAR(cargoNet), objNull] isEqualTo _cargoNet};
+            if (_itemsRemaining isEqualTo []) then {
+                objNull setVehicleCargo _cargoNet;
+                deleteVehicle _cargoNet;
+            };
+        };
+    } else {
+        objNull setVehicleCargo _object;
+        _object setPosASL (AGLToASL _emptyPosAGL);
+    };
 } else {
     _object = createVehicle [_item, _emptyPosAGL, [], 0, "NONE"];
 

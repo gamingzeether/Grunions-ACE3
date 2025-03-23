@@ -235,6 +235,7 @@ class CfgVehicles {
                 statement = "";
                 exceptions[] = {"isNotSwimming"};
             };
+            /*
             class ACE_TapShoulderRight {
                 displayName = CSTRING(TapShoulder);
                 selection = "rightshoulder";
@@ -251,6 +252,7 @@ class CfgVehicles {
                 statement = QUOTE([ARR_3(_player,_target,1)] call DFUNC(tapShoulder));
                 exceptions[] = {"isNotSwimming"};
             };
+            */
             class ACE_OpenBackpack {
                 displayName = "$STR_ACTION_OPEN_BAG";
                 position = QUOTE(call DFUNC(getBackpackPos));

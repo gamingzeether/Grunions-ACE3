@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Fyshing">
+        <Key ID="STR_ACE_Fyshing_Cap_displayName">
+            <English>Cap (Fysh)</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_CastAction">
+            <English>Cast</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Caught">
+            <English>You caught %1</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Flyshchette_Magazine_displayName">
+            <English>40mm Flyschette</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Flyshchette_Magazine_displayNameShort">
+            <English>Flyschette</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_FyshExplosive_DisplayName">
+            <English>Fysh (Explosive)</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_FyshLoitering_DisplayName">
+            <English>Fysh (Loitering)</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Fysh_DescriptionShort">
+            <English>A throwable fysh</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Fysh_DisplayName">
+            <English>Fysh</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_HookBroke">
+            <English>Hook broke</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_LineBroke">
+            <English>Line broke</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_Pike_Magazine_displayName">
+            <English>40mm Fysh</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_ReelAction">
+            <English>Reel in</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_component_DisplayName">
+            <English>Fyshing</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_fyshingRod_description">
+            <English>A rod with a bit of fishing line.</English>
+        </Key>
+        <Key ID="STR_ACE_Fyshing_fyshingRod_displayName">
+            <English>Fyshing Rod</English>
+        </Key>
+    </Package>
+</Project>

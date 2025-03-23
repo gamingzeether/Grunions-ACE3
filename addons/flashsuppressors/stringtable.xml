@@ -18,6 +18,40 @@
             <Turkish>Flash Suppressor (.338)</Turkish>
             <Hungarian>Lángrejtő (.338)</Hungarian>
         </Key>
+        <Key ID="STR_ACE_FlashSuppressors_muzzle_mzls_57">
+            <English>Flash Suppressor (5.7 mm)</English>
+            <Czech>Tlumič plamene (5,7 mm)</Czech>
+            <French>Cache-flamme (5,7 mm)</French>
+            <Spanish>Bocacha (5,7 mm)</Spanish>
+            <Italian>Soppressore di fiamma (5.7mm)</Italian>
+            <Polish>Tłumik płomienia (5,7 mm)</Polish>
+            <Portuguese>Supressor de Clarão (5,7mm)</Portuguese>
+            <Russian>Пламегаситель (5,7 мм)</Russian>
+            <German>Mündungsfeuerdämpfer (5,7 mm)</German>
+            <Korean>소염기 (5.7 mm)</Korean>
+            <Japanese>消炎器 (5.7 mm)</Japanese>
+            <Chinese>消光器 (5.7 毫米)</Chinese>
+            <Chinesesimp>消光器 (5.7 mm)</Chinesesimp>
+            <Turkish>Flash Suppressor (5.7 mm)</Turkish>
+            <Hungarian>Lángrejtő (5,7 mm)</Hungarian>
+        </Key>
+        <Key ID="STR_ACE_FlashSuppressors_muzzle_mzls_58">
+            <English>Flash Suppressor (5.8 mm)</English>
+            <Czech>Tlumič plamene (5,8 mm)</Czech>
+            <French>Cache-flamme (5,8 mm)</French>
+            <Spanish>Bocacha (5,8 mm)</Spanish>
+            <Italian>Soppressore di fiamma (5.8mm)</Italian>
+            <Polish>Tłumik płomienia (5,8 mm)</Polish>
+            <Portuguese>Supressor de Clarão (5,8mm)</Portuguese>
+            <Russian>Пламегаситель (5,8 мм)</Russian>
+            <German>Mündungsfeuerdämpfer (5,8 mm)</German>
+            <Korean>소염기 (5.8 mm)</Korean>
+            <Japanese>消炎器 (5.8 mm)</Japanese>
+            <Chinese>消光器 (5.8 毫米)</Chinese>
+            <Chinesesimp>消光器 (5.8 mm)</Chinesesimp>
+            <Turkish>Flash Suppressor (5.8 mm)</Turkish>
+            <Hungarian>Lángrejtő (5,8 mm)</Hungarian>
+        </Key>
         <Key ID="STR_ACE_FlashSuppressors_muzzle_mzls_93mmg">
             <English>Flash Suppressor (9.3 mm)</English>
             <Czech>Tlumič plamene (9,3 mm)</Czech>
