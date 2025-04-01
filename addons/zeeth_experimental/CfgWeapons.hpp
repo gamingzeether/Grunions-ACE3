@@ -1,7 +1,7 @@
 class CfgWeapons {
     class hgun_P07_F;
     class GVAR(SmartPistol_Weapon): hgun_P07_F {
-        scope = 1;
+        scope = 2;
         displayname = CSTRING(SmartPistol_Weapon_DisplayName);
         magazines[] = { QGVAR(12Rnd_SmartPistol_Mag) };
         magazineWell[] = { QGVAR(SmartPistol_9x21) };
