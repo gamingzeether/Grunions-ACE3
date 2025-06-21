@@ -90,3 +90,38 @@ GVAR(CurrentSpeedDial) = 0;
     params["_mine", "_allow"];
     [_mine, _allow] call FUNC(allowDefuse);
 }] call CBA_fnc_addEventHandler;
+
+// Cursor detonation
+GVAR(explosiveIcons) = createHashMap;
+GVAR(detonatorRanges) = createHashMap;
+GVAR(triggerDetonator) = createHashMap;
+GVAR(selectedExplosive) = [];
+
+private _weapons = (configFile >> "CfgWeapons");
+for "_i" from 0 to (count _weapons - 1) do {
+    private _cfg = _weapons select _i;
+    if (isClass _cfg && {getNumber (_cfg >> QGVAR(Detonator)) == 1}) then {
+        private _trigger = getText (_cfg >> QGVAR(triggerType));
+        GVAR(triggerDetonator) set [_trigger, configName _cfg];
+    };
+};
+
+["ACE Explosives", QGVAR(CursorDetonate), [LLSTRING(CursorDetonate_DisplayName), LLSTRING(CursorDetonate_Tooltip)], {
+    GVAR(cursorDetonateKeyDown) = true;
+    true
+}, {
+    GVAR(cursorDetonateKeyDown) = false;
+    
+    if (GVAR(selectedExplosive) isEqualTo []) exitWith {};
+    
+    GVAR(selectedExplosive) params ["_explosive", "_fuseTime", "_explosiveCode", "_magazineClass", "_detonatorName"];
+    [ACE_player, GVAR(detonatorRanges) get _detonatorName, [_explosive, _fuseTime], _detonatorName] call FUNC(detonateExplosive);
+    
+    true
+}] call CBA_fnc_addKeybind;
+
+addMissionEventHandler ["Draw3D", {
+    if (GVAR(cursorDetonateKeyDown)) then {
+        call FUNC(cursorDetonateHold);
+    };
+}];

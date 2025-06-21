@@ -82,14 +82,11 @@ class ACE_Repair {
         class FullRepair: MiscRepair {
             displayName = CSTRING(fullRepair);
             displayNameProgress = CSTRING(fullyRepairing);
-            forceDisplayName = 1;
-            loopAnimation = 1;
             requiredEngineer = QGVAR(engineerSetting_fullRepair);
             repairLocations[] = {QGVAR(fullRepairLocation)};
-            repairingTime = QFUNC(getFullRepairTime);
-            condition = "((getAllHitPointsDamage _target) select 2) findIf {_x > 0} != -1";
+            repairingTime = 60;
+            condition = "-1 != ((getAllHitPointsDamage _target param [2,[]]) findIf {_x > 0})";
             callbackSuccess = QFUNC(doFullRepair);
-            callbackProgress = QFUNC(fullRepairProgress);
             items = QGVAR(fullRepairRequiredItems);
             itemConsumed = QGVAR(consumeItem_ToolKit);
         };

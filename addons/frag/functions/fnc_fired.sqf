@@ -3,7 +3,7 @@
  * Author: nou, jaynus, Lambda.Tiger, PabstMirror
  * Add "Exploded" eventhandler to a projectile if it will produce fragments
  * and a "HitPart" eventhandler if it will produce spall.
- *
+ * Called from the ammo fired EH for all round that trigger frag or spall.
  * Arguments:
  * Parameters inherited from EFUNC(common,firedEH)
  *
@@ -47,3 +47,6 @@ private _penetratedEventHandler = _projectile addEventHandler ["Penetrated",LINK
 _projectile setVariable [QGVAR(hitPartEventHandler), [_hitPartEventHandler, _penetratedEventHandler]];
 
 TRACE_1("firedExit",_ammo);
+
+TRACE_3("Running Frag Tracking",_unit,_ammo,_projectile);
+[_unit, _ammo, _projectile] call FUNC(addPfhRound);

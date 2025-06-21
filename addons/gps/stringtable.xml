@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="GPS">
+        <Key ID="STR_ACE_GPS_Cancel">
+            <English>Cancel Navigation</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_Category">
+            <English>ACE GPS</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_Enabled_Description">
+            <English>Enable the GPS navigation module</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_Enabled_DisplayName">
+            <English>GPS Enabled</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_Menu">
+            <English>GPS</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_TurnAlpha_Description">
+            <English>Opacity of turn markers</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_TurnAlpha_DisplayName">
+            <English>Turn Marker Opacity</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_WaypointAlpha_Description">
+            <English>Opacity of waypoint markers</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_WaypointAlpha_DisplayName">
+            <English>Waypoint Marker Opacity</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_WaypointCount_Description">
+            <English>Maximum number of waypoints to draw</English>
+        </Key>
+        <Key ID="STR_ACE_GPS_WaypointCount_DisplayName">
+            <English>Waypoint Count</English>
+        </Key>
+    </Package>
+</Project>

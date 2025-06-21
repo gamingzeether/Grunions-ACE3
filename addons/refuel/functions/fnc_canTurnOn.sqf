@@ -37,6 +37,9 @@ private _isSinkFull = if (_refuelContainer) then {
 };
 
 !(_nozzle getVariable [QGVAR(isRefueling), false]) &&
+    {!(_nozzle getVariable [QGVAR(isSiphoning), false])} && 
     {(([_source] call FUNC(getCapacity)) == REFUEL_INFINITE_FUEL) || {[_source] call FUNC(getFuel) > 0}} && // Make sure the source has fuel
-    {!_isSinkFull} && // Make sure the sink isn't full
-    {!(_refuelContainer && {_source == _sink})}; // No endless container ot itself loop
+    {!isNull _sink} &&
+    {!_isSinkFull} &&
+    {!(_refuelContainer && {_source == _sink})} && // No endless container of itself loop
+    {!_refuelContainer || _isContainer} // Container refueling only if it actually is one

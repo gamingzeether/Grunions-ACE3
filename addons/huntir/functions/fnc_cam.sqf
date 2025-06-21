@@ -28,6 +28,7 @@ GVAR(TI) = 0;
 GVAR(cur_cam) = 0;
 GVAR(ROTATE) = 0;
 GVAR(ELEVAT) = 0.01;
+GVAR(mousePos) = [-1,-1];
 
 HUNTIR_BACKGROUND_LAYER_ID cutText["","PLAIN"];
 
@@ -35,6 +36,8 @@ closeDialog 0;
 createDialog QGVAR(cam_dialog);
 uiNamespace setVariable [QGVAR(monitor), findDisplay 18880];
 (uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["Keydown", QUOTE(call FUNC(keyPressed))];
+(uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(onMouseDown))];
+(uiNamespace getVariable QGVAR(monitor)) displaySetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(onMouseUp))];
 
 ctrlSetText [4, "0X"];
 
@@ -115,6 +118,9 @@ GVAR(no_cams) sort true;
             player remoteControl ACE_player;
         };
         [QGVAR(monitorClosed), [ACE_player]] call CBA_fnc_localEvent;
+        
+        GVAR(panId) call CBA_fnc_removePerFrameHandler;
+        GVAR(panId) = -1;
     };
 
     switch (GVAR(ZOOM)) do {

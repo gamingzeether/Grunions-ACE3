@@ -34,13 +34,13 @@ private _getLoadedModsInfo = getLoadedModsInfo;
     private _expectedModDir = getText (_cfg >> "ACE_expectedModDir");
 
     if (_expectedModDir == "") then {
-        _expectedModDir = "@ace";
+        _expectedModDir = "@Grunions - ACE";
     };
 
     private _expectedSteamID = getText (_cfg >> "ACE_expectedSteamID");
 
     if (_expectedSteamID == "") then {
-        _expectedSteamID = "463939057"
+        _expectedSteamID = "2410973269"
     };
 
     (_allMods getOrDefault [_actualModDir, [], true]) pushBackUnique _expectedSteamID;

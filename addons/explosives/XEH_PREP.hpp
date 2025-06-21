@@ -11,6 +11,7 @@ PREP(canDefuse);
 PREP(canDetonate);
 PREP(connectExplosive);
 PREP(cycleActiveTrigger);
+PREP(cursorDetonateHold);
 PREP(defuseExplosive);
 PREP(detonateExplosive);
 PREP(detonateExplosiveAll);

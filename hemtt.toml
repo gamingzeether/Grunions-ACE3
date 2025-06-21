@@ -12,6 +12,9 @@ files = [
     "AUTHORS.txt",
     "LICENSE",
     "logo_ace3_ca.paa",
+    "logo_ambrossspecial_ca.paa",
+    "logo_grunions_ca.paa",
+    "logo_grunions_christmas_ca.paa",
     "meta.cpp"
 ]
 

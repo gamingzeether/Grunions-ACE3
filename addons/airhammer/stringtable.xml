@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Airhammer">
+        <Key ID="STR_ACE_Airhammer_weapon_displayName">
+            <English>M30 Mustang AH</English>
+        </Key>
+    </Package>
+</Project>

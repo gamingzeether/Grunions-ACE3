@@ -72,7 +72,7 @@ if (cursorObject isEqualTo _target) exitWith {
         _x params ["_pos", "", "_obj"];
         TRACE_3("",_forEachIndex,_obj,_target);
         if (_obj isEqualTo _target) exitWith {
-            _finalPos = _target worldToModelVisual ASLtoAGL (_pos vectorAdd (EGVAR(interact_menu,cameraDir) vectorMultiply 1.0));
+            _finalPos = _target worldToModelVisual ASLToAGL (_pos vectorAdd (EGVAR(interact_menu,cameraDir) vectorMultiply 1.0));
         };
     } forEach _results;
     _finalPos

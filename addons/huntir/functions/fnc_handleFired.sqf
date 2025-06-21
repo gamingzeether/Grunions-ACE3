@@ -2,7 +2,7 @@
 /*
  * Author: Norrin, Rocko, Ruthberg
  *
- * Handles HuntIR projectiles. Called from the unified fired EH for the local player.
+ * Handles HuntIR projectiles. Called from the ammo fired EH for the local player.
  *
  * Arguments:
  * None. Parameters inherited from EFUNC(common,firedEH)

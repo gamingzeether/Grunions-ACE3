@@ -71,8 +71,12 @@ private _suitCoef = if ((uniform ACE_player) != "") then {
 private _gBlackOut = MAXVIRTUALG / _classCoef + MAXVIRTUALG / _suitCoef - MAXVIRTUALG;
 
 // Unconsciousness
-if (_average > _gBlackOut && {GETEGVAR(medical,enabled,false) && {ACE_player call EFUNC(common,isAwake)}}) then {
-    [ACE_player, true, (10 + floor(random 5)), true] call EFUNC(medical,setUnconscious);
+if (GETEGVAR(medical,enabled,false)) then {
+    if ((_average > _gBlackOut) && {ACE_player call EFUNC(common,isAwake)}) then {
+        [ACE_player, true, (10 + floor(random 5)), true] call EFUNC(medical,setUnconscious);
+    } else {
+        [ACE_player, (10 + floor(random 5))] call FUNC(setUnconscious);
+    };
 };
 
 GVAR(GForces_CC) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[10,10,0,0,0,0.1,0.5]];
@@ -84,7 +88,6 @@ if (ACE_player call EFUNC(common,isAwake)) then {
         addCamShake [_strength, 1, 15];
     } else {
         private _gRedOut = MINVIRTUALG / _classCoef;
-
         if (_average < -0.30 * _gRedOut) then {
             private _strength = ((abs _average - 0.30 * _gRedOut) / (0.70 * _gRedOut)) max 0;
             GVAR(GForces_CC) ppEffectAdjust [1,1,0,[1,0.2,0.2,1],[0,0,0,0],[1,1,1,1],[2 * (1 - _strength),2 * ( 1 -_strength),0,0,0,0.1,0.5]];
