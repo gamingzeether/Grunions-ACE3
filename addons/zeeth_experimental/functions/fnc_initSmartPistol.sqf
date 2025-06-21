@@ -19,7 +19,6 @@
 
 GVAR(smartPistolEquipped) = false;
 GVAR(smartPistolTargets) = [];
-GVAR(smartPistolPrimaryTarget) = objNull;
 
 // Handle weapon switching
 ["weapon", {
@@ -133,19 +132,6 @@ addMissionEventHandler ["Draw3D", {
             ];
         };
     } forEach GVAR(smartPistolTargets);
-    
-    // Select target closest to center
-    private _maxAngle = -1;
-    GVAR(smartPistolPrimaryTarget) = objNull;
-    {
-        _x params ["_angle", "_target"];
-        if (_angle > _maxAngle) then {
-            GVAR(smartPistolPrimaryTarget) = _target;
-            _maxAngle = _angle;
-        };
-    } forEach _lockedTargets;
-    
-    [ACE_player, currentWeapon ACE_player, isNull GVAR(smartPistolPrimaryTarget)] call EFUNC(safemode,setWeaponSafety);
 }];
 
 // Handle firing weapon
@@ -153,7 +139,8 @@ addMissionEventHandler ["Draw3D", {
 [QGVAR(smartPistol), {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
     
-    private _target = GVAR(smartPistolPrimaryTarget);
+    private _target = selectRandom GVAR(smartPistolTargets);
+    if (isNull target) exitWith {};
     private _vector = vectorDir _target;
     
     _projectile setPosASL (getPosASL _target vectorAdd (_vector vectorMultiply -10));
