@@ -10,8 +10,5 @@
         <Key ID="STR_ACE_GrunionsTweaks_Category">
             <English>Grunions Tweaks</English>
         </Key>
-        <Key ID="STR_ACE_GrunionsTweaks_ToggleAimAssist">
-            <English>Toggle Aim</English>
-        </Key>
     </Package>
 </Project>
